@@ -11981,10 +11981,6 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-body {
-  height: 100vh;
-}
-
 a {
   color: black;
   text-decoration: none;
@@ -12016,6 +12012,14 @@ a {
   display: none;
 }
 
+.header-cart {
+  min-width: 110px;
+}
+
+.header-user {
+  min-width: 206px;
+}
+
 .search {
   width: 600px;
 }
@@ -12041,12 +12045,25 @@ a {
 }
 
 .sidemenu {
+  padding: 24px 24px 48px;
   max-width: 340px;
 }
 
 .shopping-aria {
   padding: 24px 0 0;
   max-width: 1100px;
+}
+
+.imoji-women {
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+}
+
+.imoji-men {
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
 }
 
 .product-window {
@@ -12058,8 +12075,19 @@ a {
   width: 200px;
 }
 
+.filter-bar {
+  padding-right: 12px;
+}
+
 .condition {
-  width: 500px;
+  width: 600px;
+  padding: 0;
+}
+
+.filter-button {
+  max-width: 150px;
+  padding: 16px 24px;
+  justify-content: center;
 }
 
 .product-row {
