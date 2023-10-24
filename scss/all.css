@@ -12094,6 +12094,10 @@ a {
   padding: 0 4px;
 }
 
+.news-aria {
+  width: 630px;
+}
+
 .news {
   overflow: hidden;
 }
@@ -12102,6 +12106,10 @@ a {
   height: 160px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.product-aria {
+  width: 460px;
 }
 
 .product {

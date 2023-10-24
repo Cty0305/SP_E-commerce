@@ -109,8 +109,16 @@ a {
   justify-content: center;
 }
 
+// .content {
+//   margin: 0 0 24px 0;
+// }
+
 .product-row {
   padding: 0 4px;
+}
+
+.news-aria {
+  width: 630px;
 }
 
 .news {
@@ -120,6 +128,10 @@ a {
 .news-image {
   height: 160px;
   object-fit: cover;
+}
+
+.product-aria {
+  width: 460px;
 }
 
 .product {
