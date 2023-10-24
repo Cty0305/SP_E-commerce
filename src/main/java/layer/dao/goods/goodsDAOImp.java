@@ -106,9 +106,9 @@ public class goodsDAOImp implements GoodsDAO {
     @Override
     public List<Goods> findStartEnd(int start, int end){ // 如果要查10筆資料 11-20，就要輸入10,20
         List<Goods> goodsList = new ArrayList<>();
-        StringBuilder sql = new StringBuilder("select * from goods");
-        sql.append("limit" + (end-start));
-        sql.append("offset" + start);
+        StringBuilder sql = new StringBuilder("select * from goods ");
+        sql.append("limit " + (end-start));
+        sql.append(" offset " + start);
 
         jdbcTemplate.query(conn -> {
             PreparedStatement preparedStatement = conn.prepareStatement(String.valueOf(sql));

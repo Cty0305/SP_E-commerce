@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Title</title>
@@ -19,7 +20,7 @@
     </tr>
     <c:forEach var="goods" items="${goodsList}" varStatus="status">
         <tr>
-            <td class="col1">${goods.description}</td>
+            <td class="col1">${goods.name}</td>
             <td class="col2">${goods.price}</td>
             <td class="col3">添加到购物车</td>
         </tr>
@@ -28,12 +29,11 @@
 
 <div>
     <ul>
-
         <li><a href="controller?action=paging&page=prev">«</a></li>
         <c:forEach var="page" begin="1" end="${totalPageNumber}">
             <li><a
                     <c:if test="${page == currentPage}">
-                        class="active"
+                        :active
                     </c:if>
                     href="controller?action=paging&page=${page}">${page}</a></li>
         </c:forEach>

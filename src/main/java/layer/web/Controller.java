@@ -67,6 +67,7 @@ public class Controller extends HttpServlet {
             if(currentPage==totalPageNumber){
                 end = goodsList.size();
             }
+
             req.setAttribute("goodsList",goodsList.subList(start,end));
             req.getRequestDispatcher("goods_list.jsp").forward(req,resp);
 
