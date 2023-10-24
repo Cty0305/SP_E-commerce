@@ -1,9 +1,6 @@
 package layer.web;
 
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import layer.domain.Customer;
 import Exception.encryptException;
 import java.io.IOException;
@@ -22,22 +19,90 @@ import layer.survice.customersService;
 import layer.survice.customersServiceImp.customersServiceImp;
 import layer.survice.goodsServiceImp;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import static Helpers.encryptionUtils.encryptString;
 
-@WebServlet(name="Controller",urlPatterns = {"/controller"})
+
 public class Controller extends HttpServlet {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     LocalDate currentDate = LocalDate.now();
     customersServiceImp customersServiceImp = new customersServiceImp();
 
     goodsServiceImp goodsServiceImp = new goodsServiceImp();
-    int pageSize;
-    int currentPage;
-    int totalPageNumber;
+    int pageSize = 10;//每頁筆數
+    int currentPage = 1;//當前頁數
+    int totalPageNumber = 0;//總頁數
+
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        pageSize = Integer.parseInt(config.getInitParameter("pageSize"));
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String action = req.getParameter("action");
+        if("list".equals(action)){
+            //-------------商品列表---------------
+            List<Goods> goodsList = goodsServiceImp.findAll();
+            if(goodsList.size() % pageSize == 0){
+                totalPageNumber = goodsList.size() / pageSize;
+            }else{
+                totalPageNumber = goodsList.size() / pageSize +1;
+            }
+
+            req.setAttribute("totalPageNumber",totalPageNumber);
+            req.setAttribute("currentPage",currentPage);
+
+            int start = (currentPage-1) * pageSize;
+            int end = currentPage * pageSize;
+            if(currentPage==totalPageNumber){
+                end = goodsList.size();
+            }
+            req.setAttribute("goodsList",goodsList.subList(start,end));
+            req.getRequestDispatcher("goods_list.jsp").forward(req,resp);
+
+
+
+
+        }
+        //------------商品列表分页--------------
+        else if ("paging".equals(action)) {
+            String page = req.getParameter("page");
+            if(page.equals("prev")){
+                currentPage--;
+                if(currentPage<1){
+                    currentPage=1;
+                }
+
+            } else if (page.equals("next")) {
+                currentPage++;
+                if(currentPage>totalPageNumber){
+                    currentPage=totalPageNumber;
+                }
+            } else {
+                currentPage = Integer.valueOf(page);//要處理大於或小於totalPageNum
+            }
+
+            int start = (currentPage-1) * pageSize;
+            int end = currentPage * pageSize;
+
+            List<Goods> goodsList = goodsServiceImp.queryByStartEnd(start,end);
+            req.setAttribute("totalPageNumber",totalPageNumber);
+            req.setAttribute("currentPage",currentPage);
+            req.setAttribute("goodsList",goodsList);
+            req.getRequestDispatcher("goods_list.jsp").forward(req,resp);
+        }
+    }
+
     @Override
     protected void doPost(javax.servlet.http.HttpServletRequest req, javax.servlet.http.HttpServletResponse resp) throws javax.servlet.ServletException, IOException {
         String action = req.getParameter("action");
@@ -143,24 +208,6 @@ public class Controller extends HttpServlet {
                 req.setAttribute("error",err);
                 req.getRequestDispatcher("login.jsp").forward(req,resp);
             }
-
-
-        }
-        else if("list".equals(action)){
-            //-------------商品列表---------------
-            List<Goods> goodsList = goodsServiceImp.findAll();
-            if(goodsList.size() % pageSize == 0){
-                totalPageNumber = goodsList.size() / pageSize;
-            }else{
-                totalPageNumber = goodsList.size() / pageSize +1;
-            }
-
-            req.setAttribute("totalPageNumber",totalPageNumber);
-            req.setAttribute("currentPage",currentPage);
-            req.setAttribute("goodsList",goodsList.subList(0,currentPage*pageSize));
-            req.getRequestDispatcher("goods_list.jsp").forward(req,resp);
-
-
 
 
         }

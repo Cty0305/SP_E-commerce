@@ -15,4 +15,17 @@
 <!--        <filter-name>CharacterEncodingFilter</filter-name>-->
 <!--        <url-pattern>/*</url-pattern>-->
 <!--    </filter-mapping>-->
+    <servlet>
+        <servlet-name>Controller</servlet-name>
+        <servlet-class>layer.web.Controller</servlet-class>
+        <init-param>
+            <param-name>pageSize</param-name>
+            <param-value>10</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/controller</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -102,4 +102,33 @@ public class goodsDAOImp implements GoodsDAO {
 
         return list;
     }
+
+    @Override
+    public List<Goods> findStartEnd(int start, int end){ // 如果要查10筆資料 11-20，就要輸入10,20
+        List<Goods> goodsList = new ArrayList<>();
+        StringBuilder sql = new StringBuilder("select * from goods");
+        sql.append("limit" + (end-start));
+        sql.append("offset" + start);
+
+        jdbcTemplate.query(conn -> {
+            PreparedStatement preparedStatement = conn.prepareStatement(String.valueOf(sql));
+            return preparedStatement;
+        },rs -> {
+            Goods goods = new Goods();
+            goods.setGoods_ID(rs.getInt("goods_ID"));
+            goods.setBrand(rs.getString("brand"));
+            goods.setDescription(rs.getString("description"));
+            goods.setName(rs.getString("name"));
+            goods.setPrice(rs.getFloat("price"));
+            goods.setCreatedTime(rs.getTimestamp("created_at"));
+            goodsList.add(goods);
+        });
+
+
+
+
+        return goodsList;
+
+
+    }
 }

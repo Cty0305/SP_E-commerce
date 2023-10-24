@@ -12,4 +12,10 @@ public class goodsServiceImp implements goodsService{
     public List<Goods> findAll() {
         return goodsDAO.findAll();
     }
+
+    @Override
+    public List<Goods> queryByStartEnd(int start, int end){
+       List<Goods> goodsList = goodsDAO.findStartEnd(start,end);
+       return goodsList;
+    }
 }
