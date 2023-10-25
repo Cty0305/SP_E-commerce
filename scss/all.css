@@ -12028,6 +12028,11 @@ body {
 
 .header-user {
   min-width: 206px;
+  position: relative;
+}
+
+.option {
+  list-style-type: none;
 }
 
 .search {
@@ -12093,7 +12098,6 @@ body {
 
 .filter-bar {
   max-width: 1100px;
-  padding-right: 24px;
   margin: 0 0 24px 0;
 }
 
@@ -12153,4 +12157,40 @@ body {
   position: absolute;
   right: 15px;
   top: 15px;
+}
+
+.main {
+  height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 64px 240px;
+}
+
+.user {
+  gap: 24px;
+  padding-left: 24px;
+  margin-bottom: 64px;
+}
+
+.avatar-setting {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}
+
+.user-name {
+  font-size: 24px;
+}
+
+.input {
+  margin-bottom: 64px;
+}
+
+.form-control {
+  height: 56px;
+  border-radius: 16px;
+}
+
+.button-save {
+  align-self: end;
 }/*# sourceMappingURL=all.css.map */
