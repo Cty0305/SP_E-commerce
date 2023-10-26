@@ -32,10 +32,10 @@
         <li><a href="controller?action=paging&page=prev">«</a></li>
         <c:forEach var="page" begin="1" end="${totalPageNumber}">
             <li><a
-                    <c:if test="${page == currentPage}">
-                        :active
-                    </c:if>
-                    href="controller?action=paging&page=${page}">${page}</a></li>
+
+                    href="controller?action=paging&page=${page}" style="text-decoration: none;
+                    <c:if test="${page==currentPage}">font-weight:bold</c:if>
+            ">${page}</a></li>
         </c:forEach>
         <li><a href="controller?action=paging&page=next">»</a></li>
     </ul>
