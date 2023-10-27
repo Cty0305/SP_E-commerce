@@ -5,13 +5,12 @@ import layer.domain.Customer;
 import Exception.encryptException;
 import java.io.IOException;
 import java.security.SecureRandom;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+
 import Helpers.encryptionUtils;
 import layer.domain.goods.Goods;
 import layer.survice.ServiceException;
@@ -39,7 +38,7 @@ public class Controller extends HttpServlet {
     int pageSize = 10;//每頁筆數
     int currentPage = 1;//當前頁數
     int totalPageNumber = 0;//總頁數
-
+    private Map<String, List<Goods>> cache = new HashMap<>();
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -51,8 +50,17 @@ public class Controller extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         if("list".equals(action)){
+
+            List<Goods> goodsList = new ArrayList<>();
+            if(cache.containsKey("goodsList")){
+                goodsList = cache.get("goodsList");
+            }else{
+                goodsList = goodsServiceImp.findAll();
+                cache.put("goodsList",goodsList);
+            }
+
             //-------------商品列表---------------
-            List<Goods> goodsList = goodsServiceImp.findAll();
+            currentPage = 1;
             if(goodsList.size() % pageSize == 0){
                 totalPageNumber = goodsList.size() / pageSize;
             }else{
@@ -68,7 +76,7 @@ public class Controller extends HttpServlet {
                 end = goodsList.size();
             }
 
-            req.setAttribute("goodsList",goodsList.subList(start,end));
+            req.setAttribute("goodsList", goodsServiceImp.queryByStartEnd(start,end));
             req.getRequestDispatcher("goods_list.jsp").forward(req,resp);
 
 
@@ -77,6 +85,23 @@ public class Controller extends HttpServlet {
         }
         //------------商品列表分页--------------
         else if ("paging".equals(action)) {
+
+
+
+            List<Goods> goodsList = new ArrayList<>();
+            if(cache.containsKey("goodsList")){
+                goodsList = cache.get("goodsList");
+            }else {
+                goodsList = goodsServiceImp.findAll();
+                cache.put("goodsList",goodsList);
+            }
+
+
+            if(goodsList.size() % pageSize == 0){
+                totalPageNumber = goodsList.size() / pageSize;
+            }else{
+                totalPageNumber = goodsList.size() / pageSize +1;
+            }
             String page = req.getParameter("page");
             if(page.equals("prev")){
                 currentPage--;
@@ -95,11 +120,13 @@ public class Controller extends HttpServlet {
 
             int start = (currentPage-1) * pageSize;
             int end = currentPage * pageSize;
+            if(currentPage == totalPageNumber){
+                end = goodsList.size();
+            }
 
-            List<Goods> goodsList = goodsServiceImp.queryByStartEnd(start,end);
             req.setAttribute("totalPageNumber",totalPageNumber);
             req.setAttribute("currentPage",currentPage);
-            req.setAttribute("goodsList",goodsList);
+            req.setAttribute("goodsList",goodsList.subList(start,end));
             req.getRequestDispatcher("goods_list.jsp").forward(req,resp);
         }
     }
@@ -209,6 +236,57 @@ public class Controller extends HttpServlet {
                 req.setAttribute("error",err);
                 req.getRequestDispatcher("login.jsp").forward(req,resp);
             }
+
+
+        }
+        //建立商品
+        else if(action.equals("createGoods")){
+            Goods goods = new Goods();
+            String price = req.getParameter("price");
+            String brand = req.getParameter("brand");
+            String name = req.getParameter("name");
+            List<String> err = new ArrayList<>();
+
+
+            if(price==null||price.isEmpty()){
+                err.add("價格不得為空");
+            }
+            if(Float.parseFloat(price)<=0){
+                err.add("價格不得為負數");
+            }
+            if(brand==null||brand.isEmpty()){
+                err.add("品牌不可為空");
+            }
+            if(name==null||name.isEmpty()){
+                err.add("名稱不可為空");
+            }
+            if(err.size()==0){
+                List<Goods> goodsList = goodsServiceImp.findAll();
+                goods.setGoods_ID(goodsList.size());
+                goods.setPrice(Float.parseFloat(price));
+                goods.setDescription(req.getParameter("description"));
+                goods.setBrand(brand);
+                goods.setCreatedTime(new Timestamp(System.currentTimeMillis()));
+                goods.setName(name);
+                goodsServiceImp.createGoods(goods);
+
+
+                goodsList.add(goods);
+                req.setAttribute("goodsList",goodsList);
+                //轉到商品列表頁面
+                req.getRequestDispatcher("goodsList_backstage.jsp").forward(req,resp);
+            }else{
+
+                req.setAttribute("err",err);
+                req.getRequestDispatcher("goodsList_backstage.jsp").forward(req,resp);
+
+            }
+
+
+
+
+
+
 
 
         }
