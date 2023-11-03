@@ -129,6 +129,79 @@ public class Controller extends HttpServlet {
             req.setAttribute("goodsList",goodsList.subList(start,end));
             req.getRequestDispatcher("goods_list.jsp").forward(req,resp);
         }
+        //商品後台
+        else if(action.equals("goodsList_backstage")){
+            List<Goods> goodsList = new ArrayList<>();
+            if(cache.containsKey("goodsList")){
+                goodsList = cache.get("goodsList");
+            }else{
+                goodsList = goodsServiceImp.findAll();
+                cache.put("goodsList",goodsList);
+            }
+            //設定顯示時是第一頁
+            currentPage = 1;
+            //設定頁面數量
+
+            if(goodsList.size() % pageSize == 0){
+                totalPageNumber = goodsList.size() / pageSize;
+            }else{
+                totalPageNumber = goodsList.size() / pageSize +1;
+            }
+
+            int start = (currentPage-1) * pageSize;
+            int end = currentPage * pageSize;
+            if(currentPage==totalPageNumber){
+                end = goodsList.size();
+            }
+
+            req.setAttribute("goodsList",goodsList.subList(start,end));
+            req.setAttribute("totalPageNumber",totalPageNumber);
+            req.setAttribute("currentPage",currentPage);
+            req.getRequestDispatcher("goods_backstage.jsp").forward(req,resp);
+        }
+        //------------後臺商品列表分页--------------
+        else if ("backstage_paging".equals(action)) {
+            List<Goods> goodsList = new ArrayList<>();
+            if(cache.containsKey("goodsList")){
+                goodsList = cache.get("goodsList");
+            }else {
+                goodsList = goodsServiceImp.findAll();
+                cache.put("goodsList",goodsList);
+            }
+
+
+            if(goodsList.size() % pageSize == 0){
+                totalPageNumber = goodsList.size() / pageSize;
+            }else{
+                totalPageNumber = goodsList.size() / pageSize +1;
+            }
+            String page = req.getParameter("page");
+            if(page.equals("prev")){
+                currentPage--;
+                if(currentPage<1){
+                    currentPage=1;
+                }
+
+            } else if (page.equals("next")) {
+                currentPage++;
+                if(currentPage>totalPageNumber){
+                    currentPage=totalPageNumber;
+                }
+            } else {
+                currentPage = Integer.valueOf(page);
+            }
+
+            int start = (currentPage-1) * pageSize;
+            int end = currentPage * pageSize;
+            if(currentPage == totalPageNumber){
+                end = goodsList.size();
+            }
+
+            req.setAttribute("totalPageNumber",totalPageNumber);
+            req.setAttribute("currentPage",currentPage);
+            req.setAttribute("goodsList",goodsList.subList(start,end));
+            req.getRequestDispatcher("goods_backstage.jsp").forward(req,resp);
+        }
     }
 
     @Override
@@ -239,7 +312,7 @@ public class Controller extends HttpServlet {
 
 
         }
-        //建立商品
+        //-----------------建立商品-----------------------
         else if(action.equals("createGoods")){
             Goods goods = new Goods();
             String price = req.getParameter("price");
@@ -262,7 +335,7 @@ public class Controller extends HttpServlet {
             }
             if(err.size()==0){
                 List<Goods> goodsList = goodsServiceImp.findAll();
-                goods.setGoods_ID(goodsList.size());
+                goods.setGoods_ID(UUID.randomUUID().toString());
                 goods.setPrice(Float.parseFloat(price));
                 goods.setDescription(req.getParameter("description"));
                 goods.setBrand(brand);
@@ -272,13 +345,27 @@ public class Controller extends HttpServlet {
 
 
                 goodsList.add(goods);
-                req.setAttribute("goodsList",goodsList);
+                if(totalPageNumber % pageSize == 0){
+                    totalPageNumber = goodsList.size() / pageSize;
+                }else{
+                    totalPageNumber = goodsList.size() / pageSize +1;
+                }
+
+                currentPage = 1;
+                int start = (currentPage -1) * pageSize;
+                int end = (currentPage * pageSize);
+
+
+
+                req.setAttribute("goodsList",goodsList.subList(start,end));
+                req.setAttribute("currentPage",currentPage);
+                req.setAttribute("totalPageNumber",totalPageNumber);
                 //轉到商品列表頁面
-                req.getRequestDispatcher("goodsList_backstage.jsp").forward(req,resp);
+                req.getRequestDispatcher("goods_backstage.jsp").forward(req,resp);
             }else{
 
                 req.setAttribute("err",err);
-                req.getRequestDispatcher("goodsList_backstage.jsp").forward(req,resp);
+                req.getRequestDispatcher("goods_backstage.jsp").forward(req,resp);
 
             }
 
@@ -290,6 +377,11 @@ public class Controller extends HttpServlet {
 
 
         }
+
+
+
+
+
     }
 
 

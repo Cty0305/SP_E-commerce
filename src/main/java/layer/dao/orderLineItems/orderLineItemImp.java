@@ -18,7 +18,7 @@ public class orderLineItemImp implements OrderLineItemsDAO {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1,orderLineItems.getId());
             preparedStatement.setString(3,orderLineItems.getOrder().getOrder_ID());
-            preparedStatement.setInt(2,orderLineItems.getGoods().getGoods_ID());
+            preparedStatement.setString(2,orderLineItems.getGoods().getGoods_ID());
             preparedStatement.setInt(4,orderLineItems.getQuantity());
             preparedStatement.setFloat(5,orderLineItems.getSub_total());
             return preparedStatement;
@@ -41,7 +41,7 @@ public class orderLineItemImp implements OrderLineItemsDAO {
         jdbcTemplate.query(conn -> {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1,orderLineItems.getId());
-            preparedStatement.setInt(2,orderLineItems.getGoods().getGoods_ID());
+            preparedStatement.setString(2,orderLineItems.getGoods().getGoods_ID());
             preparedStatement.setString(3,orderLineItems.getOrder().getOrder_ID());
             preparedStatement.setInt(4,orderLineItems.getQuantity());
             preparedStatement.setFloat(5,orderLineItems.getSub_total());
@@ -64,7 +64,7 @@ public class orderLineItemImp implements OrderLineItemsDAO {
             orderLineItems.setSub_total(rs.getFloat("sub_total"));
 
             Goods goods = new Goods();
-            goods.setGoods_ID(rs.getInt("goods_ID"));
+            goods.setGoods_ID(rs.getString("goods_ID"));
             orderLineItems.setGoods(goods);
 
 

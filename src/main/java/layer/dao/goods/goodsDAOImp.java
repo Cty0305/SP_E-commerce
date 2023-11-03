@@ -14,7 +14,7 @@ public class goodsDAOImp implements GoodsDAO {
         String sql = "INSERT INTO goods (goods_ID,name,description, price,  brand, created_at) VALUES (?,?,?,?,?,?)";
         jdbcTemplate.query(conn -> {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1, goods.getGoods_ID());
+            preparedStatement.setString(1, goods.getGoods_ID());
             preparedStatement.setString(2, goods.getName());
             preparedStatement.setString(3,goods.getDescription());
             preparedStatement.setFloat(4,goods.getPrice());
@@ -46,7 +46,7 @@ public class goodsDAOImp implements GoodsDAO {
             preparedStatement.setFloat(3, goods.getPrice());
             preparedStatement.setTimestamp(4, goods.getCreatedTime());
             preparedStatement.setString(5, goods.getName());
-            preparedStatement.setInt(6,goods.getGoods_ID());
+            preparedStatement.setString(6,goods.getGoods_ID());
 
             return preparedStatement;
         });
@@ -62,7 +62,7 @@ public class goodsDAOImp implements GoodsDAO {
             return preparedStatement;
         },rs -> {
             Goods goods = new Goods();
-            goods.setGoods_ID(rs.getInt("goods_ID"));
+            goods.setGoods_ID(rs.getString("goods_ID"));
             goods.setName(rs.getString("name"));
             goods.setBrand(rs.getString("brand"));
             goods.setDescription(rs.getString("description"));
@@ -82,13 +82,13 @@ public class goodsDAOImp implements GoodsDAO {
     @Override
     public List<Goods> findAll() {
         List<Goods> list = new ArrayList<>();
-        String sql = "Select * from goods";
+        String sql = "Select * from goods order by created_at ASC ";
         jdbcTemplate.query(conn -> {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             return preparedStatement;
         },rs -> {
             Goods goods = new Goods();
-            goods.setGoods_ID(rs.getInt("goods_ID"));
+            goods.setGoods_ID(rs.getString("goods_ID"));
             goods.setName(rs.getString("name"));
             goods.setBrand(rs.getString("brand"));
             goods.setDescription(rs.getString("description"));
@@ -109,13 +109,14 @@ public class goodsDAOImp implements GoodsDAO {
         StringBuilder sql = new StringBuilder("select * from goods ");
         sql.append("limit " + (end-start));
         sql.append(" offset " + start);
+        sql.append(" order by created_at ASC");
 
         jdbcTemplate.query(conn -> {
             PreparedStatement preparedStatement = conn.prepareStatement(String.valueOf(sql));
             return preparedStatement;
         },rs -> {
             Goods goods = new Goods();
-            goods.setGoods_ID(rs.getInt("goods_ID"));
+            goods.setGoods_ID(rs.getString("goods_ID"));
             goods.setBrand(rs.getString("brand"));
             goods.setDescription(rs.getString("description"));
             goods.setName(rs.getString("name"));

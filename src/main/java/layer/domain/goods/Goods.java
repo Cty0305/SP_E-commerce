@@ -16,7 +16,7 @@ public class Goods {
 
 
     private float price;
-    private int goods_ID;
+    private String goods_ID;
 
     public float getPrice() {
         return price;
@@ -46,11 +46,11 @@ public class Goods {
     private Timestamp createdTime;
     private Timestamp updatedTime;
 
-    public int  getGoods_ID() {
+    public String getGoods_ID() {
         return goods_ID;
     }
 
-    public void setGoods_ID(int goods_ID) {
+    public void setGoods_ID(String goods_ID) {
         this.goods_ID = goods_ID;
     }
 
