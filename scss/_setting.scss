@@ -17,12 +17,20 @@
   border-radius: 100%;
 }
 
+// .sidemenu {
+//   border-right: 1px black;
+// }
+
 .user-name {
   font-size: 24px;
 }
 
-.input {
-  margin-bottom: 64px;
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 32px;
 }
 
 .form-control {

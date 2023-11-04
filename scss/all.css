@@ -12026,11 +12026,6 @@ body {
   min-width: 110px;
 }
 
-.header-user {
-  min-width: 206px;
-  position: relative;
-}
-
 .option {
   list-style-type: none;
 }
@@ -12043,10 +12038,6 @@ body {
   content: "\e8b6";
   font-family: "Material Icons";
   margin-right: 5px;
-}
-
-.header-user {
-  width: 230px;
 }
 
 .avatar {
@@ -12182,8 +12173,12 @@ body {
   font-size: 24px;
 }
 
-.input {
-  margin-bottom: 64px;
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 32px;
 }
 
 .form-control {
