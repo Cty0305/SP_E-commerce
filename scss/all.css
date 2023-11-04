@@ -12191,8 +12191,8 @@ body {
 }
 
 .pd-window {
-  padding: 24px;
-  max-height: 654px;
+  padding: 24px 24px 0 24px;
+  max-height: 700px;
   overflow: auto;
 }
 
@@ -12204,8 +12204,10 @@ body {
 }
 
 .pd-main {
+  padding: 0 8%;
   display: flex;
-  gap: 48px;
+  justify-content: space-between;
+  margin-bottom: 64px;
 }
 
 .pd-media {
@@ -12217,14 +12219,14 @@ body {
 .pd-image {
   width: 100%;
   height: 500px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .pd-info {
   display: flex;
   flex-direction: column;
-  width: 35%;
+  width: 45%;
   height: 500px;
 }
 
@@ -12243,12 +12245,13 @@ body {
 
 .pd-spec-option-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 8px;
   margin: 12px 0 24px;
 }
 
 .pd-spec-option {
-  width: 120px;
+  width: 100px;
   padding: 8px 4px;
   background-color: #fff;
   border: 0.5px solid black;
@@ -12285,4 +12288,47 @@ body {
   border-radius: 40px;
   width: 100%;
   color: white;
+}
+
+.rp-title {
+  margin: 24px 0;
+}
+
+.rp-container {
+  display: flex;
+  overflow-x: auto;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rp-card {
+  min-width: 300px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rp-image {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.rp-info {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 8px;
+}
+
+.rp-info-title {
+  margin-bottom: 4px;
+}
+
+.rp-info-subtitle {
+  color: gray;
+  font-size: 14px;
+  margin-bottom: 8px;
 }/*# sourceMappingURL=all.css.map */
