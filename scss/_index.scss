@@ -42,6 +42,26 @@ body {
   min-width: 110px;
 }
 
+.login {
+  border: 1px solid black;
+  border-radius: 44px;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup {
+  background-color: black;
+  border: 1px solid black;
+  color: white;
+  border-radius: 44px;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 // .header-user.show {
 //   position: absolute;
 //   width: 230px;
