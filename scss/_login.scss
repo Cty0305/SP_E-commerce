@@ -1,0 +1,39 @@
+.login-title {
+  width: 60%;
+  align-items: center;
+}
+
+.login-content {
+  justify-content: center;
+}
+
+.login-form {
+  padding: 48px 0;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 48px;
+  width: 80%;
+}
+
+.submit {
+  width: 80%;
+  margin-top: 20px;
+  height: 56px;
+  padding: 24px;
+  font-size: 14px;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  border-radius: 999px;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
+  text-align: center;
+}

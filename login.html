@@ -36,8 +36,8 @@
             aria-label="Search"
           />
           <!-- <span class="material-symbols-outlined icon-search text-body-secondary">
-                search
-                </span> -->
+              search
+              </span> -->
         </form>
         <section class="d-flex justify-content-between gap-3">
           <button
@@ -60,69 +60,33 @@
             <span class="material-symbols-outlined"> keyboard_arrow_down </span>
           </button>
           <!-- <div class="header-user rounded-3 border">
-              <ul class="header-user">
-                <li class="option mb-3">
-                  <a href=""
-                    ><span class="material-symbols-outlined me-2"> settings </span
-                    >Setting</a
-                  >
-                </li>
-                <li class="option mb-3">
-                  <a href=""
-                    ><span class="material-symbols-outlined me-2"> logout </span
-                    >Log out</a
-                  >
-                </li>
-              </ul>
-            </div> -->
+            <ul class="header-user">
+              <li class="option mb-3">
+                <a href=""
+                  ><span class="material-symbols-outlined me-2"> settings </span
+                  >Setting</a
+                >
+              </li>
+              <li class="option mb-3">
+                <a href=""
+                  ><span class="material-symbols-outlined me-2"> logout </span
+                  >Log out</a
+                >
+              </li>
+            </ul>
+          </div> -->
         </section>
       </div>
     </nav>
     <main class="main-setting">
-      <div class="user d-flex align-items-center">
-        <img
-          src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Image/Avatar.jpg?raw=true"
-          alt=""
-          class="avatar-setting"
-        />
-        <div class="user-name">Cty0305</div>
-      </div>
-      <div class="point d-flex">
-        <div class="sidemenu col-3 border-end">
-          <ul class="list-group">
-            <li class="list-group-item border-0 mb-2 d-flex align-items-center">
-              <a href="https://cty0305.github.io/SP_E-commerce/setting.html">
-                <img
-                  width="36"
-                  height="36"
-                  src="https://img.icons8.com/tiny-color/48/gender-neutral-user.png"
-                  alt="gender-neutral-user"
-                  class="me-2"
-                />Profile
-              </a>
-            </li>
-            <li class="list-group-item border-0 mb-2 d-flex align-items-center">
-              <a
-                href="https://cty0305.github.io/SP_E-commerce/setting_password.html"
-                class="fw-semibold"
-              >
-                <img
-                  width="36"
-                  height="36"
-                  src="https://img.icons8.com/tiny-color/48/lock.png"
-                  alt="lock"
-                  class="me-2"
-                />Password
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="setting-cotent d-flex flex-column col-9 p-4">
-          <div class="form">
+      <div class="login-title fs-3">Login in to DonDonmart</div>
+      <div class="login-content d-flex">
+        <div class="login-form d-flex flex-column">
+          <div class="login-form-content">
             <div class="input">
-              <label for="basic-url" class="form-label">Old password</label>
+              <label for="basic-url" class="form-label">Email</label>
               <input
-                type="password"
+                type="email"
                 class="form-control"
                 aria-label="Amount (to the nearest dollar)"
               />
@@ -136,7 +100,13 @@
               />
             </div>
           </div>
-          <div class="button-save btn border">Changes</div>
+          <input
+            class="submit"
+            type="submit"
+            value="Log In"
+            tabindex="3"
+            data-cypress="submit-sign-in-btn"
+          />
         </div>
       </div>
     </main>
