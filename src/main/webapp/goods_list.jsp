@@ -22,7 +22,7 @@
         <tr>
             <td class="col1">${goods.name}</td>
             <td class="col2">${goods.price}</td>
-            <td class="col3">添加到购物车</td>
+            <td class="col3"><a href="controller?action=add&name=${goods.name}&price=${goods.price}&goods_ID=${goods.goods_ID}">添加到购物车</a></td>
         </tr>
     </c:forEach>
 </table>

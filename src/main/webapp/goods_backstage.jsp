@@ -15,16 +15,20 @@
 <table>
     <tr>
         <th>商品名稱</th>
+        <th>品牌</th>
         <th>商品價格</th>
+        <th>商品數量</th>
         <th>調整</th>
         <th>移除</th>
     </tr>
     <c:forEach var="goods" items="${goodsList}" varStatus="status">
         <tr>
             <td class="col1">${goods.name}</td>
-            <td class="col2">${goods.price}</td>
-            <td class="col3"><a href="controller?action=modifyGoodsStatus">調整</a></td>
-            <td class="col3"><a href="controller?action=deleteGoods">移除</a></td>
+            <td class="col2">${goods.brand}</td>
+            <td class="col3">${goods.price}</td>
+            <td class="col4">${goods.quantity}</td>
+            <td class="col5"><a href="controller?action=modifyGoodsStatus">調整</a></td>
+            <td class="col6"><a href="controller?action=deleteGoods">移除</a></td>
         </tr>
     </c:forEach>
 </table>

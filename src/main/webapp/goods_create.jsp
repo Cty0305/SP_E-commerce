@@ -24,6 +24,12 @@
             if(myForm.brand.value==""){
                 errMsg+="品牌不可為空\n";
             }
+            if(isNaN(parseFloat(myForm.price.value))){
+                errMsg+="價格請填入數字\n";
+            }
+            if(isNaN(parseInt(myForm.quantity.value))){
+                errMsg+="數量請輸入數字\n";
+            }
 
             if(errMsg==""){
                 return true;
@@ -63,6 +69,10 @@
         <tr>
             <td>品牌</td>
             <td><input type="text" name="brand">*</td>
+        </tr>
+        <tr>
+            <td>商品數量</td>
+            <td><input type="text" name="quantity" min="1" step="1">*</td>
         </tr>
     </table>
     <input type="submit" value="提交">

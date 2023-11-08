@@ -14,7 +14,23 @@ public class Goods {
 
     private String name ;
 
+    public int getQuantity() {
+        return quantity;
+    }
 
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public Timestamp getUpdatedTime() {
+        return updatedTime;
+    }
+
+    public void setUpdatedTime(Timestamp updatedTime) {
+        this.updatedTime = updatedTime;
+    }
+
+    private int quantity;
     private float price;
     private String goods_ID;
 
@@ -45,6 +61,7 @@ public class Goods {
 
     private Timestamp createdTime;
     private Timestamp updatedTime;
+
 
     public String getGoods_ID() {
         return goods_ID;

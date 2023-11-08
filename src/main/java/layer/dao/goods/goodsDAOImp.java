@@ -11,7 +11,7 @@ public class goodsDAOImp implements GoodsDAO {
     JDBCTemplate jdbcTemplate = new JDBCTemplate();
     @Override
     public void create(Goods goods) {
-        String sql = "INSERT INTO goods (goods_ID,name,description, price,  brand, created_at) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO goods (goods_ID,name,description, price,  brand, created_at, quantity) VALUES (?,?,?,?,?,?,?)";
         jdbcTemplate.query(conn -> {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, goods.getGoods_ID());
@@ -20,6 +20,7 @@ public class goodsDAOImp implements GoodsDAO {
             preparedStatement.setFloat(4,goods.getPrice());
             preparedStatement.setString(5,goods.getBrand());
             preparedStatement.setTimestamp(6,goods.getCreatedTime());
+            preparedStatement.setInt(7,goods.getQuantity());
 
             return preparedStatement;
         });
@@ -38,7 +39,7 @@ public class goodsDAOImp implements GoodsDAO {
 
     @Override
     public void modify(Goods goods) {
-        String sql = "update Goods set  brand=?, description=?, price=?, created_at=?, name=? where id=?";
+        String sql = "update Goods set  brand=?, description=?, price=?, created_at=?, name=?, quantity=? where id=?";
         jdbcTemplate.query(conn -> {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, goods.getBrand());
@@ -47,6 +48,7 @@ public class goodsDAOImp implements GoodsDAO {
             preparedStatement.setTimestamp(4, goods.getCreatedTime());
             preparedStatement.setString(5, goods.getName());
             preparedStatement.setString(6,goods.getGoods_ID());
+            preparedStatement.setInt(7,goods.getQuantity());
 
             return preparedStatement;
         });
@@ -68,6 +70,7 @@ public class goodsDAOImp implements GoodsDAO {
             goods.setDescription(rs.getString("description"));
             goods.setPrice(rs.getFloat("price"));
             goods.setCreatedTime(rs.getTimestamp("created_at"));
+            goods.setQuantity(rs.getInt("quantity"));
 
             list.add(goods);
         });
@@ -82,7 +85,7 @@ public class goodsDAOImp implements GoodsDAO {
     @Override
     public List<Goods> findAll() {
         List<Goods> list = new ArrayList<>();
-        String sql = "Select * from goods order by created_at ASC ";
+        String sql = "Select * from goods order by created_at DESC ";
         jdbcTemplate.query(conn -> {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             return preparedStatement;
@@ -94,6 +97,7 @@ public class goodsDAOImp implements GoodsDAO {
             goods.setDescription(rs.getString("description"));
             goods.setCreatedTime(rs.getTimestamp("created_at"));
             goods.setPrice(rs.getFloat("price"));
+            goods.setQuantity(rs.getInt("quantity"));
 
             list.add(goods);
 
@@ -107,10 +111,11 @@ public class goodsDAOImp implements GoodsDAO {
     public List<Goods> findStartEnd(int start, int end){ // 如果要查10筆資料 11-20，就要輸入10,20
         List<Goods> goodsList = new ArrayList<>();
         StringBuilder sql = new StringBuilder("select * from goods ");
-        sql.append("limit " + (end-start));
+        sql.append(" order by created_at DESC");
+        sql.append(" limit " + (end-start));
         sql.append(" offset " + start);
-        sql.append(" order by created_at ASC");
 
+        System.out.println(sql);
         jdbcTemplate.query(conn -> {
             PreparedStatement preparedStatement = conn.prepareStatement(String.valueOf(sql));
             return preparedStatement;
@@ -122,6 +127,7 @@ public class goodsDAOImp implements GoodsDAO {
             goods.setName(rs.getString("name"));
             goods.setPrice(rs.getFloat("price"));
             goods.setCreatedTime(rs.getTimestamp("created_at"));
+            goods.setQuantity(rs.getInt("quantity"));
             goodsList.add(goods);
         });
 

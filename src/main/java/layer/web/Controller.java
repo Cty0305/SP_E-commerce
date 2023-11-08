@@ -48,6 +48,8 @@ public class Controller extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
         if("list".equals(action)){
 
@@ -202,10 +204,62 @@ public class Controller extends HttpServlet {
             req.setAttribute("goodsList",goodsList.subList(start,end));
             req.getRequestDispatcher("goods_backstage.jsp").forward(req,resp);
         }
+        //------添加購物車-------
+        else if(action.equals("add")){
+            String name = req.getParameter("name");
+            Float price = Float.valueOf(req.getParameter("price"));
+            String goods_ID = req.getParameter("goods_ID");
+
+
+
+
+
+
+
+            //建立map
+            List<Map<String,Object>> cart = (List<Map<String, Object>>) req.getSession().getAttribute("cart");
+
+            if(cart==null){
+                cart = new ArrayList<Map<String, Object>>();
+                req.getSession().setAttribute("cart",cart);
+            }
+            //購物車有商品
+            int flag = 0;
+            for(Map<String, Object> item:cart){
+                String goods_ID2 = (String) item.get("goods_ID");
+                if(goods_ID2.equals(goods_ID)){
+                    Integer quantity = (Integer) item.get("quantity");
+                    quantity++;
+                    item.put("quantity",quantity);
+                    flag++;
+                }
+            }
+            //購物車沒有這個商品
+            if(flag==0){
+                Map<String, Object> item = new HashMap<>();
+                //item結構是一個map[id, name, price, quantity]
+                item.put("goods_ID",goods_ID);
+                item.put("price",price);
+                item.put("name",name);
+                item.put("quantity",1);
+
+                cart.add(item);
+                System.out.println("cart adding success");
+
+            }
+            req.getRequestDispatcher("cart.jsp").forward(req,resp);
+
+        }
+
+
+        //購物車資料庫
+        //用戶ID 產品id 購物車數量 價格(用id*數量)
     }
 
     @Override
     protected void doPost(javax.servlet.http.HttpServletRequest req, javax.servlet.http.HttpServletResponse resp) throws javax.servlet.ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
         if(action.equalsIgnoreCase("register")){
             List<String> err = new ArrayList<>();
@@ -318,6 +372,7 @@ public class Controller extends HttpServlet {
             String price = req.getParameter("price");
             String brand = req.getParameter("brand");
             String name = req.getParameter("name");
+            int quantity = 0;
             List<String> err = new ArrayList<>();
 
 
@@ -333,6 +388,21 @@ public class Controller extends HttpServlet {
             if(name==null||name.isEmpty()){
                 err.add("名稱不可為空");
             }
+
+            if(req.getParameter("quantity")==null){
+                err.add("請輸入商品數量");
+            }else{
+                try{
+                    quantity = Integer.parseInt(req.getParameter("quantity"));
+                }catch (NumberFormatException e){
+                    err.add("產品數量請輸入整數");
+                    req.setAttribute("err",err);
+                    req.getRequestDispatcher("goods_create.jsp").forward(req,resp);
+                }
+                if(quantity<1){
+                    err.add("商品數量需要大於0");
+                }
+            }
             if(err.size()==0){
                 List<Goods> goodsList = goodsServiceImp.findAll();
                 goods.setGoods_ID(UUID.randomUUID().toString());
@@ -341,11 +411,13 @@ public class Controller extends HttpServlet {
                 goods.setBrand(brand);
                 goods.setCreatedTime(new Timestamp(System.currentTimeMillis()));
                 goods.setName(name);
+                goods.setQuantity(quantity);
+
                 goodsServiceImp.createGoods(goods);
 
 
                 goodsList.add(goods);
-                if(totalPageNumber % pageSize == 0){
+                if(goodsList.size() % pageSize == 0){
                     totalPageNumber = goodsList.size() / pageSize;
                 }else{
                     totalPageNumber = goodsList.size() / pageSize +1;
@@ -353,8 +425,14 @@ public class Controller extends HttpServlet {
 
                 currentPage = 1;
                 int start = (currentPage -1) * pageSize;
-                int end = (currentPage * pageSize);
-
+                int end;
+                if(currentPage == totalPageNumber){
+                    end = goodsList.size();
+                }else{
+                    end = currentPage * pageSize;
+                }
+                System.out.println(totalPageNumber+"total");
+                System.out.println(start+" this "+end);
 
 
                 req.setAttribute("goodsList",goodsList.subList(start,end));
@@ -363,7 +441,6 @@ public class Controller extends HttpServlet {
                 //轉到商品列表頁面
                 req.getRequestDispatcher("goods_backstage.jsp").forward(req,resp);
             }else{
-
                 req.setAttribute("err",err);
                 req.getRequestDispatcher("goods_backstage.jsp").forward(req,resp);
 
@@ -377,6 +454,7 @@ public class Controller extends HttpServlet {
 
 
         }
+
 
 
 
