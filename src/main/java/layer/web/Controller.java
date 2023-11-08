@@ -12,8 +12,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import Helpers.encryptionUtils;
+import layer.domain.goods.Cart;
 import layer.domain.goods.Goods;
 import layer.survice.ServiceException;
+import layer.survice.cartService;
 import layer.survice.customersService;
 import layer.survice.customersServiceImp.customersServiceImp;
 import layer.survice.goodsServiceImp;
@@ -205,50 +207,15 @@ public class Controller extends HttpServlet {
             req.getRequestDispatcher("goods_backstage.jsp").forward(req,resp);
         }
         //------添加購物車-------
+        //------session還沒添加account資訊
         else if(action.equals("add")){
-            String name = req.getParameter("name");
-            Float price = Float.valueOf(req.getParameter("price"));
-            String goods_ID = req.getParameter("goods_ID");
+            Cart cart = new Cart();
+            cart.setAccount((String) req.getSession().getAttribute("loggedInCustomerAccount"));
+            cart.setGoods_ID(req.getParameter("goods_ID"));
 
-
-
-
-
-
-
-            //建立map
-            List<Map<String,Object>> cart = (List<Map<String, Object>>) req.getSession().getAttribute("cart");
-
-            if(cart==null){
-                cart = new ArrayList<Map<String, Object>>();
-                req.getSession().setAttribute("cart",cart);
-            }
-            //購物車有商品
-            int flag = 0;
-            for(Map<String, Object> item:cart){
-                String goods_ID2 = (String) item.get("goods_ID");
-                if(goods_ID2.equals(goods_ID)){
-                    Integer quantity = (Integer) item.get("quantity");
-                    quantity++;
-                    item.put("quantity",quantity);
-                    flag++;
-                }
-            }
-            //購物車沒有這個商品
-            if(flag==0){
-                Map<String, Object> item = new HashMap<>();
-                //item結構是一個map[id, name, price, quantity]
-                item.put("goods_ID",goods_ID);
-                item.put("price",price);
-                item.put("name",name);
-                item.put("quantity",1);
-
-                cart.add(item);
-                System.out.println("cart adding success");
-
-            }
-            req.getRequestDispatcher("cart.jsp").forward(req,resp);
-
+            cartService cartService = new cartService();
+            cartService.addToCart(cart);
+            System.out.println("SuccessAddToCart");
         }
 
 
