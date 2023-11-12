@@ -1,0 +1,140 @@
+.pd-window {
+  padding: 24px 24px 0 24px;
+  max-height: 700px;
+  overflow: auto;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  color: gray;
+  margin-bottom: 12px;
+}
+
+.pd-main {
+  padding: 0 8%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 64px;
+}
+
+.pd-media {
+  width: 50%;
+  height: 500px;
+  overflow: hidden;
+}
+
+.pd-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.pd-info {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  height: 500px;
+}
+
+.pd-title {
+  margin-bottom: 8px;
+}
+
+.pd-subtitle {
+  margin-bottom: 16px;
+}
+
+.pd-price {
+  margin-bottom: 64px;
+  flex-grow: 1;
+}
+
+.pd-spec-option-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  margin: 12px 0 24px;
+}
+
+.pd-spec-option {
+  width: 100px;
+  padding: 8px 4px;
+  background-color: #fff;
+  border: 0.5px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.pd-action {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pd-favorite {
+  padding: 16px 4px;
+  background-color: #fff;
+  border: 0.5px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+  width: 100%;
+}
+
+.pd-cta {
+  padding: 16px 4px;
+  background-color: black;
+  border: 0.5px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+  width: 100%;
+  color: white;
+}
+
+.rp-title {
+  margin: 24px 0;
+}
+
+.rp-container {
+  display: flex;
+  overflow-x: auto;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rp-card {
+  min-width: 300px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rp-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.rp-info {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 8px;
+}
+
+.rp-info-title {
+  margin-bottom: 4px;
+}
+
+.rp-info-subtitle {
+  color: gray;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
