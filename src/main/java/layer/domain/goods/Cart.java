@@ -40,6 +40,21 @@ public class Cart {
     }
 
     private String goods_ID;
+
+
+    public Goods getGoods() {
+        return goods;
+    }
+
+    public void setGoods(Goods goods) {
+        this.goods = goods;
+    }
+
+    private Goods goods;
+
+
+
+
     private int quantity;
 
 

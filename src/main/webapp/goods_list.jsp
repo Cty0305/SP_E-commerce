@@ -20,9 +20,13 @@
     </tr>
     <c:forEach var="goods" items="${goodsList}" varStatus="status">
         <tr>
-            <td class="col1">${goods.name}</td>
-            <td class="col2">${goods.price}</td>
-            <td class="col3"><a href="controller?action=add&goods_ID=${goods.goods_ID}">添加到购物车</a></td>
+            <form action="controller" method="post">
+                <input type="hidden" name="action" value="add">
+                <input type="hidden" name="goods_ID" value="${goods.goods_ID}">
+                <td class="col1">${goods.name}</td>
+                <td class="col2">${goods.price}</td>
+                <td class="col3"><input type="submit" value="添加到購物車"></td>
+            </form>
         </tr>
     </c:forEach>
 </table>

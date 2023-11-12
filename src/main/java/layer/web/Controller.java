@@ -41,6 +41,7 @@ public class Controller extends HttpServlet {
     int currentPage = 1;//當前頁數
     int totalPageNumber = 0;//總頁數
     private Map<String, List<Goods>> cache = new HashMap<>();
+    private Map<String, List<Cart>> cache_cart = new HashMap<>();
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -50,11 +51,16 @@ public class Controller extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
+
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
-        if("list".equals(action)){
 
+
+
+        if("list".equals(action)){
             List<Goods> goodsList = new ArrayList<>();
             if(cache.containsKey("goodsList")){
                 goodsList = cache.get("goodsList");
@@ -206,21 +212,91 @@ public class Controller extends HttpServlet {
             req.setAttribute("goodsList",goodsList.subList(start,end));
             req.getRequestDispatcher("goods_backstage.jsp").forward(req,resp);
         }
-        //------添加購物車-------
-        //------session還沒添加account資訊
-        else if(action.equals("add")){
-            Cart cart = new Cart();
-            cart.setAccount((String) req.getSession().getAttribute("loggedInCustomerAccount"));
-            cart.setGoods_ID(req.getParameter("goods_ID"));
+        //---------購物車頁面-------
+        else if("cartPage".equals(action)){
+            String account = (String) req.getSession().getAttribute("loggedInCustomerAccount");
 
             cartService cartService = new cartService();
-            cartService.addToCart(cart);
-            System.out.println("SuccessAddToCart");
+            List<Cart> cartList = cartService.findByAccount(account);
+
+
+
+
+            if(cartList.size() % pageSize == 0){
+                totalPageNumber = cartList.size() / pageSize;
+
+            }else{
+                totalPageNumber = cartList.size() / pageSize +1;
+
+            }
+
+
+
+            currentPage = 1;
+            int start = (currentPage-1) * pageSize;
+            int end = currentPage * pageSize;
+            if(currentPage == totalPageNumber){
+                end = cartList.size();
+            }
+
+            req.setAttribute("totalPageNumber",totalPageNumber);
+            req.setAttribute("currentPage",currentPage);
+            req.setAttribute("cartList",cartList.subList(start,end));
+            req.getRequestDispatcher("cartPage.jsp").forward(req,resp);
+
+
+
+
+
+
+
+        }
+        //-----購物車分頁------
+        else if ("cart_paging".equals(action)) {
+            List<Cart> cartList = new ArrayList<>();
+            if(cache_cart.containsKey("cartList")){
+                cartList = cache_cart.get("cartList");
+            }else {
+                cartService cartService = new cartService();
+                cartList = cartService.findByAccount((String) req.getSession().getAttribute("loggedInCustomerAccount"));
+                cache_cart.put("cartList",cartList);
+            }
+
+
+            if(cartList.size() % pageSize == 0){
+                totalPageNumber = cartList.size() / pageSize;
+            }else{
+                totalPageNumber = cartList.size() / pageSize +1;
+            }
+            String page = req.getParameter("page");
+            if(page.equals("prev")){
+                currentPage--;
+                if(currentPage<1){
+                    currentPage=1;
+                }
+
+            } else if (page.equals("next")) {
+                currentPage++;
+                if(currentPage>totalPageNumber){
+                    currentPage=totalPageNumber;
+                }
+            } else {
+                currentPage = Integer.valueOf(page);
+            }
+
+            int start = (currentPage-1) * pageSize;
+            int end = currentPage * pageSize;
+            if(currentPage == totalPageNumber){
+                end = cartList.size();
+            }
+
+            req.setAttribute("totalPageNumber",totalPageNumber);
+            req.setAttribute("currentPage",currentPage);
+            req.setAttribute("cartList",cartList.subList(start,end));
+            req.getRequestDispatcher("cartPage.jsp").forward(req,resp);
         }
 
 
-        //購物車資料庫
-        //用戶ID 產品id 購物車數量 價格(用id*數量)
     }
 
     @Override
@@ -398,8 +474,6 @@ public class Controller extends HttpServlet {
                 }else{
                     end = currentPage * pageSize;
                 }
-                System.out.println(totalPageNumber+"total");
-                System.out.println(start+" this "+end);
 
 
                 req.setAttribute("goodsList",goodsList.subList(start,end));
@@ -420,6 +494,19 @@ public class Controller extends HttpServlet {
 
 
 
+        }//------添加購物車-------
+        else if(action.equals("add")){
+            Cart cart = new Cart();
+            cart.setAccount((String) req.getSession().getAttribute("loggedInCustomerAccount"));
+            cart.setGoods_ID(req.getParameter("goods_ID"));
+
+            cartService cartService = new cartService();
+            cartService.addToCart(cart);
+
+            resp.sendRedirect("controller?action=list");
+
+
+
         }
 
 
@@ -427,7 +514,9 @@ public class Controller extends HttpServlet {
 
 
 
+
     }
+
 
 
     //產生salt

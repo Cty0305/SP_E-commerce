@@ -57,7 +57,7 @@ public class goodsDAOImp implements GoodsDAO {
     @Override
     public Goods findByPk(String pk) {
         List<Goods> list = new ArrayList<>();
-        String sql = "Select * from goods where id = ?";
+        String sql = "Select * from goods where goods_ID = ?";
         jdbcTemplate.query(conn -> {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1,pk);
@@ -115,7 +115,6 @@ public class goodsDAOImp implements GoodsDAO {
         sql.append(" limit " + (end-start));
         sql.append(" offset " + start);
 
-        System.out.println(sql);
         jdbcTemplate.query(conn -> {
             PreparedStatement preparedStatement = conn.prepareStatement(String.valueOf(sql));
             return preparedStatement;
