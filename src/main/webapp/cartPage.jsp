@@ -32,8 +32,6 @@
             <script>
                 const quantityInput${loop.index} = document.getElementById('quantityInput${loop.index}');
 
-
-
                 //限制數字輸入
                 function validDataInput(event){
                     const keyCode = event.which || event.keyCode;
@@ -59,13 +57,10 @@
                     const total = quantity * price;
                     console.log(total);
                     totalPriceElement.value = total;
+
+
                 }
             </script>
-
-
-
-
-
 
         </c:forEach>
         

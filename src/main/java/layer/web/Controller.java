@@ -214,41 +214,41 @@ public class Controller extends HttpServlet {
         }
         //---------購物車頁面-------
         else if("cartPage".equals(action)){
+
             String account = (String) req.getSession().getAttribute("loggedInCustomerAccount");
 
-            cartService cartService = new cartService();
-            List<Cart> cartList = cartService.findByAccount(account);
-
-
-
-
-            if(cartList.size() % pageSize == 0){
-                totalPageNumber = cartList.size() / pageSize;
+            if(account==null){
+                resp.sendRedirect("login.jsp");
 
             }else{
-                totalPageNumber = cartList.size() / pageSize +1;
+                cartService cartService = new cartService();
+                List<Cart> cartList = cartService.findByAccount(account);
 
+
+
+
+                if(cartList.size() % pageSize == 0){
+                    totalPageNumber = cartList.size() / pageSize;
+
+                }else{
+                    totalPageNumber = cartList.size() / pageSize +1;
+
+                }
+
+
+
+                currentPage = 1;
+                int start = (currentPage-1) * pageSize;
+                int end = currentPage * pageSize;
+                if(currentPage == totalPageNumber){
+                    end = cartList.size();
+                }
+
+                req.setAttribute("totalPageNumber",totalPageNumber);
+                req.setAttribute("currentPage",currentPage);
+                req.setAttribute("cartList",cartList.subList(start,end));
+                req.getRequestDispatcher("cartPage.jsp").forward(req,resp);
             }
-
-
-
-            currentPage = 1;
-            int start = (currentPage-1) * pageSize;
-            int end = currentPage * pageSize;
-            if(currentPage == totalPageNumber){
-                end = cartList.size();
-            }
-
-            req.setAttribute("totalPageNumber",totalPageNumber);
-            req.setAttribute("currentPage",currentPage);
-            req.setAttribute("cartList",cartList.subList(start,end));
-            req.getRequestDispatcher("cartPage.jsp").forward(req,resp);
-
-
-
-
-
-
 
         }
         //-----購物車分頁------
