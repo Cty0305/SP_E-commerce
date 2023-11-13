@@ -8,7 +8,7 @@ import java.util.List;
 public interface cartDAO {
 
     void create(Cart cart);
-    void delete(Cart cart);
+    void delete(String cart_ID);
     void modify(Cart cart);
     List<Cart> findByAccount(String account);
 

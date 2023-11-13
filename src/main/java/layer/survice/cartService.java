@@ -48,6 +48,11 @@ public class cartService {
     }
 
 
+    public void deleteCartItem(String cart_ID){
+        cartDAO.delete(cart_ID);
+    }
+
+
 
 
 }

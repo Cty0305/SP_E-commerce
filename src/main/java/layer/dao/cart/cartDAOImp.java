@@ -38,11 +38,11 @@ public class cartDAOImp implements cartDAO{
     }
 
     @Override
-    public void delete(Cart cart) {
+    public void delete(String cart_ID) {
         String sql = "delete from cart where cart_ID = ? ";
         jdbcTemplate.query(conn -> {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1, cart.getCart_ID());
+            preparedStatement.setString(1, cart_ID);
             return preparedStatement;
         });
     }

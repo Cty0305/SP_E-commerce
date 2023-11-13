@@ -42,12 +42,12 @@ public class Goods {
         this.price = price;
     }
 
-    public String getBrand() {
-        return brand;
+    public String getCategory() {
+        return category;
     }
-    public String brand;
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public String category;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public Timestamp getCreatedTime() {

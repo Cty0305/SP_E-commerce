@@ -213,7 +213,7 @@ public class Controller extends HttpServlet {
             req.getRequestDispatcher("goods_backstage.jsp").forward(req,resp);
         }
         //---------購物車頁面-------
-        else if("cartPage".equals(action)){
+        else if("cart".equals(action)){
 
             String account = (String) req.getSession().getAttribute("loggedInCustomerAccount");
 
@@ -247,7 +247,7 @@ public class Controller extends HttpServlet {
                 req.setAttribute("totalPageNumber",totalPageNumber);
                 req.setAttribute("currentPage",currentPage);
                 req.setAttribute("cartList",cartList.subList(start,end));
-                req.getRequestDispatcher("cartPage.jsp").forward(req,resp);
+                req.getRequestDispatcher("cart.jsp").forward(req,resp);
             }
 
         }
@@ -293,7 +293,16 @@ public class Controller extends HttpServlet {
             req.setAttribute("totalPageNumber",totalPageNumber);
             req.setAttribute("currentPage",currentPage);
             req.setAttribute("cartList",cartList.subList(start,end));
-            req.getRequestDispatcher("cartPage.jsp").forward(req,resp);
+            req.getRequestDispatcher("cart.jsp").forward(req,resp);
+        }
+
+
+        //------------購物車刪除-------
+        else if ("deleteCartItem".equals(action)) {
+            cartService cartService = new cartService();
+            cartService.deleteCartItem(req.getParameter("cart_ID"));
+            req.getRequestDispatcher("controller?action=cart").forward(req,resp);
+
         }
 
 
@@ -413,7 +422,7 @@ public class Controller extends HttpServlet {
         else if(action.equals("createGoods")){
             Goods goods = new Goods();
             String price = req.getParameter("price");
-            String brand = req.getParameter("brand");
+            String category = req.getParameter("category");
             String name = req.getParameter("name");
             int quantity = 0;
             List<String> err = new ArrayList<>();
@@ -425,8 +434,8 @@ public class Controller extends HttpServlet {
             if(Float.parseFloat(price)<=0){
                 err.add("價格不得為負數");
             }
-            if(brand==null||brand.isEmpty()){
-                err.add("品牌不可為空");
+            if(category==null||category.isEmpty()){
+                err.add("分類不可為空");
             }
             if(name==null||name.isEmpty()){
                 err.add("名稱不可為空");
@@ -451,7 +460,7 @@ public class Controller extends HttpServlet {
                 goods.setGoods_ID(UUID.randomUUID().toString());
                 goods.setPrice(Float.parseFloat(price));
                 goods.setDescription(req.getParameter("description"));
-                goods.setBrand(brand);
+                goods.setCategory(category);
                 goods.setCreatedTime(new Timestamp(System.currentTimeMillis()));
                 goods.setName(name);
                 goods.setQuantity(quantity);
