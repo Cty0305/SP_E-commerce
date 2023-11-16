@@ -2,6 +2,7 @@ package layer.web;
 
 
 import Helpers.EmailVerification;
+import Helpers.emailVerificationMap;
 import layer.domain.Customer;
 import Exception.encryptException;
 import java.io.IOException;
@@ -323,29 +324,20 @@ public class Controller extends HttpServlet {
         //-----檢查登入信件
         else if("verification".equals(action)){
             String token = req.getParameter("token");
-            String account = req.getParameter("account");
-
-
             if(req.getSession().getAttribute("map")==null){
                 System.out.println("Session失效");
-                req.setAttribute("account",account);
                 req.getRequestDispatcher("emailVerificationFailed.jsp").forward(req,resp);
             } else{
-                Map<String,Long> map = (Map<String, Long>) req.getSession().getAttribute("map");
+                Map<String,emailVerificationMap> map = (Map<String, emailVerificationMap>) req.getSession().getAttribute("map");
                 if(!map.containsKey(token)){
                     System.out.println("token不存在");
-                    req.setAttribute("account",account);
                     req.getRequestDispatcher("emailVerificationFailed.jsp").forward(req,resp);
-                }else if(!map.containsValue())
-
-
-                if(System.currentTimeMillis() - map.get(token)> 10 * 60 * 1000){
+                }else if(System.currentTimeMillis() - map.get(token).getTimestamp()> 10 * 60 * 1000){
                     System.out.println("連結逾期");
-                    req.setAttribute("account",account);
                     req.getRequestDispatcher("emailVerificationFailed.jsp").forward(req,resp);
 
                 }else{
-                    customersServiceImp.verificationSuccess(account);
+                    customersServiceImp.verificationSuccess(map.get(token).getAccount());
                     System.out.println("認證成功");
                     resp.sendRedirect("login.jsp");
 
@@ -359,19 +351,16 @@ public class Controller extends HttpServlet {
             EmailVerification emailVerification = new EmailVerification();
             Customer customer = customersServiceImp.findByPK(account);
             String token = emailVerification.createEmail(customer);
-            long timeStamp = System.currentTimeMillis();
-            Map<String,Long> map = new HashMap<>();
-            map.put(token,timeStamp);
+            emailVerificationMap emailVerificationMap = new emailVerificationMap();
+            emailVerificationMap.setTimestamp(System.currentTimeMillis());
+            emailVerificationMap.setAccount(customer.getAccount());
+
+
+            Map<String,emailVerificationMap> map = new HashMap<>();
+            map.put(token,emailVerificationMap);
             req.getSession().setAttribute("map",map);
-
-
             resp.sendRedirect("login.jsp");
-
-
-
         }
-
-
     }
 
     @Override
@@ -450,10 +439,14 @@ public class Controller extends HttpServlet {
                     customersServiceImp.register(customer);
                     EmailVerification emailVerification = new EmailVerification();
                     String token = emailVerification.createEmail(customer);
-                    long timeStamp = System.currentTimeMillis();
-                    Map<String,Long> map = new HashMap<>();
-                    map.put(token,timeStamp);
 
+                    emailVerificationMap emailVerificationMap = new emailVerificationMap();
+                    emailVerificationMap.setTimestamp(System.currentTimeMillis());
+                    emailVerificationMap.setAccount(customer.getAccount());
+
+
+                    Map<String,emailVerificationMap> map = new HashMap<>();
+                    map.put(token,emailVerificationMap);
                     req.getSession().setAttribute("map",map);
 
 

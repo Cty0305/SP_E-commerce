@@ -14,7 +14,7 @@ public class EmailVerification {
     public EmailVerification() {
         // 你的電子郵件帳號和密碼
         final String username = "ck1040308@gmail.com";
-        final String password = "hrxz kyro hdlq jmew";
+        final String password = "";
 
         // SMTP 伺服器設定
         Properties props = new Properties();
@@ -47,7 +47,7 @@ public class EmailVerification {
 
 
             // 生成帳號驗證連結
-            String verificationLink = "localhost:8080/controller?action=verification&token=" + verificationToken +"&account="+customer.getAccount();
+            String verificationLink = "localhost:8080/controller?action=verification&token=" + verificationToken;
             // 郵件內容，可以使用 HTML 格式
             String emailContent = "<p>請點擊以下連結進行帳號驗證：</p><p><a '" + verificationLink + "'>" + verificationLink + "</a></p>";
             message.setContent(emailContent, "text/html; charset=utf-8");
