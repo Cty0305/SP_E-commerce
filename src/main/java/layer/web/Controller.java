@@ -324,19 +324,33 @@ public class Controller extends HttpServlet {
         else if("verification".equals(action)){
             String token = req.getParameter("token");
             String account = req.getParameter("account");
-            Map<String,Long> map = (Map<String, Long>) req.getSession().getAttribute("map");
-            if(System.currentTimeMillis() - map.get(token)> 10 * 60 * 1000){
-                System.out.println("連結逾期");
+
+
+            if(req.getSession().getAttribute("map")==null){
+                System.out.println("Session失效");
                 req.setAttribute("account",account);
                 req.getRequestDispatcher("emailVerificationFailed.jsp").forward(req,resp);
+            } else{
+                Map<String,Long> map = (Map<String, Long>) req.getSession().getAttribute("map");
+                if(!map.containsKey(token)){
+                    System.out.println("token不存在");
+                    req.setAttribute("account",account);
+                    req.getRequestDispatcher("emailVerificationFailed.jsp").forward(req,resp);
+                }else if(!map.containsValue())
 
-            }else{
-                customersServiceImp.verificationSuccess(account);
-                System.out.println("認證成功");
-                resp.sendRedirect("login.jsp");
 
+                if(System.currentTimeMillis() - map.get(token)> 10 * 60 * 1000){
+                    System.out.println("連結逾期");
+                    req.setAttribute("account",account);
+                    req.getRequestDispatcher("emailVerificationFailed.jsp").forward(req,resp);
+
+                }else{
+                    customersServiceImp.verificationSuccess(account);
+                    System.out.println("認證成功");
+                    resp.sendRedirect("login.jsp");
+
+                }
             }
-
 
         }
         //-------重新發送信件-----

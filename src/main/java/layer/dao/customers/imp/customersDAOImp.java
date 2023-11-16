@@ -162,9 +162,16 @@ public class customersDAOImp implements customersDAO {
                     System.out.println(sql);
                     PreparedStatement preparedStatement = conn.prepareStatement(sql);
                     preparedStatement.setString(1,customer.getName());
-                    preparedStatement.setString(2,customer.getAddress());
+                    preparedStatement.setString(2,customer.getAddress()!=null ? customer.getAccount() : "");
                     preparedStatement.setString(3, customer.getPhone());
-                    preparedStatement.setDate(4, Date.valueOf(customer.getBirthday()));
+                    //prevent  date null
+                    if(customer.getBirthday()!=null){
+                        preparedStatement.setDate(4, Date.valueOf(customer.getBirthday()));
+                    }else{
+                        preparedStatement.setNull(4, Types.DATE);
+                    }
+
+
                     preparedStatement.setString(5,customer.getGender());
                     preparedStatement.setString(6,customer.getEmail());
                     preparedStatement.setInt(7,customer.getEmailStatus());
