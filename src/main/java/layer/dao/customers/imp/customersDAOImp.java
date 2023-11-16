@@ -26,7 +26,7 @@ public class customersDAOImp implements customersDAO {
             preparedStatement.setString(1,customer.getName());
             preparedStatement.setString(2,customer.getPhone());
             preparedStatement.setString(3,customer.getEmail());
-            preparedStatement.setString(4,customer.getAddress());
+            preparedStatement.setString(4,customer.getAddress() != null ? customer.getAddress() :"");
             preparedStatement.setString(5,customer.getGender());
             preparedStatement.setString(6,customer.getPassword());
 
@@ -103,7 +103,7 @@ public class customersDAOImp implements customersDAO {
         List<Customer> customerList = new ArrayList<>();
         jdbcTemplate.query(conn -> {
             if(list.size() == 0){
-                PreparedStatement preparedStatement = conn.prepareStatement("select * from customer");
+                PreparedStatement preparedStatement = conn.prepareStatement("select * from customers");
                 return preparedStatement;
             }
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
@@ -153,12 +153,13 @@ public class customersDAOImp implements customersDAO {
 
     @Override
     public void modify(Customer customer) {
-        List<Customer> dbCustomerList  = findAll(new ArrayList<>());
-        List<String> dbCustomerAccountList = dbCustomerList.stream().map(Customer::getAccount).collect(Collectors.toList());
-        if(dbCustomerAccountList.contains(customer.getAccount())){
+        Customer dbCustomer  = findByPK(customer.getAccount());
+        if(dbCustomer!=null){
+
             try{
                 jdbcTemplate.query(conn -> {
-                    String sql = "UPDATE customers SET name = ? ,address = ?, phone = ?, birthday = ?, gender = ?, email = ? where account = ?";
+                    String sql = "UPDATE customers SET name = ? ,address = ?, phone = ?, birthday = ?, gender = ?, email = ?, email_Status = ? where account = ?";
+                    System.out.println(sql);
                     PreparedStatement preparedStatement = conn.prepareStatement(sql);
                     preparedStatement.setString(1,customer.getName());
                     preparedStatement.setString(2,customer.getAddress());
@@ -166,7 +167,9 @@ public class customersDAOImp implements customersDAO {
                     preparedStatement.setDate(4, Date.valueOf(customer.getBirthday()));
                     preparedStatement.setString(5,customer.getGender());
                     preparedStatement.setString(6,customer.getEmail());
-                    preparedStatement.setString(7,customer.getAccount());
+                    preparedStatement.setInt(7,customer.getEmailStatus());
+                    preparedStatement.setString(8,customer.getAccount());
+
 
                     return preparedStatement;
                 });
@@ -176,8 +179,6 @@ public class customersDAOImp implements customersDAO {
                 System.err.println("Database update failed: " + e.getMessage());
                 e.printStackTrace();
             }
-
-            System.out.println("Failed to modify db cause there's no customer");
         }
             
 
@@ -199,6 +200,7 @@ public class customersDAOImp implements customersDAO {
             customer.setGender(rs.getString("gender"));
             customer.setAccount(rs.getString("account"));
             customer.setSalt(rs.getString("salt"));
+            customer.setEmailStatus(rs.getInt("email_Status"));
             if(rs.getString("birthday")==null){
                 customer.setBirthday(null);
             }else{

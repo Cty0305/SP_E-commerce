@@ -5,6 +5,7 @@ import layer.domain.Order;
 import layer.domain.goods.Goods;
 
 import java.util.List;
+import java.util.Map;
 
 public interface customersService {
 
@@ -15,5 +16,7 @@ public interface customersService {
     boolean Login(Customer customer) throws ServiceException;
 
     void forgetPassword();
-
+    boolean verificationEmail(Customer loginCustomer);
+    void verificationSuccess(String account);
+    public Customer findByPK(String account);
 }

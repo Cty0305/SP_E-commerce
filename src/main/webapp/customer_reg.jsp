@@ -30,17 +30,20 @@
           if(myForm.password2.value !== myForm.password.value){
             errMsg+="密碼不相同\n";
           }
-          if(myForm.phone.value){
-            if(!/^09\d{8}$/.test(myForm.phone)){
-              errMsg+="電話號碼格式不正確\n";
-            }
+          if (!/^09\d{8}$/.test(myForm.phone.value)) {
+            errMsg += "電話號碼格式不正確\n";
           }
+
+
           if (myForm.birthday.value) {
             const selectedDate = new Date(myForm.birthday.value);
             const currentDate = new Date();
             if (selectedDate > currentDate) {
               errMsg += "出生日期不能是未來\n";
             }
+          }
+          if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(myForm.email.value)){
+            errMsg+="請輸入正確的email格式\n";
           }
           if(errMsg==""){
             return true;
@@ -105,7 +108,7 @@
     </tr>
     <tr>
       <td>Email</td>
-      <td><input type="email" name="email"></td>
+      <td><input type="email" name="email">*</td>
     </tr>
   </table>
   <input type="submit" value="提交">

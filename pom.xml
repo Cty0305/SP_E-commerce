@@ -18,6 +18,23 @@
   </properties>
 
   <dependencies>
+<!--      &lt;!&ndash; JavaMail API &ndash;&gt;-->
+<!--      <dependency>-->
+<!--          <groupId>com.sun.mail</groupId>-->
+<!--          <artifactId>javax.mail</artifactId>-->
+<!--          <version>1.6.2</version>-->
+<!--      </dependency>-->
+
+<!--      &lt;!&ndash; JavaBeans Activation Framework (JAF) &ndash;&gt;-->
+<!--      <dependency>-->
+<!--          <groupId>javax.activation</groupId>-->
+<!--          <artifactId>activation</artifactId>-->
+<!--          <version>1.1.1</version>-->
+<!--      </dependency>-->
+
+
+
+
 <dependency>
       <groupId>jakarta.servlet</groupId>
       <artifactId>jakarta.servlet-api</artifactId>
@@ -35,7 +52,8 @@
         <artifactId>junit-jupiter-engine</artifactId>
         <version>${junit.version}</version>
         <scope>test</scope>
-      </dependency>  </dependencies>
+      </dependency>
+  </dependencies>
 
   <build>
     <plugins>

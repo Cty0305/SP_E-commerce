@@ -1,6 +1,7 @@
 package layer.web;
 
 
+import Helpers.EmailVerification;
 import layer.domain.Customer;
 import Exception.encryptException;
 import java.io.IOException;
@@ -51,93 +52,98 @@ public class Controller extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
-
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
-
-
-
+        //--------商品表------
         if("list".equals(action)){
-            List<Goods> goodsList = new ArrayList<>();
-            if(cache.containsKey("goodsList")){
-                goodsList = cache.get("goodsList");
-            }else{
-                goodsList = goodsServiceImp.findAll();
-                cache.put("goodsList",goodsList);
+            String account = (String) req.getSession().getAttribute("loggedInCustomerAccount");
+
+            if(account==null){
+                resp.sendRedirect("login.jsp");
+
+            }else {
+                List<Goods> goodsList = new ArrayList<>();
+                if(cache.containsKey("goodsList")){
+                    goodsList = cache.get("goodsList");
+                }else{
+                    goodsList = goodsServiceImp.findAll();
+                    cache.put("goodsList",goodsList);
+                }
+
+                //-------------商品列表---------------
+                currentPage = 1;
+                if(goodsList.size() % pageSize == 0){
+                    totalPageNumber = goodsList.size() / pageSize;
+                }else{
+                    totalPageNumber = goodsList.size() / pageSize +1;
+                }
+
+                req.setAttribute("totalPageNumber",totalPageNumber);
+                req.setAttribute("currentPage",currentPage);
+
+                int start = (currentPage-1) * pageSize;
+                int end = currentPage * pageSize;
+                if(currentPage==totalPageNumber){
+                    end = goodsList.size();
+                }
+
+                req.setAttribute("goodsList", goodsServiceImp.queryByStartEnd(start,end));
+                req.getRequestDispatcher("goods_list.jsp").forward(req,resp);
             }
-
-            //-------------商品列表---------------
-            currentPage = 1;
-            if(goodsList.size() % pageSize == 0){
-                totalPageNumber = goodsList.size() / pageSize;
-            }else{
-                totalPageNumber = goodsList.size() / pageSize +1;
-            }
-
-            req.setAttribute("totalPageNumber",totalPageNumber);
-            req.setAttribute("currentPage",currentPage);
-
-            int start = (currentPage-1) * pageSize;
-            int end = currentPage * pageSize;
-            if(currentPage==totalPageNumber){
-                end = goodsList.size();
-            }
-
-            req.setAttribute("goodsList", goodsServiceImp.queryByStartEnd(start,end));
-            req.getRequestDispatcher("goods_list.jsp").forward(req,resp);
-
-
-
-
         }
         //------------商品列表分页--------------
         else if ("paging".equals(action)) {
+            String account = (String) req.getSession().getAttribute("loggedInCustomerAccount");
 
+            if(account==null){
+                resp.sendRedirect("login.jsp");
 
-
-            List<Goods> goodsList = new ArrayList<>();
-            if(cache.containsKey("goodsList")){
-                goodsList = cache.get("goodsList");
-            }else {
-                goodsList = goodsServiceImp.findAll();
-                cache.put("goodsList",goodsList);
-            }
-
-
-            if(goodsList.size() % pageSize == 0){
-                totalPageNumber = goodsList.size() / pageSize;
             }else{
-                totalPageNumber = goodsList.size() / pageSize +1;
-            }
-            String page = req.getParameter("page");
-            if(page.equals("prev")){
-                currentPage--;
-                if(currentPage<1){
-                    currentPage=1;
+                List<Goods> goodsList = new ArrayList<>();
+                if(cache.containsKey("goodsList")){
+                    goodsList = cache.get("goodsList");
+                }else {
+                    goodsList = goodsServiceImp.findAll();
+                    cache.put("goodsList",goodsList);
                 }
 
-            } else if (page.equals("next")) {
-                currentPage++;
-                if(currentPage>totalPageNumber){
-                    currentPage=totalPageNumber;
+
+                if(goodsList.size() % pageSize == 0){
+                    totalPageNumber = goodsList.size() / pageSize;
+                }else{
+                    totalPageNumber = goodsList.size() / pageSize +1;
                 }
-            } else {
-                currentPage = Integer.valueOf(page);//要處理大於或小於totalPageNum
+                String page = req.getParameter("page");
+                if(page.equals("prev")){
+                    currentPage--;
+                    if(currentPage<1){
+                        currentPage=1;
+                    }
+
+                } else if (page.equals("next")) {
+                    currentPage++;
+                    if(currentPage>totalPageNumber){
+                        currentPage=totalPageNumber;
+                    }
+                } else {
+                    currentPage = Integer.valueOf(page);//要處理大於或小於totalPageNum
+                }
+
+                int start = (currentPage-1) * pageSize;
+                int end = currentPage * pageSize;
+                if(currentPage == totalPageNumber){
+                    end = goodsList.size();
+                }
+
+                req.setAttribute("totalPageNumber",totalPageNumber);
+                req.setAttribute("currentPage",currentPage);
+                req.setAttribute("goodsList",goodsList.subList(start,end));
+                req.getRequestDispatcher("goods_list.jsp").forward(req,resp);
             }
 
-            int start = (currentPage-1) * pageSize;
-            int end = currentPage * pageSize;
-            if(currentPage == totalPageNumber){
-                end = goodsList.size();
-            }
 
-            req.setAttribute("totalPageNumber",totalPageNumber);
-            req.setAttribute("currentPage",currentPage);
-            req.setAttribute("goodsList",goodsList.subList(start,end));
-            req.getRequestDispatcher("goods_list.jsp").forward(req,resp);
+
         }
         //商品後台
         else if(action.equals("goodsList_backstage")){
@@ -171,6 +177,7 @@ public class Controller extends HttpServlet {
         }
         //------------後臺商品列表分页--------------
         else if ("backstage_paging".equals(action)) {
+
             List<Goods> goodsList = new ArrayList<>();
             if(cache.containsKey("goodsList")){
                 goodsList = cache.get("goodsList");
@@ -253,47 +260,55 @@ public class Controller extends HttpServlet {
         }
         //-----購物車分頁------
         else if ("cart_paging".equals(action)) {
-            List<Cart> cartList = new ArrayList<>();
-            if(cache_cart.containsKey("cartList")){
-                cartList = cache_cart.get("cartList");
-            }else {
-                cartService cartService = new cartService();
-                cartList = cartService.findByAccount((String) req.getSession().getAttribute("loggedInCustomerAccount"));
-                cache_cart.put("cartList",cartList);
-            }
+            String account = (String) req.getSession().getAttribute("loggedInCustomerAccount");
 
+            if(account==null){
+                resp.sendRedirect("login.jsp");
 
-            if(cartList.size() % pageSize == 0){
-                totalPageNumber = cartList.size() / pageSize;
             }else{
-                totalPageNumber = cartList.size() / pageSize +1;
-            }
-            String page = req.getParameter("page");
-            if(page.equals("prev")){
-                currentPage--;
-                if(currentPage<1){
-                    currentPage=1;
+                List<Cart> cartList = new ArrayList<>();
+                if(cache_cart.containsKey("cartList")){
+                    cartList = cache_cart.get("cartList");
+                }else {
+                    cartService cartService = new cartService();
+                    cartList = cartService.findByAccount((String) req.getSession().getAttribute("loggedInCustomerAccount"));
+                    cache_cart.put("cartList",cartList);
                 }
 
-            } else if (page.equals("next")) {
-                currentPage++;
-                if(currentPage>totalPageNumber){
-                    currentPage=totalPageNumber;
+
+                if(cartList.size() % pageSize == 0){
+                    totalPageNumber = cartList.size() / pageSize;
+                }else{
+                    totalPageNumber = cartList.size() / pageSize +1;
                 }
-            } else {
-                currentPage = Integer.valueOf(page);
+                String page = req.getParameter("page");
+                if(page.equals("prev")){
+                    currentPage--;
+                    if(currentPage<1){
+                        currentPage=1;
+                    }
+
+                } else if (page.equals("next")) {
+                    currentPage++;
+                    if(currentPage>totalPageNumber){
+                        currentPage=totalPageNumber;
+                    }
+                } else {
+                    currentPage = Integer.valueOf(page);
+                }
+
+                int start = (currentPage-1) * pageSize;
+                int end = currentPage * pageSize;
+                if(currentPage == totalPageNumber){
+                    end = cartList.size();
+                }
+
+                req.setAttribute("totalPageNumber",totalPageNumber);
+                req.setAttribute("currentPage",currentPage);
+                req.setAttribute("cartList",cartList.subList(start,end));
+                req.getRequestDispatcher("cart.jsp").forward(req,resp);
             }
 
-            int start = (currentPage-1) * pageSize;
-            int end = currentPage * pageSize;
-            if(currentPage == totalPageNumber){
-                end = cartList.size();
-            }
-
-            req.setAttribute("totalPageNumber",totalPageNumber);
-            req.setAttribute("currentPage",currentPage);
-            req.setAttribute("cartList",cartList.subList(start,end));
-            req.getRequestDispatcher("cart.jsp").forward(req,resp);
         }
 
 
@@ -305,6 +320,43 @@ public class Controller extends HttpServlet {
 
         }
 
+        //-----檢查登入信件
+        else if("verification".equals(action)){
+            String token = req.getParameter("token");
+            String account = req.getParameter("account");
+            Map<String,Long> map = (Map<String, Long>) req.getSession().getAttribute("map");
+            if(System.currentTimeMillis() - map.get(token)> 10 * 60 * 1000){
+                System.out.println("連結逾期");
+                req.setAttribute("account",account);
+                req.getRequestDispatcher("emailVerificationFailed.jsp").forward(req,resp);
+
+            }else{
+                customersServiceImp.verificationSuccess(account);
+                System.out.println("認證成功");
+                resp.sendRedirect("login.jsp");
+
+            }
+
+
+        }
+        //-------重新發送信件-----
+        else if("resendEmail".equals(action)){
+            String account = req.getParameter("account");
+            EmailVerification emailVerification = new EmailVerification();
+            Customer customer = customersServiceImp.findByPK(account);
+            String token = emailVerification.createEmail(customer);
+            long timeStamp = System.currentTimeMillis();
+            Map<String,Long> map = new HashMap<>();
+            map.put(token,timeStamp);
+            req.getSession().setAttribute("map",map);
+
+
+            resp.sendRedirect("login.jsp");
+
+
+
+        }
+
 
     }
 
@@ -313,6 +365,7 @@ public class Controller extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
+        //------註冊----------------------
         if(action.equalsIgnoreCase("register")){
             List<String> err = new ArrayList<>();
             String name = req.getParameter("name");
@@ -342,11 +395,15 @@ public class Controller extends HttpServlet {
                     err.add("不可為未來日期");
                 }
             }
-            if(phone.matches("09\\d{8}")){
+            if (!phone.matches("09\\d{8}")) {
                 err.add("手機號碼格式錯誤");
             }
+
             if(gender == null){
                 err.add("請選擇性別");
+            }
+            if(!email.matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")){
+                err.add("請輸入正確的email格式");
             }
 
 
@@ -377,6 +434,15 @@ public class Controller extends HttpServlet {
 
                 try {
                     customersServiceImp.register(customer);
+                    EmailVerification emailVerification = new EmailVerification();
+                    String token = emailVerification.createEmail(customer);
+                    long timeStamp = System.currentTimeMillis();
+                    Map<String,Long> map = new HashMap<>();
+                    map.put(token,timeStamp);
+
+                    req.getSession().setAttribute("map",map);
+
+
                     resp.sendRedirect("login.jsp");
                 }catch (ServiceException e){
                     System.out.println("帳號存在");
@@ -392,17 +458,28 @@ public class Controller extends HttpServlet {
 
 
         }
+
+
+        //------登入----
         else if ("login".equals(action)) {
+
             Customer loginCustomer = new Customer();
             List<String> err = new ArrayList<>();
             loginCustomer.setPassword(req.getParameter("password"));
             loginCustomer.setAccount(req.getParameter("account"));
-
             try{
                 if(customersServiceImp.Login(loginCustomer)){
-                    HttpSession session = req.getSession();
-                    session.setAttribute("loggedInCustomerAccount",loginCustomer.getAccount());
-                    req.getRequestDispatcher("main.jsp").forward(req,resp);
+                    if(customersServiceImp.verificationEmail(loginCustomer)){
+                        HttpSession session = req.getSession();
+                        session.setAttribute("loggedInCustomerAccount",loginCustomer.getAccount());
+                        req.getRequestDispatcher("main.jsp").forward(req,resp);
+                    }else{
+                        System.out.println("尚未認證");
+                        resp.sendRedirect("emailVerification.jsp");
+                    }
+
+
+
                 }else {
                     err.add("密碼不正確");
                     System.out.println("密碼不正確");

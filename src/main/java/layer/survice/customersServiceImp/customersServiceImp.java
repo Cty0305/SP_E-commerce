@@ -9,6 +9,8 @@ import layer.survice.ServiceException;
 import layer.survice.customersService;
 
 import java.util.List;
+import java.util.Map;
+
 import Helpers.*;
 import Exception.*;
 
@@ -45,7 +47,7 @@ public class customersServiceImp implements customersService {
     @Override
     public boolean Login(Customer loginCustomer) throws ServiceException {
         Customer dbCustomer = customerDAO.findByPK(loginCustomer.getAccount());
-        if(dbCustomer.getAccount()==null){
+        if(dbCustomer==null){
             System.out.println("無DBC");
             throw new ServiceException("無對應帳號");
         }
@@ -61,6 +63,7 @@ public class customersServiceImp implements customersService {
             String passwordWithSalt = loginCustomer.getPassword()+dbCustomer.getSalt();
             String encryptPassword =  encryptionUtils.encryptString(passwordWithSalt);
             if(encryptPassword.equals(dbCustomer.getPassword())){
+
                 return true;
             }
         } catch (encryptException e) {
@@ -77,6 +80,36 @@ public class customersServiceImp implements customersService {
     public void forgetPassword() {
 
     }
+
+
+
+    @Override
+    public boolean verificationEmail(Customer loginCustomer){
+        Customer dbCustomer = customerDAO.findByPK(loginCustomer.getAccount());
+        if(dbCustomer.getEmailStatus()==0){
+            return false;
+        }else {
+            return true;
+        }
+
+    }
+
+    @Override
+    public void verificationSuccess(String account) {
+        Customer customer = customerDAO.findByPK(account);
+        System.out.println(customer.getAccount());
+        customer.setEmailStatus(1);
+        System.out.println(customer.getEmailStatus());
+        customerDAO.modify(customer);
+    }
+
+
+    @Override
+    public Customer findByPK(String account){
+        Customer customer = customerDAO.findByPK(account);
+        return customer;
+    }
+
 
 //    public boolean isIdUnique(Customer customer){
 //        Customer dbCustomer = customerDAO.findByPK(String.valueOf(customer.getAccount()));

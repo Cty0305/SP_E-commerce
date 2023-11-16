@@ -18,6 +18,15 @@ public class Customer {
 
     private String account;
 
+    public int getEmailStatus() {
+        return emailStatus;
+    }
+
+    public void setEmailStatus(int emailStatus) {
+        this.emailStatus = emailStatus;
+    }
+
+    private int emailStatus;
     private String name;
     private String phone;
     private String address;
