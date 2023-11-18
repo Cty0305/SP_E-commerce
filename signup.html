@@ -25,96 +25,35 @@
           </a>
           <span class="brand-name visually-hidden">DonDonmart</span>
         </h1>
-        <form
-          class="search-container d-flex mb-3 mb-lg-0 align-items-center"
-          role="search"
-        >
-          <input
-            type="search"
-            class="search form-control border-0 py-3"
-            placeholder="Search for items, brands and ispiration ..."
-            aria-label="Search"
-          />
-          <!-- <span class="material-symbols-outlined icon-search text-body-secondary">
-              search
-              </span> -->
-        </form>
-        <section class="d-flex justify-content-between gap-3">
-          <button
-            type="button"
-            class="header-cart d-flex btn btn-primary bg-transparent text-black border-0 align-items-center gap-2 py-3"
-          >
-            <span class="material-symbols-outlined"> shopping_cart </span>Cart:
-            2
-          </button>
-          <button
-            type="button"
-            class="header-user btn btn-primary bg-transparent text-black border-0 py-3 d-flex align-items-center gap-1 justify-content-between"
-          >
-            <img
-              src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Image/Avatar.jpg?raw=true"
-              alt=""
-              class="avatar"
-            />
-            Hello Mr. Coleman
-            <span class="material-symbols-outlined"> keyboard_arrow_down </span>
-          </button>
-          <!-- <div class="header-user rounded-3 border">
-            <ul class="header-user">
-              <li class="option mb-3">
-                <a href=""
-                  ><span class="material-symbols-outlined me-2"> settings </span
-                  >Setting</a
-                >
-              </li>
-              <li class="option mb-3">
-                <a href=""
-                  ><span class="material-symbols-outlined me-2"> logout </span
-                  >Log out</a
-                >
-              </li>
-            </ul>
-          </div> -->
-        </section>
       </div>
     </nav>
     <main class="main-setting">
-      <div class="login-title fs-3">Sign up to DonDonmart</div>
-      <div class="login-content d-flex">
-        <div class="login-form d-flex flex-column">
-          <div class="login-form-content">
-            <div class="input">
-              <label for="basic-url" class="form-label">Name</label>
-              <input
-                type="text"
-                class="form-control"
-                aria-label="Amount (to the nearest dollar)"
-              />
+      <div class="authentication-form">
+        <div class="login-title fs-3">Sign up to DonDonmart</div>
+        <div class="login-content d-flex">
+          <div class="login-form d-flex flex-column">
+            <div class="login-form-content">
+              <div class="input">
+                <label for="basic-url" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  aria-label="Amount (to the nearest dollar)"
+                />
+              </div>
             </div>
-            <div class="input">
-              <label for="basic-url" class="form-label">Email</label>
-              <input
-                type="email"
-                class="form-control"
-                aria-label="Amount (to the nearest dollar)"
-              />
-            </div>
-            <div class="input">
-              <label for="basic-url" class="form-label">Password</label>
-              <input
-                type="password"
-                class="form-control"
-                aria-label="Amount (to the nearest dollar)"
-              />
-            </div>
+            <button class="btn btn-block submit" type="submit">
+              Create Account
+            </button>
+            <p class="alternative-option">
+              Already have an account?
+              <a
+                class="a-inline"
+                href="https://cty0305.github.io/SP_E-commerce/login.html"
+                >Log in</a
+              >
+            </p>
           </div>
-          <input
-            class="submit"
-            type="submit"
-            value="Create Account"
-            tabindex="3"
-            data-cypress="submit-sign-in-btn"
-          />
         </div>
       </div>
     </main>

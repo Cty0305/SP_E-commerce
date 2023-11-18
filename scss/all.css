@@ -11988,6 +11988,11 @@ a {
   align-items: center;
 }
 
+.a-inline {
+  display: inline;
+  text-decoration: underline;
+}
+
 body {
   height: 100vh;
   overflow: hidden;
@@ -12431,6 +12436,11 @@ main {
   color: white;
 }
 
+.authentication-form {
+  width: 50%;
+  margin: 0 auto;
+}
+
 .login-title {
   width: 60%;
   align-items: center;
@@ -12452,21 +12462,31 @@ main {
   flex-direction: column;
   gap: 24px;
   margin-bottom: 48px;
-  width: 80%;
+  width: 100%;
 }
 
 .submit {
-  width: 80%;
+  width: 100%;
   margin-top: 20px;
   height: 56px;
   padding: 24px;
   font-size: 14px;
-  background-color: black;
-  color: white;
-  border: 1px solid black;
+  background-color: #0d0c22;
+  color: #fff;
+  border: 1px solid #0d0c22;
   border-radius: 999px;
   align-items: center;
   justify-content: center;
   display: inline-flex;
   text-align: center;
+}
+.submit:hover {
+  background-color: #565564;
+  border: 1px solid #565564;
+  color: #fff;
+}
+
+.alternative-option {
+  margin-top: 24px;
+  display: inline;
 }/*# sourceMappingURL=all.css.map */

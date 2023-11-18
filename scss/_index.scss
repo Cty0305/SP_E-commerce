@@ -5,6 +5,11 @@ a {
   align-items: center;
 }
 
+.a-inline {
+  display: inline;
+  text-decoration: underline;
+}
+
 body {
   height: 100vh;
   overflow: hidden;
