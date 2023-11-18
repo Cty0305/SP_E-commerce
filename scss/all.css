@@ -12436,13 +12436,21 @@ main {
   color: white;
 }
 
+.full {
+  width: 100%;
+}
+
+.half {
+  width: 47.5%;
+}
+
 .authentication-form {
   width: 50%;
   margin: 0 auto;
 }
 
 .login-title {
-  width: 60%;
+  width: 100%;
   align-items: center;
 }
 
@@ -12459,7 +12467,7 @@ main {
 
 .login-form-content {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 24px;
   margin-bottom: 48px;
   width: 100%;
@@ -12467,7 +12475,6 @@ main {
 
 .submit {
   width: 100%;
-  margin-top: 20px;
   height: 56px;
   padding: 24px;
   font-size: 14px;
