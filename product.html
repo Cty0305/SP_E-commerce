@@ -25,57 +25,49 @@
           </a>
           <span class="brand-name visually-hidden">DonDonmart</span>
         </h1>
-        <form
-          class="search-container d-flex mb-3 mb-lg-0 align-items-center"
-          role="search"
-        >
-          <input
-            type="search"
-            class="search form-control border-0 py-3"
-            placeholder="Search for items, brands and ispiration ..."
-            aria-label="Search"
-          />
-          <!-- <span class="material-symbols-outlined icon-search text-body-secondary">
-              search
-              </span> -->
-        </form>
-        <section class="d-flex justify-content-between gap-3">
-          <button
-            type="button"
-            class="header-cart d-flex btn btn-primary bg-transparent text-black border-0 align-items-center gap-2 py-3"
+        <section class="d-flex justify-content-between gap-4">
+          <div class="header-auth-btn">
+            <a
+              href="https://cty0305.github.io/SP_E-commerce/login.html"
+              class="btn-cf btn-cf-secondary"
+            >
+              Log in
+            </a>
+            <a
+              href="https://cty0305.github.io/SP_E-commerce/signup.html"
+              class="btn-cf btn-cf-primary"
+            >
+              Sign up
+            </a>
+          </div>
+        </section>
+        <!-- <section class="d-flex justify-content-between gap-4">
+          <a
+            href="https://cty0305.github.io/SP_E-commerce/cart.html"
+            class="header-cart"
           >
             <span class="material-symbols-outlined"> shopping_cart </span>Cart:
             2
-          </button>
-          <button
-            type="button"
-            class="header-user btn btn-primary bg-transparent text-black border-0 py-3 d-flex align-items-center gap-1 justify-content-between"
-          >
-            <img
-              src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Image/Avatar.jpg?raw=true"
-              alt=""
-              class="avatar"
-            />
+          </a>
+          <button type="button" class="header-user" id="toggleButton">
             Hello Mr. Coleman
             <span class="material-symbols-outlined"> keyboard_arrow_down </span>
           </button>
-          <!-- <div class="header-user rounded-3 border">
-            <ul class="header-user">
-              <li class="option mb-3">
-                <a href=""
-                  ><span class="material-symbols-outlined me-2"> settings </span
-                  >Setting</a
-                >
-              </li>
-              <li class="option mb-3">
-                <a href=""
-                  ><span class="material-symbols-outlined me-2"> logout </span
-                  >Log out</a
-                >
-              </li>
-            </ul>
-          </div> -->
-        </section>
+          <ul class="header-user-dropdown">
+            <li class="option">
+              <a href=""
+                ><span class="material-symbols-outlined me-2"> settings </span
+                >Setting</a
+              >
+            </li>
+            <li class="option">
+              <a href=""
+                ><span class="material-symbols-outlined me-2"> logout </span>Log
+                out</a
+              >
+            </li>
+          </ul>
+        </section> -->
       </div>
     </nav>
     <div class="main row justify-content-center">
@@ -161,17 +153,6 @@
               </a>
             </li>
           </ul>
-        </div>
-        <div class="help-center-link px-3 py-2">
-          <a href="https://cty0305.github.io/SP_E-commerce/">
-            <img
-              width="28"
-              height="28"
-              src="https://img.icons8.com/ios/100/speech-bubble-with-dots--v1.png"
-              alt="speech-bubble-with-dots--v1"
-              class="me-2"
-            />Help Center
-          </a>
         </div>
       </div>
       <div class="shopping-aria">
@@ -285,5 +266,6 @@
         </div>
       </div>
     </div>
+    <script src="JS/all.js"></script>
   </body>
 </html>

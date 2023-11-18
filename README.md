@@ -1,17 +1,16 @@
 # SP_E-commerce
 
-### Figma Design:
+### 🎨 Figma Design: https://reurl.cc/nLdOod
 
-https://reurl.cc/nLdOod
-
-### Time Schedule
+### 🚘 Time Schedule
 
 - 11/12/2023: Create Login and Signup Pages
 - 11/19/2023:
   1. Revise Log in and Sign up Page ✅
   2. Create Email Validation Page ✅
-  3. Complete Style of Header
-  4. Create Payment Page
+  3. Create --cf variable ✅
+  4. Complete Style of Header ✅
+  5. Create Payment Page
 - 11/26/2023: Complete CSS
 - 12/17/2023: Complete FE-JS
 

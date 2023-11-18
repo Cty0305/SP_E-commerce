@@ -1,8 +1,9 @@
 @import "bootstrap/bootstrap.scss";
-@import "index";
-@import "setting";
+@import "variables";
+@import "homepage";
+@import "profile";
 @import "product";
 @import "cart";
 @import "authentication";
 @import "signup";
-@import "email-valid";
+@import "create_account";
