@@ -7,7 +7,7 @@
 }
 
 .authentication-form {
-  width: 50%;
+  width: 500px;
   margin: 0 auto;
 }
 
@@ -16,15 +16,8 @@
   align-items: center;
 }
 
-.login-content {
-  justify-content: center;
-}
-
 .login-form {
   padding: 48px 0;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
 }
 
 .login-form-content {
@@ -33,29 +26,11 @@
   gap: 24px;
   margin-bottom: 48px;
   width: 100%;
-}
-
-.submit {
-  width: 100%;
-  height: 56px;
-  padding: 24px;
-  font-size: 14px;
-  background-color: #0d0c22;
-  color: #fff;
-  border: 1px solid #0d0c22;
-  border-radius: 999px;
-  align-items: center;
-  justify-content: center;
-  display: inline-flex;
-  text-align: center;
-  &:hover {
-    background-color: #565564;
-    border: 1px solid #565564;
-    color: #fff;
-  }
+  justify-content: space-between;
 }
 
 .alternative-option {
   margin-top: 24px;
   display: inline;
+  text-align: center;
 }
