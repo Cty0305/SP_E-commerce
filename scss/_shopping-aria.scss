@@ -1,0 +1,108 @@
+.shopping-aria {
+  padding: 24px 0 0;
+  width: 75%;
+}
+
+.filter-icon {
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.product-window {
+  max-height: 654px;
+  overflow: auto;
+}
+
+.product-row {
+  display: flex;
+  max-width: 1100px;
+  gap: 10px;
+  margin: 0 0 24px 0;
+}
+
+.filter-bar {
+  max-width: 1100px;
+  margin: 0 0 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.category {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+}
+
+.category-name {
+  margin: 0;
+  font-weight: bolder;
+}
+
+.filter-set {
+  max-width: 500px;
+  padding: 0;
+  display: inline-flex;
+  justify-content: end;
+  gap: 8px;
+}
+
+.filter-button {
+  max-width: 150px;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--cf-gray-500);
+  background: transparent;
+  color: var(--cf-black);
+  border-radius: 8px;
+}
+
+.news-aria {
+  width: 60%;
+  max-height: 330px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.news {
+  overflow: hidden;
+  height: 100%;
+  border-radius: var(--bs-border-radius-xl);
+}
+
+.news-image {
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-aria {
+  display: flex;
+  width: 40%;
+  padding: 0;
+  gap: 10px;
+}
+
+.product {
+  overflow: hidden;
+  background-color: var(--cf-gray-500);
+  position: relative;
+}
+
+.product-image {
+  max-width: 100%;
+  height: 330px;
+  object-fit: cover;
+}
+
+.addtocart-icon {
+  position: absolute;
+  color: var(--cf-black);
+  right: 15px;
+  top: 15px;
+}

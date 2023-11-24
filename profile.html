@@ -11,21 +11,37 @@
     <link rel="stylesheet" href="scss/all.css" />
   </head>
   <body>
-    <nav class="navbar justify-content-center align-items-center">
-      <div class="header d-flex justify-content-between align-items-center">
+    <nav class="navbar">
+      <div class="header">
         <h1 class="brand">
           <a
             href="https://cty0305.github.io/SP_E-commerce/homepage"
-            class="header-logo-container d-flex flex-column justify-content-center align-items-center"
+            class="header-logo-container"
           >
             <img
               src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Image/Brand-Logo.jpg?raw=true"
               class="header-logo"
             />
           </a>
-          <span class="brand-name visually-hidden">DonDonmart</span>
+          <span class="brand-name">DonDonmart</span>
         </h1>
-        <section class="d-flex justify-content-between gap-4">
+        <!-- <section class="header-auth-btn-container">
+          <div class="header-auth-btn">
+            <a
+              class="btn-cf btn-cf-secondary"
+              href="https://cty0305.github.io/SP_E-commerce/login.html"
+            >
+              Log in
+            </a>
+            <a
+              class="btn-cf btn-cf-primary"
+              href="https://cty0305.github.io/SP_E-commerce/signup.html"
+            >
+              Sign up
+            </a>
+          </div>
+        </section> -->
+        <section class="header-menu">
           <a
             href="https://cty0305.github.io/SP_E-commerce/cart.html"
             class="header-cart"
@@ -34,12 +50,12 @@
             2
           </a>
           <button type="button" class="header-user" id="toggleButton">
-            Hello Mr. Coleman
+            <span class="header-user-name"> Alan Chou </span>
             <span class="material-symbols-outlined"> keyboard_arrow_down </span>
           </button>
           <ul class="header-user-dropdown">
             <li class="option">
-              <a href=""
+              <a href="https://cty0305.github.io/SP_E-commerce/profile.html"
                 ><span class="material-symbols-outlined me-2"> settings </span
                 >Setting</a
               >
@@ -56,7 +72,7 @@
     </nav>
     <main class="main-setting">
       <div class="user d-flex align-items-center">
-        <div class="user-name">Mr.Coleman</div>
+        <div class="user-name">Alan Chou</div>
         <div class="user-name">/ Edit Profile</div>
       </div>
       <div class="point d-flex">
