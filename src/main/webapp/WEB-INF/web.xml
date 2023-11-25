@@ -27,5 +27,21 @@
         <servlet-name>Controller</servlet-name>
         <url-pattern>/controller</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>FileUploadServlet</servlet-name>
+        <servlet-class>layer.web.FileUploadServlet</servlet-class>
+        <multipart-config>
+            <!-- 配置文件上傳的參數 -->
+            <max-file-size>20848820</max-file-size>
+            <max-request-size>418018841</max-request-size>
+            <file-size-threshold>1048576</file-size-threshold>
+        </multipart-config>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FileUploadServlet</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+
+
 
 </web-app>

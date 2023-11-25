@@ -1,0 +1,36 @@
+.full {
+  width: 100%;
+}
+
+.half {
+  width: 47.5%;
+}
+
+.authentication-form {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.login-title {
+  width: 100%;
+  align-items: center;
+}
+
+.login-form {
+  padding: 48px 0;
+}
+
+.login-form-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 48px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.alternative-option {
+  margin-top: 24px;
+  display: inline;
+  text-align: center;
+}

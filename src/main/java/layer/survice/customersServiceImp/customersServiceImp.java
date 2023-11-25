@@ -48,7 +48,6 @@ public class customersServiceImp implements customersService {
     public boolean Login(Customer loginCustomer) throws ServiceException {
         Customer dbCustomer = customerDAO.findByPK(loginCustomer.getAccount());
         if(dbCustomer==null){
-            System.out.println("無DBC");
             throw new ServiceException("無對應帳號");
         }
 

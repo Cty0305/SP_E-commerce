@@ -27,7 +27,7 @@ public class Customer {
     }
 
     private int emailStatus;
-    private String name;
+    private String lastName;
     private String phone;
     private String address;
     private String gender;
@@ -45,12 +45,22 @@ public class Customer {
     private int id;
     private String password;
 
-    public String getName() {
-        return name;
+    private String firstName;
+
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getPhone() {

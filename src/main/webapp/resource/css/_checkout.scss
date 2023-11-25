@@ -1,0 +1,18 @@
+.deal {
+  display: flex;
+  max-width: 1440px;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding: 64px 120px;
+}
+.deal-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 50%;
+}
+
+.form {
+  width: 100%;
+  flex-wrap: wrap;
+}

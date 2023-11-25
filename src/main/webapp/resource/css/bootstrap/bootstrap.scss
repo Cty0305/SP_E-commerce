@@ -1,4 +1,4 @@
-@import "banner";
+@import "mixins/banner";
 @include bsBanner("");
 
 
@@ -48,5 +48,5 @@
 @import "helpers";
 
 // Utilities
-@import "api";
+@import "utilities/api";
 // scss-docs-end import-stack

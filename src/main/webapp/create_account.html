@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Setting Page</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="stylesheet" href="resource/css/all.css">
+  </head>
+  <body>
+  <script>
+    function verify(myForm){
+      let errMsg="";
+      if(myForm.account.value==""){
+        errMsg+="please enter username\n";
+      }
+      if(myForm.firstName.value==""){
+        errMsg+="please enter the first name\n";
+      }
+      if(myForm.lastName.value==""){
+        errMsg+="please enter the last name\n";
+      }
+      if(myForm.password.value==""){
+        errMsg+="please enter passwords\n";
+      }
+      if(myForm.password2.value !== myForm.password.value){
+        errMsg+="passwords do not match\n";
+      }
+      if(errMsg==""){
+        return true;
+      }else {
+        alert(errMsg);
+        return false;
+      }
+    }
+
+
+  </script>
+
+
+
+
+    <nav class="navbar justify-content-center align-items-center">
+      <div class="header d-flex justify-content-between align-items-center">
+        <h1 class="brand">
+          <a
+            href="https://cty0305.github.io/SP_E-commerce/homepage"
+            class="header-logo-container d-flex flex-column justify-content-center align-items-center"
+          >
+            <img
+              src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Image/Brand-Logo.jpg?raw=true"
+              class="header-logo"
+            />
+          </a>
+          <span class="brand-name visually-hidden">DonDonmart</span>
+        </h1>
+      </div>
+    </nav>
+    <main class="main-setting">
+      <div class="authentication-form">
+        <div class="login-title fs-3">Become a member of DonDonmart</div>
+        <div class="login-content">
+          <div class="login-form d-flex flex-column">
+
+
+            <form action="controller" method="post" onsubmit="return verify(this)">
+              <input type="hidden" name="action" value="createAccount">
+              <div class="login-form-content">
+                <div class="input full">
+                  <label for="basic-url" class="form-label"
+                  >Verification code</label
+                  >
+                  <input class="form-control" name="token"/>
+                </div>
+                <div class="input full">
+                  <label for="basic-url" class="form-label">Account</label>
+                  <input class="form-control" name="account"/>
+                </div>
+                <div class="input half">
+                  <label for="basic-url" class="form-label">First Name</label>
+                  <input class="form-control" name="firstName"/>
+                </div>
+                <div class="input half">
+                  <label for="basic-url" class="form-label">Last Name</label>
+                  <input class="form-control" name="lastName"/>
+                </div>
+                <div class="input full">
+                  <label for="basic-url" class="form-label">Password</label>
+                  <input class="form-control" type="password" name="password"/>
+                </div>
+                <div class="input full">
+                  <label for="basic-url" class="form-label">Confirm Password</label>
+                  <input class="form-control" type="password" name="password2"/>
+                </div>
+              </div>
+              <input class="btn-cf btn-cf-primary full" type="submit" value="Create Account">
+            </form>
+
+
+
+            <p class="alternative-option">
+              Already have an account?
+              <a
+                      class="a-inline"
+                      href="https://cty0305.github.io/SP_E-commerce/login.html"
+              >Log in</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="JS/all.js"></script>
+  </body>
+</html>

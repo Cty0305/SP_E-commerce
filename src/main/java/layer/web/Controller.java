@@ -371,61 +371,35 @@ public class Controller extends HttpServlet {
         //------註冊----------------------
         if(action.equalsIgnoreCase("register")){
             List<String> err = new ArrayList<>();
-            String name = req.getParameter("name");
+            String firstName = req.getParameter("firstName");
+            String lastName = req.getParameter("lastName");
             String account = req.getParameter("account");
             String password = req.getParameter("password");
             String password2 = req.getParameter("password2");
-            String birthday = req.getParameter("birthday");
-            String phone = req.getParameter("phone");
-            String address = req.getParameter("address");
-            String email = req.getParameter("email");
-            String gender = req.getParameter("gender");
-            System.out.println("ths is string:" + birthday);
-            if(name == null || name.trim().equals("")){
-                err.add("未填寫姓名");
+
+            if(firstName == null || firstName.trim().equals("")){
+                err.add("please enter the first name");
+            }
+            if(lastName == null || lastName.trim().equals("")){
+                err.add("please enter the last name");
             }
             if(account == null || account.trim().equals("")){
-                err.add("未填寫帳號");
+                err.add("please enter username");
             }
             if(password == null || password.trim().equals("")){
-                err.add("未填寫密碼");
+                err.add("please enter password");
             }
             if(!password.equals(password2)){
-                err.add("密碼不一致");
+                err.add("passwords do not match ");
             }
-            if(!birthday.equals("")){
-                if(LocalDate.parse(birthday,formatter).isAfter(currentDate)){
-                    err.add("不可為未來日期");
-                }
-            }
-            if (!phone.matches("09\\d{8}")) {
-                err.add("手機號碼格式錯誤");
-            }
-
-            if(gender == null){
-                err.add("請選擇性別");
-            }
-            if(!email.matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")){
-                err.add("請輸入正確的email格式");
-            }
-
 
             if(err.size()>0){
                 req.setAttribute("err",err);
                 req.getRequestDispatcher("customer_reg.jsp").forward(req,resp);
             }else{
                 Customer customer = new Customer();
-                customer.setName(name);
-                customer.setAddress(address);
-                customer.setPhone(phone);
-                customer.setGender(gender);
-                customer.setEmail(email);
+                customer.setFirstName(firstName);
                 customer.setAccount(account);
-                if(!birthday.equals("")){
-                    customer.setBirthday(LocalDate.parse(req.getParameter("birthday"),formatter));
-                }else{
-                    customer.setBirthday(null);
-                }
                 customer.setSalt(Arrays.toString(generateSalt()));
                 String passwordWithSalt = password+ customer.getSalt();
                 try{
@@ -437,23 +411,23 @@ public class Controller extends HttpServlet {
 
                 try {
                     customersServiceImp.register(customer);
-                    EmailVerification emailVerification = new EmailVerification();
-                    String token = emailVerification.createEmail(customer);
-
-                    emailVerificationMap emailVerificationMap = new emailVerificationMap();
-                    emailVerificationMap.setTimestamp(System.currentTimeMillis());
-                    emailVerificationMap.setAccount(customer.getAccount());
-
-
-                    Map<String,emailVerificationMap> map = new HashMap<>();
-                    map.put(token,emailVerificationMap);
-                    req.getSession().setAttribute("map",map);
+//                    EmailVerification emailVerification = new EmailVerification();
+//                    String token = emailVerification.createEmail(customer);
+//
+//                    emailVerificationMap emailVerificationMap = new emailVerificationMap();
+//                    emailVerificationMap.setTimestamp(System.currentTimeMillis());
+//                    emailVerificationMap.setAccount(customer.getAccount());
+//
+//
+//                    Map<String,emailVerificationMap> map = new HashMap<>();
+//                    map.put(token,emailVerificationMap);
+//                    req.getSession().setAttribute("map",map);
 
 
                     resp.sendRedirect("login.jsp");
                 }catch (ServiceException e){
                     System.out.println("帳號存在");
-                    err.add("帳號已存在");
+                    err.add("the account has already exist");
                     req.setAttribute("err",err);
                     req.getRequestDispatcher("customer_reg.jsp").forward(req,resp);
                 }
@@ -465,8 +439,75 @@ public class Controller extends HttpServlet {
 
 
         }
+        //-------------註冊----------------
+        else if (action.equals("createAccount")) {
+
+            //檢查token
+            Map<String,String> tokenMap = (Map<String, String>) req.getSession().getAttribute("tokenMap");
+            String email = (String) req.getAttribute("email");
+            String token = tokenMap.get(email);
+            String inputToken = req.getParameter("token");
+
+            //判斷是否正確
+            if(token.equals(inputToken)){
+                List<String> err = new ArrayList<>();
+                String firstName = req.getParameter("firstName");
+                String lastName = req.getParameter("lastName");
+                String account = req.getParameter("account");
+                String password = req.getParameter("password");
+                String password2 = req.getParameter("password2");
+
+                if(firstName == null || firstName.trim().equals("")){
+                    err.add("please enter the first name");
+                }
+                if(lastName == null || lastName.trim().equals("")){
+                    err.add("please enter the last name");
+                }
+                if(account == null || account.trim().equals("")){
+                    err.add("please enter username");
+                }
+                if(password == null || password.trim().equals("")){
+                    err.add("please enter password");
+                }
+                if(!password.equals(password2)){
+                    err.add("passwords do not match ");
+                }
+                if(err.size()>0){
+                    req.setAttribute("err",err);
+                    req.getRequestDispatcher("customer_reg.jsp").forward(req,resp);
+                }else{
+                    Customer customer = new Customer();
+                    customer.setFirstName(firstName);
+                    customer.setAccount(account);
+                    customer.setEmail(email);
+                    customer.setSalt(Arrays.toString(generateSalt()));
+                    String passwordWithSalt = password+ customer.getSalt();
+                    try{
+                        customer.setPassword(encryptString(passwordWithSalt));
+                    } catch (encryptException e) {
+                        System.out.println("加密出錯");
+                        e.printStackTrace();
+                    }
+                    try {
+                        customersServiceImp.register(customer);
+                        System.out.println("註冊成功");
+                        resp.sendRedirect("login.jsp");
+                    }catch (ServiceException e){
+                        System.out.println("帳號存在");
+                        err.add("the account has already exist");
+                        req.setAttribute("err",err);
+                        req.getRequestDispatcher("customer_reg.jsp").forward(req,resp);
+                    }
+                }
+            }else{
+                System.out.println("token錯誤");
+                tokenMap.put(email,token);
+                req.setAttribute("email",email);
+                req.getRequestDispatcher("create_account.html").forward(req,resp);
+            }
 
 
+        }
         //------登入----
         else if ("login".equals(action)) {
 
@@ -476,17 +517,9 @@ public class Controller extends HttpServlet {
             loginCustomer.setAccount(req.getParameter("account"));
             try{
                 if(customersServiceImp.Login(loginCustomer)){
-                    if(customersServiceImp.verificationEmail(loginCustomer)){
-                        HttpSession session = req.getSession();
-                        session.setAttribute("loggedInCustomerAccount",loginCustomer.getAccount());
-                        req.getRequestDispatcher("main.jsp").forward(req,resp);
-                    }else{
-                        System.out.println("尚未認證");
-                        resp.sendRedirect("emailVerification.jsp");
-                    }
-
-
-
+                    HttpSession session = req.getSession();
+                    session.setAttribute("loggedInCustomerAccount",loginCustomer.getAccount());
+                    req.getRequestDispatcher("main.jsp").forward(req,resp);
                 }else {
                     err.add("密碼不正確");
                     System.out.println("密碼不正確");
@@ -500,6 +533,18 @@ public class Controller extends HttpServlet {
                 req.getRequestDispatcher("login.jsp").forward(req,resp);
             }
 
+
+        }
+        //-------------註冊驗證信相---------
+        else if(action.equals("signUpEmailVerification")){
+            String email = req.getParameter("email");
+            EmailVerification emailVerification = new EmailVerification();
+            String token = emailVerification.createEmail(email);
+            Map<String,String> tokenMap = new HashMap<>();
+            tokenMap.put(email,token);
+            req.setAttribute("email",email);
+            req.getSession().setAttribute("tokenMap",tokenMap);
+            req.getRequestDispatcher("create_account.html").forward(req,resp);
 
         }
         //-----------------建立商品-----------------------

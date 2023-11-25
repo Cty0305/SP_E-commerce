@@ -31,6 +31,8 @@ public class EmailVerification {
         });
     }
 
+
+    //寄送郵件並且回傳token
     public String createEmail(Customer customer){
         try {
             // 創建一個 MimeMessage 對象
@@ -39,6 +41,41 @@ public class EmailVerification {
             message.setFrom(new InternetAddress("ck1040308@gmail.com"));
             // 設置接收者的郵件地址
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(customer.getEmail()));
+            // 設置郵件主題
+            message.setSubject("帳號驗證");
+            // 建立認證token
+            String verificationToken = UUID.randomUUID().toString();
+            // 建立時間戳
+
+
+            // 生成帳號驗證連結
+            String verificationLink = "localhost:8080/controller?action=verification&token=" + verificationToken;
+            // 郵件內容，可以使用 HTML 格式
+            String emailContent = "<p>請點擊以下連結進行帳號驗證：</p><p><a '" + verificationLink + "'>" + verificationLink + "</a></p>";
+            message.setContent(emailContent, "text/html; charset=utf-8");
+
+            // 送出郵件
+            Transport.send(message);
+
+            System.out.println("已發送郵件成功");
+
+            return verificationToken;
+        } catch (MessagingException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+
+    }
+
+    public String createEmail(String email){
+        try {
+            // 創建一個 MimeMessage 對象
+            Message message = new MimeMessage(session);
+            // 設置發送者的郵件地址
+            message.setFrom(new InternetAddress("ck1040308@gmail.com"));
+            // 設置接收者的郵件地址
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
             // 設置郵件主題
             message.setSubject("帳號驗證");
             // 建立認證token

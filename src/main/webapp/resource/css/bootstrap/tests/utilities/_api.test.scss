@@ -1,8 +1,8 @@
-@import "main/webapp/resource/css/bootstrap/functions";
-@import "main/webapp/resource/css/bootstrap/variables";
-@import "main/webapp/resource/css/bootstrap/variables-dark";
-@import "main/webapp/resource/css/bootstrap/maps";
-@import "main/webapp/resource/css/bootstrap/mixins";
+@import "../../functions";
+@import "../../variables";
+@import "../../variables-dark";
+@import "../../maps";
+@import "../../mixins";
 
 $utilities: ();
 
@@ -33,7 +33,7 @@ $utilities: ();
 
     @include assert() {
       @include output() {
-        @import "api";
+        @import "../../utilities/api";
       }
 
       @include expect() {
