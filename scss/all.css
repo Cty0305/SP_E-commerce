@@ -12239,18 +12239,44 @@ body {
   overflow: hidden;
   background-color: var(--cf-gray-500);
   position: relative;
+  height: 330px;
 }
 
 .product-image {
   max-width: 100%;
-  height: 330px;
+  height: 280px;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
+.product-info {
+  width: 100%;
+  height: 50px;
+  background-color: var(--cf-white);
+  padding: 4px 8px;
+  text-align: center;
+}
+
+.product-name {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.product-price {
+  font-size: 12px;
+}
+
 .addtocart-icon {
   position: absolute;
+  background-color: var(--cf-white);
+  border-radius: 44px;
   color: var(--cf-black);
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   right: 15px;
   top: 15px;
 }
