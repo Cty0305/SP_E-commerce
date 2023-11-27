@@ -46,7 +46,7 @@
             href="https://cty0305.github.io/SP_E-commerce/cart.html"
             class="header-cart"
           >
-            <span class="material-symbols-outlined"> shopping_cart </span>Cart:
+            <span class="material-symbols-outlined"> shopping_bag </span>Cart:
             2
           </a>
           <button type="button" class="header-user" id="toggleButton">
@@ -157,7 +157,7 @@
           </div>
         </div>
         <div class="shopping-aria">
-          <div class="filter-bar">
+          <div class="shopping-aria-header">
             <div class="category">
               <img
                 width="36"
@@ -168,48 +168,56 @@
               <h3 class="category-name">New In</h3>
             </div>
             <div class="filter-set">
-              <button class="filter-button" type="button">
-                <span class="filter-icon imoji-women"
-                  >&#x1F64B;&#x200D;&#x2640;&#xFE0F;</span
+              <div class="filter-sort-controller">
+                <button class="filter-sort" type="button" id="filter-sort">
+                  <span class="filter-icon material-symbols-outlined">
+                    sort
+                  </span>
+                  由新到舊
+                  <span class="material-symbols-outlined">
+                    keyboard_arrow_down
+                  </span>
+                </button>
+                <ul class="filter-sort-menu">
+                  <li class="filter-sort-option">由新到舊</li>
+                  <li class="filter-sort-option">由舊到新</li>
+                </ul>
+              </div>
+              <div class="filter-toggle">
+                <button
+                  class="filter-button filter-toggle-women"
+                  type="button"
+                  id="filter-toggle-women"
                 >
-                Women
-              </button>
-              <button class="filter-button" type="button">
-                <span class="filter-icon imoji-men"
-                  >&#x1F64B;&#x200D;&#x2642;&#xFE0F;</span
+                  <span class="filter-icon imoji-women"
+                    >&#x1F64B;&#x200D;&#x2640;&#xFE0F;</span
+                  >
+                  Women
+                </button>
+                <button
+                  class="filter-button filter-toggle-men inactive"
+                  type="button"
+                  id="filter-toggle-men"
                 >
-                Men
-              </button>
-              <button class="filter-button" type="button">
-                <span class="filter-icon material-symbols-outlined">
-                  sort
-                </span>
-                Sort
-              </button>
-              <button class="filter-button" type="button">
-                <span class="filter-icon material-symbols-outlined">
-                  counter_1 </span
-                >Filter
-              </button>
+                  <span class="filter-icon imoji-men"
+                    >&#x1F64B;&#x200D;&#x2642;&#xFE0F;</span
+                  >
+                  Men
+                </button>
+              </div>
             </div>
           </div>
           <div class="product-window">
             <div class="product-row">
               <div class="news-aria">
-                <a
-                  href="https://cty0305.github.io/SP_E-commerce//"
-                  class="news"
-                >
+                <a href="https://cty0305.github.io/SP_E-commerce/" class="news">
                   <img
                     src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Image/News-50off.jpeg?raw=true"
                     alt=""
                     class="news-image w-100"
                   />
                 </a>
-                <a
-                  href="https://cty0305.github.io/SP_E-commerce//"
-                  class="news"
-                >
+                <a href="https://cty0305.github.io/SP_E-commerce/" class="news">
                   <img
                     src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Image/News-outlet.jpeg?raw=true"
                     alt=""
@@ -222,18 +230,22 @@
                   href="https://cty0305.github.io/SP_E-commerce/product.html"
                   class="product-clickable"
                 >
-                  <div class="product rounded-4">
-                    <img
-                      src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Product/Product-001.png?raw=true"
-                      alt=""
-                      class="product-image"
-                    />
+                  <div class="product-card rounded-4">
+                    <div class="product-card-image-container">
+                      <img
+                        src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Product/Product-001.png?raw=true"
+                        alt=""
+                        class="product-card-image"
+                      />
+                    </div>
                     <span class="addtocart-icon material-symbols-outlined">
                       shopping_bag
                     </span>
-                    <div class="product-info">
-                      <div class="product-name">Nike Air Max Pulse Roam</div>
-                      <div class="product-price">$1,800</div>
+                    <div class="product-card-info">
+                      <div class="product-card-name">
+                        Nike Air Max Pulse Roam
+                      </div>
+                      <div class="product-card-price">$1,800</div>
                     </div>
                   </div>
                 </a>
@@ -241,17 +253,22 @@
                   href="https://cty0305.github.io/SP_E-commerce/product.html"
                   class="product-clickable"
                 >
-                  <div class="product rounded-4">
-                    <img
-                      src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Product/Product-002.png?raw=true"
-                      alt=""
-                      class="product-image"
-                    /><span class="addtocart-icon material-symbols-outlined">
+                  <div class="product-card rounded-4">
+                    <div class="product-card-image-container">
+                      <img
+                        src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Product/Product-002.png?raw=true"
+                        alt=""
+                        class="product-card-image"
+                      />
+                    </div>
+                    <span class="addtocart-icon material-symbols-outlined">
                       shopping_bag
                     </span>
-                    <div class="product-info">
-                      <div class="product-name">Nike Air Max Pulse Roam</div>
-                      <div class="product-price">$1,800</div>
+                    <div class="product-card-info">
+                      <div class="product-card-name">
+                        Nike Air Max Pulse Roam
+                      </div>
+                      <div class="product-card-price">$1,800</div>
                     </div>
                   </div>
                 </a>
@@ -263,18 +280,22 @@
                   href="https://cty0305.github.io/SP_E-commerce/product.html"
                   class="product-clickable"
                 >
-                  <div class="product rounded-4">
-                    <img
-                      src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Product/Product-001.png?raw=true"
-                      alt=""
-                      class="product-image"
-                    />
+                  <div class="product-card rounded-4">
+                    <div class="product-card-image-container">
+                      <img
+                        src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Product/Product-001.png?raw=true"
+                        alt=""
+                        class="product-card-image"
+                      />
+                    </div>
                     <span class="addtocart-icon material-symbols-outlined">
                       shopping_bag
                     </span>
-                    <div class="product-info">
-                      <div class="product-name">Nike Air Max Pulse Roam</div>
-                      <div class="product-price">$1,800</div>
+                    <div class="product-card-info">
+                      <div class="product-card-name">
+                        Nike Air Max Pulse Roam
+                      </div>
+                      <div class="product-card-price">$1,800</div>
                     </div>
                   </div>
                 </a>
@@ -282,36 +303,35 @@
                   href="https://cty0305.github.io/SP_E-commerce/product.html"
                   class="product-clickable"
                 >
-                  <div class="product rounded-4">
-                    <img
-                      src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Product/Product-002.png?raw=true"
-                      alt=""
-                      class="product-image"
-                    /><span class="addtocart-icon material-symbols-outlined">
+                  <div class="product-card rounded-4">
+                    <div class="product-card-image-container">
+                      <img
+                        src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Product/Product-002.png?raw=true"
+                        alt=""
+                        class="product-card-image"
+                      />
+                    </div>
+                    <span class="addtocart-icon material-symbols-outlined">
                       shopping_bag
                     </span>
-                    <div class="product-info">
-                      <div class="product-name">Nike Air Max Pulse Roam</div>
-                      <div class="product-price">$1,800</div>
+                    <div class="product-card-info">
+                      <div class="product-card-name">
+                        Nike Air Max Pulse Roam
+                      </div>
+                      <div class="product-card-price">$1,800</div>
                     </div>
                   </div>
                 </a>
               </div>
               <div class="news-aria">
-                <a
-                  href="https://cty0305.github.io/SP_E-commerce//"
-                  class="news"
-                >
+                <a href="https://cty0305.github.io/SP_E-commerce/" class="news">
                   <img
                     src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Image/News-50off.jpeg?raw=true"
                     alt=""
                     class="news-image w-100"
                   />
                 </a>
-                <a
-                  href="https://cty0305.github.io/SP_E-commerce//"
-                  class="news"
-                >
+                <a href="https://cty0305.github.io/SP_E-commerce/" class="news">
                   <img
                     src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Image/News-outlet.jpeg?raw=true"
                     alt=""
@@ -322,20 +342,14 @@
             </div>
             <div class="product-row">
               <div class="news-aria">
-                <a
-                  href="https://cty0305.github.io/SP_E-commerce//"
-                  class="news"
-                >
+                <a href="https://cty0305.github.io/SP_E-commerce/" class="news">
                   <img
                     src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Image/News-50off.jpeg?raw=true"
                     alt=""
                     class="news-image w-100"
                   />
                 </a>
-                <a
-                  href="https://cty0305.github.io/SP_E-commerce//"
-                  class="news"
-                >
+                <a href="https://cty0305.github.io/SP_E-commerce/" class="news">
                   <img
                     src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Image/News-outlet.jpeg?raw=true"
                     alt=""
@@ -348,18 +362,22 @@
                   href="https://cty0305.github.io/SP_E-commerce/product.html"
                   class="product-clickable"
                 >
-                  <div class="product rounded-4">
-                    <img
-                      src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Product/Product-001.png?raw=true"
-                      alt=""
-                      class="product-image"
-                    />
+                  <div class="product-card rounded-4">
+                    <div class="product-card-image-container">
+                      <img
+                        src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Product/Product-001.png?raw=true"
+                        alt=""
+                        class="product-card-image"
+                      />
+                    </div>
                     <span class="addtocart-icon material-symbols-outlined">
                       shopping_bag
                     </span>
-                    <div class="product-info">
-                      <div class="product-name">Nike Air Max Pulse Roam</div>
-                      <div class="product-price">$1,800</div>
+                    <div class="product-card-info">
+                      <div class="product-card-name">
+                        Nike Air Max Pulse Roam
+                      </div>
+                      <div class="product-card-price">$1,800</div>
                     </div>
                   </div>
                 </a>
@@ -367,17 +385,22 @@
                   href="https://cty0305.github.io/SP_E-commerce/product.html"
                   class="product-clickable"
                 >
-                  <div class="product rounded-4">
-                    <img
-                      src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Product/Product-002.png?raw=true"
-                      alt=""
-                      class="product-image"
-                    /><span class="addtocart-icon material-symbols-outlined">
+                  <div class="product-card rounded-4">
+                    <div class="product-card-image-container">
+                      <img
+                        src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Product/Product-002.png?raw=true"
+                        alt=""
+                        class="product-card-image"
+                      />
+                    </div>
+                    <span class="addtocart-icon material-symbols-outlined">
                       shopping_bag
                     </span>
-                    <div class="product-info">
-                      <div class="product-name">Nike Air Max Pulse Roam</div>
-                      <div class="product-price">$1,800</div>
+                    <div class="product-card-info">
+                      <div class="product-card-name">
+                        Nike Air Max Pulse Roam
+                      </div>
+                      <div class="product-card-price">$1,800</div>
                     </div>
                   </div>
                 </a>
@@ -387,6 +410,7 @@
         </div>
       </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="JS/all.js"></script>
   </body>
 </html>

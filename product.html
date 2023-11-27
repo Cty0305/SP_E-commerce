@@ -46,7 +46,7 @@
             href="https://cty0305.github.io/SP_E-commerce/cart.html"
             class="header-cart"
           >
-            <span class="material-symbols-outlined"> shopping_cart </span>Cart:
+            <span class="material-symbols-outlined"> shopping_bag </span>Cart:
             2
           </a>
           <button type="button" class="header-user" id="toggleButton">
@@ -72,14 +72,11 @@
     </nav>
     <div class="main">
       <div class="main-content">
-        <div class="sidemenu d-flex flex-column justify-content-between">
-          <div>
-            <h3 class="explore px-3 py-2 fw-bolder">Explore</h3>
-
+        <div class="sidemenu">
+          <div class="sidemenu-content">
+            <h3 class="sidemenu-title">Explore</h3>
             <ul class="list-group">
-              <li
-                class="list-group-item border-0 mb-2 d-flex align-items-center"
-              >
+              <li class="list-group-item">
                 <a href="https://cty0305.github.io/SP_E-commerce/">
                   <img
                     width="36"
@@ -90,9 +87,7 @@
                   />New In
                 </a>
               </li>
-              <li
-                class="list-group-item border-0 mb-2 d-flex align-items-center"
-              >
+              <li class="list-group-item">
                 <a href="https://cty0305.github.io/SP_E-commerce/">
                   <img
                     width="36"
@@ -103,9 +98,7 @@
                   />Clothing
                 </a>
               </li>
-              <li
-                class="list-group-item border-0 mb-2 d-flex align-items-center"
-              >
+              <li class="list-group-item">
                 <a href="https://cty0305.github.io/SP_E-commerce/">
                   <img
                     width="36"
@@ -116,9 +109,7 @@
                   />Shoes
                 </a>
               </li>
-              <li
-                class="list-group-item border-0 mb-2 d-flex align-items-center"
-              >
+              <li class="list-group-item">
                 <a href="https://cty0305.github.io/SP_E-commerce/">
                   <img
                     width="36"
@@ -129,9 +120,7 @@
                   />Accessories
                 </a>
               </li>
-              <li
-                class="list-group-item border-0 mb-2 d-flex align-items-center"
-              >
+              <li class="list-group-item">
                 <a href="https://cty0305.github.io/SP_E-commerce/">
                   <img
                     width="36"
@@ -142,9 +131,7 @@
                   />Activewaer
                 </a>
               </li>
-              <li
-                class="list-group-item border-0 mb-2 d-flex align-items-center"
-              >
+              <li class="list-group-item">
                 <a href="https://cty0305.github.io/SP_E-commerce/">
                   <img
                     width="36"
@@ -155,9 +142,7 @@
                   />Gift & Living
                 </a>
               </li>
-              <li
-                class="list-group-item border-0 mb-2 d-flex align-items-center"
-              >
+              <li class="list-group-item">
                 <a href="https://cty0305.github.io/SP_E-commerce/">
                   <img
                     width="36"
@@ -172,113 +157,126 @@
           </div>
         </div>
         <div class="shopping-aria">
-          <div class="pd-window">
+          <div class="product-window">
             <a
-              href="https://cty0305.github.io/SP_E-commerce/"
-              class="back fs-6"
+              href="https://cty0305.github.io/SP_E-commerce/homepage"
+              class="backlink fs-6"
             >
               <span class="material-symbols-outlined me-2"> arrow_back </span
               >Back
             </a>
-            <div class="pd-main">
-              <div class="pd-media">
+            <div class="product-window-content">
+              <div class="product-image-container">
                 <img
                   src="https://github.com/Cty0305/SP_E-commerce/blob/main/Resource/Product/Product-001.png?raw=true"
                   alt=""
-                  class="pd-image"
+                  class="product-image"
                 />
               </div>
-              <div class="pd-info">
-                <h1 class="pd-title">Nike Air Max Pulse Roam</h1>
-                <div class="pd-subtitle">男裝</div>
-                <div class="pd-price">$5,400</div>
-                <div class="pd-spec">
-                  <div class="pd-spec-title">選取尺寸</div>
-                  <div class="pd-spec-option-container">
-                    <div class="pd-spec-option">S</div>
-                    <div class="pd-spec-option">M</div>
-                    <div class="pd-spec-option">L</div>
+              <div class="product-content">
+                <h1 class="product-name">Nike Air Max Pulse Roam</h1>
+                <div class="product-category">Clothing</div>
+                <div class="product-price">$5,400</div>
+                <div class="product-spec">
+                  <div class="product-spec-title">選取尺寸</div>
+                  <div class="product-spec-option-container">
+                    <button class="btn-cf btn-cf-secondary product-spec-option">
+                      S
+                    </button>
+                    <button class="btn-cf btn-cf-secondary product-spec-option">
+                      M
+                    </button>
+                    <button class="btn-cf btn-cf-secondary product-spec-option">
+                      L
+                    </button>
                   </div>
                 </div>
-                <div class="pd-action">
-                  <div class="pd-favorite">加入購物車</div>
-                  <div class="pd-cta">立即購買</div>
+                <div class="product-action">
+                  <a class="btn-cf btn-cf-secondary w-100">加入購物車</a>
+                  <a
+                    href="https://cty0305.github.io/SP_E-commerce/checkout"
+                    class="btn-cf btn-cf-primary w-100"
+                  >
+                    立即購買
+                  </a>
                 </div>
               </div>
             </div>
             <div class="raleted-product">
-              <div class="rp-title fs-6 fw-bolder">你可能也會喜歡</div>
-              <div class="rp-container">
-                <a href="" class="rp-card">
+              <div class="related-product-title fs-6 fw-bolder">
+                你可能也會喜歡
+              </div>
+              <div class="related-product-container">
+                <a href="" class="related-product-card">
                   <img
                     src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/78093c5f-19cf-4462-834c-a3e46de38386/dunk-%E4%BD%8E%E7%AD%92%E6%AC%BE-Bgkn3N.png"
-                    class="rp-image"
+                    class="related-product-image"
                     alt=""
                   />
-                  <div class="rp-info">
-                    <div class="rp-info-title">Nike Dunk 低筒</div>
-                    <div class="rp-info-subtitle">嬰幼兒鞋款</div>
-                    <div class="rp-info-price">$1,800</div>
+                  <div class="related-product-info">
+                    <div class="related-product-info-title">Nike Dunk 低筒</div>
+                    <div class="related-product-info-subtitle">嬰幼兒鞋款</div>
+                    <div class="related-product-info-price">$1,800</div>
                   </div>
                 </a>
-                <a href="" class="rp-card">
+                <a href="" class="related-product-card">
                   <img
                     src="https://static.nike.com/a/images/t_PDP_864_v1,f_auto,q_auto:eco/e6464934-7358-410e-9712-e4e858180c31/calm-%E7%A9%86%E5%8B%92-Pg5G3Z.png"
-                    class="rp-image"
+                    class="related-product-image"
                     alt=""
                   />
-                  <div class="rp-info">
-                    <div class="rp-info-title">Nike Calm</div>
-                    <div class="rp-info-subtitle">女款穆勒鞋</div>
-                    <div class="rp-info-price">$2,200</div>
+                  <div class="related-product-info">
+                    <div class="related-product-info-title">Nike Calm</div>
+                    <div class="related-product-info-subtitle">女款穆勒鞋</div>
+                    <div class="related-product-info-price">$2,200</div>
                   </div>
                 </a>
-                <a href="" class="rp-card">
+                <a href="" class="related-product-card">
                   <img
                     src="https://static.nike.com/a/images/t_PDP_864_v1,f_auto,q_auto:eco/e1f8a4a9-7a98-4fdd-8e56-5e52c801a45c/calm-%E7%94%B7%E6%AC%BE%E7%A9%86%E5%8B%92-KJZKd1.png"
-                    class="rp-image"
+                    class="related-product-image"
                     alt=""
                   />
-                  <div class="rp-info">
-                    <div class="rp-info-title">Nike Calm</div>
-                    <div class="rp-info-subtitle">女款穆勒鞋</div>
-                    <div class="rp-info-price">$2,200</div>
+                  <div class="related-product-info">
+                    <div class="related-product-info-title">Nike Calm</div>
+                    <div class="related-product-info-subtitle">女款穆勒鞋</div>
+                    <div class="related-product-info-price">$2,200</div>
                   </div>
                 </a>
-                <a href="" class="rp-card">
+                <a href="" class="related-product-card">
                   <img
                     src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/78093c5f-19cf-4462-834c-a3e46de38386/dunk-%E4%BD%8E%E7%AD%92%E6%AC%BE-Bgkn3N.png"
-                    class="rp-image"
+                    class="related-product-image"
                     alt=""
                   />
-                  <div class="rp-info">
-                    <div class="rp-info-title">Nike Dunk 低筒</div>
-                    <div class="rp-info-subtitle">嬰幼兒鞋款</div>
-                    <div class="rp-info-price">$1,800</div>
+                  <div class="related-product-info">
+                    <div class="related-product-info-title">Nike Dunk 低筒</div>
+                    <div class="related-product-info-subtitle">嬰幼兒鞋款</div>
+                    <div class="related-product-info-price">$1,800</div>
                   </div>
                 </a>
-                <a href="" class="rp-card">
+                <a href="" class="related-product-card">
                   <img
                     src="https://static.nike.com/a/images/t_PDP_864_v1,f_auto,q_auto:eco/e6464934-7358-410e-9712-e4e858180c31/calm-%E7%A9%86%E5%8B%92-Pg5G3Z.png"
-                    class="rp-image"
+                    class="related-product-image"
                     alt=""
                   />
-                  <div class="rp-info">
-                    <div class="rp-info-title">Nike Calm</div>
-                    <div class="rp-info-subtitle">女款穆勒鞋</div>
-                    <div class="rp-info-price">$2,200</div>
+                  <div class="related-product-info">
+                    <div class="related-product-info-title">Nike Calm</div>
+                    <div class="related-product-info-subtitle">女款穆勒鞋</div>
+                    <div class="related-product-info-price">$2,200</div>
                   </div>
                 </a>
-                <a href="" class="rp-card">
+                <a href="" class="related-product-card">
                   <img
                     src="https://static.nike.com/a/images/t_PDP_864_v1,f_auto,q_auto:eco/e1f8a4a9-7a98-4fdd-8e56-5e52c801a45c/calm-%E7%94%B7%E6%AC%BE%E7%A9%86%E5%8B%92-KJZKd1.png"
-                    class="rp-image"
+                    class="related-product-image"
                     alt=""
                   />
-                  <div class="rp-info">
-                    <div class="rp-info-title">Nike Calm</div>
-                    <div class="rp-info-subtitle">女款穆勒鞋</div>
-                    <div class="rp-info-price">$2,200</div>
+                  <div class="related-product-info">
+                    <div class="related-product-info-title">Nike Calm</div>
+                    <div class="related-product-info-subtitle">女款穆勒鞋</div>
+                    <div class="related-product-info-price">$2,200</div>
                   </div>
                 </a>
               </div>

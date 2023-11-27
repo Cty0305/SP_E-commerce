@@ -4,9 +4,11 @@
   --cf-black: #111111;
   --cf-gray: #707072;
   --cf-gray-500: #cacacb;
+  --cf-gray-200: #f6f6f6;
 
   // utility
-  --cf-border-radius: 3rem;
+  --cf-border-radius-l: 48px;
+  --cf-border-radius-sm: 8px;
 }
 
 .btn-cf {
@@ -25,7 +27,6 @@
   font-size: var(--bs-btn-font-size);
   font-weight: var(--bs-btn-font-weight);
   line-height: var(--bs-btn-line-height);
-  border-radius: var(--cf-border-radius);
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
@@ -117,11 +118,10 @@
 }
 
 .btn-cf-primary {
-  background-color: var(--cf-black);
-  color: var(--cf-white);
   border: 1px solid var(--cf-black);
-  --bs-btn-color: var(--cf-white);
-  --bs-btn-bg: var(--cf-black);
+  border-radius: var(--cf-border-radius-l);
+  color: var(--cf-white);
+  background-color: var(--cf-black);
   --bs-btn-hover-color: var(--cf-white);
   --bs-btn-hover-bg: var(--cf-gray);
   --bs-btn-hover-border-color: var(--cf-gray);
@@ -137,8 +137,9 @@
 
 .btn-cf-secondary {
   border: 1px solid var(--cf-gray-500);
-  --bs-btn-color: var(--cf-black);
-  --bs-btn-bg: var(--cf-white);
+  border-radius: var(--cf-border-radius-l);
+  color: var(--cf-black);
+  background-color: var(--cf-white);
   --bs-btn-hover-color: var(--cf-black);
   --bs-btn-hover-bg: var(--cf-white);
   --bs-btn-hover-border-color: var(--cf-black);
