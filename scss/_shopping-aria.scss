@@ -31,23 +31,27 @@
   align-items: center;
 }
 
+.filter-sort-controller {
+  position: relative;
+}
+
 .filter-sort {
   background-color: transparent;
   border: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
   gap: 4px;
 }
 
 .filter-sort-menu {
-  width: 150px;
+  width: 140px;
   display: none;
   position: absolute;
   z-index: 1;
+  right: 0%;
   padding: 0;
-  margin-top: 8px;
+  margin: 8px 0 0 0;
   border: 1px solid var(--cf-gray-200);
   border-radius: var(--cf-border-radius-sm);
   background-color: var(--cf-white);
@@ -55,8 +59,7 @@
 }
 
 .filter-sort-menu-show {
-  display: flex;
-  flex-direction: column;
+  display: block;
 }
 
 .filter-sort-option {
