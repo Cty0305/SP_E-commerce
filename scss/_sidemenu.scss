@@ -11,9 +11,27 @@
   font-weight: bolder;
 }
 
+.list-group {
+  border-radius: 0px;
+}
+
 .list-group-item {
   display: flex;
   align-items: center;
   border: 0px;
   margin-bottom: 8px;
+  height: 64px;
+  &:hover {
+    border-left: 3px solid orange;
+  }
+}
+
+.category-tab {
+  width: 100%;
+  height: 100%;
+  gap: 8px;
+  transition-duration: 0.5s;
+  &:hover {
+    gap: 24px;
+  }
 }
