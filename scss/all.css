@@ -12216,6 +12216,7 @@ body {
   display: flex;
   align-items: center;
   padding-left: 12px;
+  cursor: pointer;
 }
 .filter-sort-option:hover {
   background-color: var(--cf-gray-200);
@@ -12441,19 +12442,17 @@ body {
   display: block;
 }
 
-.option {
+.header-user-dropdown-option {
   list-style-type: none;
   width: 100%;
   height: 40px;
   display: flex;
   align-items: center;
-}
-.option:hover {
-  background-color: var(--cf-gray-200);
-}
-.option a {
   padding-left: 12px;
-  width: 100%;
+  cursor: pointer;
+}
+.header-user-dropdown-option:hover {
+  background-color: var(--cf-gray-200);
 }
 
 .main-setting {

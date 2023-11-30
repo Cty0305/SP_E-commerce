@@ -93,17 +93,15 @@
   }
 }
 
-.option {
+.header-user-dropdown-option {
   list-style-type: none;
   width: 100%;
   height: 40px;
   display: flex;
   align-items: center;
+  padding-left: 12px;
+  cursor: pointer;
   &:hover {
     background-color: var(--cf-gray-200);
-  }
-  a {
-    padding-left: 12px;
-    width: 100%;
   }
 }
