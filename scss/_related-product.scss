@@ -1,10 +1,33 @@
+.related-product-header {
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.carousel-button-controller {
+  gap: 16px;
+}
+
+.carousel-button {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--cf-gray-200);
+  border-radius: var(--cf-border-radius-l);
+}
+
 .related-product-title {
   margin: 24px 0;
+  display: inline-flex;
 }
 
 .related-product-container {
   display: flex;
-  overflow-x: auto;
+  overflow-x: scroll;
   justify-content: space-between;
   gap: 12px;
 }
@@ -38,4 +61,9 @@
   color: gray;
   font-size: 14px;
   margin-bottom: 8px;
+}
+
+.carousel-button-controller {
+  display: inline-flex;
+  cursor: pointer;
 }

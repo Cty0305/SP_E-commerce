@@ -12326,6 +12326,7 @@ body {
   -o-object-fit: cover;
      object-fit: cover;
   overflow: hidden;
+  transition: 0.5s;
 }
 .product-card-image:hover {
   transform: scale(1.2);
@@ -12514,10 +12515,17 @@ body {
 }
 
 .backlink {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   color: gray;
   margin-bottom: 12px;
+  gap: 0px;
+  padding: 12px 24px;
+  transition: gap 0.5s ease-in-out;
+}
+
+.backlink:hover {
+  gap: 12px;
 }
 
 .product-window-content {
@@ -12579,19 +12587,46 @@ body {
   height: 40px;
 }
 
+.product-spec-option-active {
+  border: 1px solid var(--cf-gray);
+}
+
 .product-action {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
+.related-product-header {
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.carousel-button-controller {
+  gap: 16px;
+}
+
+.carousel-button {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--cf-gray-200);
+  border-radius: var(--cf-border-radius-l);
+}
+
 .related-product-title {
   margin: 24px 0;
+  display: inline-flex;
 }
 
 .related-product-container {
   display: flex;
-  overflow-x: auto;
+  overflow-x: scroll;
   justify-content: space-between;
   gap: 12px;
 }
@@ -12626,6 +12661,11 @@ body {
   color: gray;
   font-size: 14px;
   margin-bottom: 8px;
+}
+
+.carousel-button-controller {
+  display: inline-flex;
+  cursor: pointer;
 }
 
 main {

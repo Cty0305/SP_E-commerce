@@ -1,8 +1,15 @@
 .backlink {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   color: gray;
   margin-bottom: 12px;
+  gap: 0px;
+  padding: 12px 24px;
+  transition: gap 0.5s ease-in-out;
+}
+
+.backlink:hover {
+  gap: 12px;
 }
 
 .product-window-content {
@@ -61,6 +68,10 @@
   justify-content: center;
   border-radius: var(--cf-border-radius-sm);
   height: 40px;
+}
+
+.product-spec-option-active {
+  border: 1px solid var(--cf-gray);
 }
 
 .product-action {

@@ -38,3 +38,20 @@ document.addEventListener("DOMContentLoaded", function () {
     filterToggleMen.classList.toggle("inactive");
   }
 });
+
+$(".product-spec-option").click(function () {
+  $(".product-spec-option").removeClass("product-spec-option-active");
+  $(this).addClass("product-spec-option-active");
+});
+
+$(".add-to-cart").click(function () {
+  if ($(this).text() === "加入購物車") {
+    $(this).animate({ opacity: 0 }, 500, function () {
+      $(this).text("✅ 已加入至購物車").animate({ opacity: 1 }, 500);
+    });
+  } else {
+    $(this).animate({ opacity: 0 }, 500, function () {
+      $(this).text("加入購物車").animate({ opacity: 1 }, 500);
+    });
+  }
+});
