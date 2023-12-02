@@ -8,6 +8,21 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+      integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+      integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="scss/all.css" />
   </head>
   <body>
@@ -232,21 +247,13 @@
                 <div class="related-product-title fs-6 fw-bolder">
                   你可能也會喜歡
                 </div>
-                <div class="carousel-button-controller">
-                  <div class="carousel-button prev">
-                    <span class="material-symbols-outlined">
-                      chevron_left
-                    </span>
-                  </div>
-                  <div class="carousel-button right">
-                    <span class="material-symbols-outlined">
-                      chevron_right
-                    </span>
-                  </div>
-                </div>
               </div>
-              <div class="related-product-container">
-                <a href="" class="related-product-card">
+              <div class="carousel-container"></div>
+              <ul
+                class="related-product-container owl-carousel owl-theme"
+                id="productContainer"
+              >
+                <li href="" class="related-product-card item">
                   <img
                     src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/78093c5f-19cf-4462-834c-a3e46de38386/dunk-%E4%BD%8E%E7%AD%92%E6%AC%BE-Bgkn3N.png"
                     class="related-product-image"
@@ -257,8 +264,8 @@
                     <div class="related-product-info-subtitle">Shoes</div>
                     <div class="related-product-info-price">$1,800</div>
                   </div>
-                </a>
-                <a href="" class="related-product-card">
+                </li>
+                <li href="" class="related-product-card item">
                   <img
                     src="https://static.nike.com/a/images/t_PDP_864_v1,f_auto,q_auto:eco/e6464934-7358-410e-9712-e4e858180c31/calm-%E7%A9%86%E5%8B%92-Pg5G3Z.png"
                     class="related-product-image"
@@ -269,8 +276,8 @@
                     <div class="related-product-info-subtitle">Shoes</div>
                     <div class="related-product-info-price">$2,200</div>
                   </div>
-                </a>
-                <a href="" class="related-product-card">
+                </li>
+                <li href="" class="related-product-card item">
                   <img
                     src="https://static.nike.com/a/images/t_PDP_864_v1,f_auto,q_auto:eco/e1f8a4a9-7a98-4fdd-8e56-5e52c801a45c/calm-%E7%94%B7%E6%AC%BE%E7%A9%86%E5%8B%92-KJZKd1.png"
                     class="related-product-image"
@@ -281,8 +288,8 @@
                     <div class="related-product-info-subtitle">Shoes</div>
                     <div class="related-product-info-price">$2,200</div>
                   </div>
-                </a>
-                <a href="" class="related-product-card">
+                </li>
+                <li href="" class="related-product-card item">
                   <img
                     src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/78093c5f-19cf-4462-834c-a3e46de38386/dunk-%E4%BD%8E%E7%AD%92%E6%AC%BE-Bgkn3N.png"
                     class="related-product-image"
@@ -293,8 +300,8 @@
                     <div class="related-product-info-subtitle">Shoes</div>
                     <div class="related-product-info-price">$1,800</div>
                   </div>
-                </a>
-                <a href="" class="related-product-card">
+                </li>
+                <li href="" class="related-product-card item">
                   <img
                     src="https://static.nike.com/a/images/t_PDP_864_v1,f_auto,q_auto:eco/e6464934-7358-410e-9712-e4e858180c31/calm-%E7%A9%86%E5%8B%92-Pg5G3Z.png"
                     class="related-product-image"
@@ -305,8 +312,8 @@
                     <div class="related-product-info-subtitle">Shoes</div>
                     <div class="related-product-info-price">$2,200</div>
                   </div>
-                </a>
-                <a href="" class="related-product-card">
+                </li>
+                <li href="" class="related-product-card item">
                   <img
                     src="https://static.nike.com/a/images/t_PDP_864_v1,f_auto,q_auto:eco/e1f8a4a9-7a98-4fdd-8e56-5e52c801a45c/calm-%E7%94%B7%E6%AC%BE%E7%A9%86%E5%8B%92-KJZKd1.png"
                     class="related-product-image"
@@ -317,14 +324,20 @@
                     <div class="related-product-info-subtitle">Shoes</div>
                     <div class="related-product-info-price">$2,200</div>
                   </div>
-                </a>
-              </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+      integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="JS/all.js"></script>
   </body>
 </html>
