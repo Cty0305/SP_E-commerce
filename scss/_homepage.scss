@@ -10,26 +10,15 @@ a {
   text-decoration: underline;
 }
 
-body {
-  height: 100vh;
-  overflow: hidden;
-}
-
 ::-webkit-scrollbar {
   width: 0px;
   height: 0px;
 }
 
-.main {
-  height: 700px;
-  display: flex;
-  justify-content: center;
-}
-
 .main-content {
   max-width: 1440px;
   width: 100%;
-  padding: 0 12px;
   display: flex;
   justify-content: space-between;
+  margin-top: 24px;
 }

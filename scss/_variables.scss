@@ -10,3 +10,8 @@
   --cf-border-radius-l: 48px;
   --cf-border-radius-sm: 8px;
 }
+
+/* 将用户代理样式重置为默认 */
+ul {
+  list-style-type: none;
+}

@@ -7,6 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// sidemenu
+$(".list-group-item").click(function () {
+  $(".list-group-item").removeClass("list-group-item-active");
+  $(this).toggleClass("list-group-item-active");
+});
+
 // Filter-Sort 下拉選單
 $(".filter-sort").click(function () {
   $(".filter-sort-menu").toggleClass("filter-sort-menu-show");
