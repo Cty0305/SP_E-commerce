@@ -1,7 +1,7 @@
 body {
   padding: 0 1%;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .navbar {
@@ -12,7 +12,6 @@ body {
 
 .main {
   height: 90%;
-
   display: flex;
   justify-content: center;
 }

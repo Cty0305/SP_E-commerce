@@ -108,7 +108,7 @@
 
 .product-window {
   max-height: 92%;
-  overflow: auto;
+  // overflow: auto;
 }
 
 .product-row {
@@ -140,9 +140,14 @@
 
 .product-aria {
   display: flex;
-  width: 40%;
+  width: 50%;
   padding: 0;
   gap: 10px;
+}
+
+.product-clickable {
+  border-radius: var(--cf-border-radius-sm);
+  overflow: hidden;
 }
 
 .product-card {
@@ -175,12 +180,23 @@
 }
 
 .product-card-name {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
+  text-align: left;
+}
+
+.product-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prodcut-card-sex {
+  color: var(--cf-gray);
 }
 
 .product-card-price {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .addtocart-icon {
@@ -200,5 +216,4 @@
 
 .product-detail {
   max-height: 100%;
-  overflow: auto;
 }
