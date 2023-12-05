@@ -70,11 +70,8 @@
 }
 
 .related-product-container {
-  display: flex;
-  padding: 0;
-  // width: 100%;
-  // overflow: hidden;
-  scroll-behavior: smooth;
+  padding-left: 0;
+  padding-bottom: 24px;
 }
 
 .related-product-card {
