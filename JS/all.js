@@ -1,3 +1,4 @@
+// Page Layout - User Dropdown 👇
 document.addEventListener("DOMContentLoaded", function () {
   const toggleButton = document.getElementById("toggleButton");
   const headerUser = document.querySelector(".header-user-dropdown");
@@ -7,21 +8,21 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// sidemenu
+$(document).on("click", function (event) {
+  if (!$(event.target).closest(".header-user-controller").length) {
+    $(".header-user-dropdown").removeClass("show");
+  }
+});
+
+// Page Layout - Sidemenu👇
 $(".list-group-item").click(function () {
   $(".list-group-item").removeClass("list-group-item-active");
   $(this).toggleClass("list-group-item-active");
 });
 
-// Filter-Sort 下拉選單
+// Homepage Page - Sort Dropdown👇
 $(".filter-sort").click(function () {
   $(".filter-sort-menu").toggleClass("filter-sort-menu-show");
-});
-
-$(document).on("click", function (event) {
-  if (!$(event.target).closest(".filter-sort-controller").length) {
-    $(".filter-sort-menu").removeClass("filter-sort-menu-show");
-  }
 });
 
 $(".filter-sort-option").click(function (e) {
@@ -31,7 +32,13 @@ $(".filter-sort-option").click(function (e) {
   $(".filter-sort-menu").removeClass("show");
 });
 
-// Filter-toggle-sex
+$(document).on("click", function (event) {
+  if (!$(event.target).closest(".filter-sort-controller").length) {
+    $(".filter-sort-menu").removeClass("filter-sort-menu-show");
+  }
+});
+
+// Homepage Page - Sex Toggle Filter👇
 document.addEventListener("DOMContentLoaded", function () {
   const filterToggleWomen = document.getElementById("filter-toggle-women");
   const filterToggleMen = document.getElementById("filter-toggle-men");
@@ -45,11 +52,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+// Product Page - Product Spec Options👇
 $(".product-spec-option").click(function () {
   $(".product-spec-option").removeClass("product-spec-option-active");
   $(this).addClass("product-spec-option-active");
 });
 
+// Product Page - Add To Cart Button👇
 $(".add-to-cart").click(function () {
   if ($(this).text() === "加入購物車") {
     $(this).animate({ opacity: 0 }, 500, function () {
@@ -62,6 +71,7 @@ $(".add-to-cart").click(function () {
   }
 });
 
+// Product Page - Related Product Carousel👇
 $(".owl-carousel").owlCarousel({
   loop: true, // 循環播放
   margin: 12, // 外距 10px

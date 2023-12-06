@@ -76,7 +76,7 @@
     <div class="main">
       <div class="main-content">
         <div class="cart">
-          <div class="cart-title">購物車</div>
+          <h3 class="cart-title">購物車</h3>
           <div class="cart-card-container">
             <a class="cart-card">
               <div class="cart-card-image-container">
@@ -90,13 +90,14 @@
                 <div class="cart-card-title">Nike Dunk 低筒</div>
                 <div class="cart-card-subtitle">Shoes</div>
                 <div class="cart-card-spec">M</div>
-                <div class="cart-card-qty">
-                  數量1
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_down
-                  </span>
-                </div>
-                <span class="material-symbols-outlined"> delete </span>
+                <select class="cart-card-qty" id="cart-card-qty">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+                <span class="cart-card-delete-item material-symbols-outlined">
+                  delete
+                </span>
               </div>
               <div class="cart-card-price">$1,800</div>
             </a>
@@ -112,13 +113,14 @@
                 <div class="cart-card-title">Nike Dunk 低筒</div>
                 <div class="cart-card-subtitle">Shoes</div>
                 <div class="cart-card-spec">M</div>
-                <div class="cart-card-qty">
-                  數量1
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_down
-                  </span>
-                </div>
-                <span class="material-symbols-outlined"> delete </span>
+                <select class="cart-card-qty" id="cart-card-qty">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+                <span class="cart-card-delete-item material-symbols-outlined">
+                  delete
+                </span>
               </div>
               <div class="cart-card-price">$1,800</div>
             </a>
@@ -134,13 +136,14 @@
                 <div class="cart-card-title">Nike Dunk 低筒</div>
                 <div class="cart-card-subtitle">Shoes</div>
                 <div class="cart-card-spec">M</div>
-                <div class="cart-card-qty">
-                  數量1
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_down
-                  </span>
-                </div>
-                <span class="material-symbols-outlined"> delete </span>
+                <select class="cart-card-qty" id="cart-card-qty">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+                <span class="cart-card-delete-item material-symbols-outlined">
+                  delete
+                </span>
               </div>
               <div class="cart-card-price">$1,800</div>
             </a>
@@ -156,13 +159,14 @@
                 <div class="cart-card-title">Nike Dunk 低筒</div>
                 <div class="cart-card-subtitle">Shoes</div>
                 <div class="cart-card-spec">M</div>
-                <div class="cart-card-qty">
-                  數量1
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_down
-                  </span>
-                </div>
-                <span class="material-symbols-outlined"> delete </span>
+                <select class="cart-card-qty" id="cart-card-qty">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+                <span class="cart-card-delete-item material-symbols-outlined">
+                  delete
+                </span>
               </div>
               <div class="cart-card-price">$1,800</div>
             </a>
@@ -178,20 +182,21 @@
                 <div class="cart-card-title">Nike Dunk 低筒</div>
                 <div class="cart-card-subtitle">Shoes</div>
                 <div class="cart-card-spec">M</div>
-                <div class="cart-card-qty">
-                  數量1
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_down
-                  </span>
-                </div>
-                <span class="material-symbols-outlined"> delete </span>
+                <select class="cart-card-qty" id="cart-card-qty">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
               </div>
               <div class="cart-card-price">$1,800</div>
+              <div class="cart-card-delete-item material-symbols-outlined">
+                delete
+              </div>
             </a>
           </div>
         </div>
         <div class="calculator">
-          <div class="calculator-title">摘要</div>
+          <h3 class="calculator-title">摘要</h3>
           <div class="calculator-content">
             <div class="calculator-subtotal">
               <div class="calculator-subtotal-title">小計</div>
@@ -209,6 +214,7 @@
         </div>
       </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="JS/all.js"></script>
   </body>
 </html>
