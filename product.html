@@ -63,6 +63,41 @@
           >
             <span class="material-symbols-outlined"> shopping_bag </span>Cart: 2
           </a>
+          <div class="cart-pop-up">
+            <div class="pop-content">
+              <div class="pop-up-text">✅ 已加入購物車</div>
+              <span class="material-symbols-outlined close"> close </span>
+              <a class="cart-card">
+                <div class="cart-card-image-container">
+                  <img
+                    src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/78093c5f-19cf-4462-834c-a3e46de38386/dunk-%E4%BD%8E%E7%AD%92%E6%AC%BE-Bgkn3N.png"
+                    alt=""
+                    class="cart-card-image"
+                  />
+                </div>
+                <div class="cart-card-info">
+                  <div class="cart-card-title">Nike Dunk 低筒</div>
+                  <div class="cart-card-subtitle">Shoes</div>
+                  <div class="cart-card-spec">M</div>
+                  <div class="cart-card-sex">Women</div>
+                </div>
+                <div class="cart-card-price">$1,800</div>
+              </a>
+              <div class="pop-up-action">
+                <a
+                  href="https://cty0305.github.io/SP_E-commerce/cart"
+                  class="btn-cf btn-cf-secondary w-100 cancel"
+                  >查看購物車(3)</a
+                >
+                <a
+                  href="https://cty0305.github.io/SP_E-commerce/checkout"
+                  class="btn-cf btn-cf-primary w-100 remove"
+                >
+                  結帳
+                </a>
+              </div>
+            </div>
+          </div>
           <div class="header-user-controller">
             <button type="button" class="header-user" id="toggleButton">
               <span class="header-user-name"> Alan Chou </span>
@@ -192,29 +227,117 @@
               </div>
               <div class="product-content">
                 <h1 class="product-name">Nike Air Max Pulse Roam</h1>
-                <div class="product-category">Clothing</div>
-                <div class="product-price">$5,400</div>
+                <div class="product-category">Shoes</div>
+                <div class="product-sex">Women</div>
+                <div class="product-price">$1,800</div>
                 <div class="product-spec">
                   <div class="product-spec-title">選取尺寸</div>
                   <div class="product-spec-option-container">
-                    <button class="btn-cf btn-cf-secondary product-spec-option">
-                      S
-                    </button>
-                    <button class="btn-cf btn-cf-secondary product-spec-option">
-                      M
-                    </button>
-                    <button class="btn-cf btn-cf-secondary product-spec-option">
-                      L
-                    </button>
+                    <input
+                      id="cm9"
+                      type="radio"
+                      name="size"
+                      value="CM 9"
+                      aria-required="true"
+                    />
+                    <label
+                      for="cm9"
+                      class="btn-cf btn-cf-secondary product-spec-option"
+                    >
+                      CM 9
+                    </label>
+                    <input
+                      id="cm10"
+                      type="radio"
+                      name="size"
+                      value="CM 10"
+                      aria-required="true"
+                    />
+                    <label
+                      for="cm10"
+                      class="btn-cf btn-cf-secondary product-spec-option"
+                    >
+                      CM 10
+                    </label>
+                    <input
+                      id="cm11"
+                      type="radio"
+                      name="size"
+                      value="CM 11"
+                      aria-required="true"
+                    />
+                    <label
+                      for="cm11"
+                      class="btn-cf btn-cf-secondary product-spec-option"
+                    >
+                      CM 11
+                    </label>
+                    <input
+                      id="cm12"
+                      type="radio"
+                      name="size"
+                      value="CM 12"
+                      aria-required="true"
+                    />
+                    <label
+                      for="cm12"
+                      class="btn-cf btn-cf-secondary product-spec-option"
+                    >
+                      CM 12
+                    </label>
+                    <input
+                      id="cm13"
+                      type="radio"
+                      name="size"
+                      value="CM 13"
+                      aria-required="true"
+                    />
+                    <label
+                      for="cm13"
+                      class="btn-cf btn-cf-secondary product-spec-option"
+                    >
+                      CM 13
+                    </label>
+                    <input
+                      id="cm14"
+                      type="radio"
+                      name="size"
+                      value="CM 14"
+                      aria-required="true"
+                    />
+                    <label
+                      for="cm14"
+                      class="btn-cf btn-cf-secondary product-spec-option"
+                    >
+                      CM 14
+                    </label>
+                    <input
+                      id="cm15"
+                      type="radio"
+                      name="size"
+                      value="CM 15"
+                      aria-required="true"
+                    />
+                    <label
+                      for="cm15"
+                      class="btn-cf btn-cf-secondary product-spec-option"
+                    >
+                      CM 15
+                    </label>
+                  </div>
+                  <div class="message" style="display: none; color: red">
+                    請選擇尺寸
                   </div>
                 </div>
                 <div class="product-action">
-                  <a class="btn-cf btn-cf-secondary w-100 add-to-cart"
+                  <a
+                    class="btn-cf btn-cf-secondary w-100 add-to-cart"
+                    id="addToCartButton"
                     >加入購物車</a
                   >
                   <a
                     href="https://cty0305.github.io/SP_E-commerce/checkout"
-                    class="btn-cf btn-cf-primary w-100"
+                    class="btn-cf btn-cf-primary w-100 buy-now"
                   >
                     立即購買
                   </a>
@@ -339,6 +462,42 @@
                 </li>
               </ul>
             </div>
+            <div class="pop-up">
+              <div class="pop-content">
+                <div class="pop-up-text">✅ 已加入購物車</div>
+                <span class="material-symbols-outlined close"> close </span>
+                <a class="cart-card">
+                  <div class="cart-card-image-container">
+                    <img
+                      src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/78093c5f-19cf-4462-834c-a3e46de38386/dunk-%E4%BD%8E%E7%AD%92%E6%AC%BE-Bgkn3N.png"
+                      alt=""
+                      class="cart-card-image"
+                    />
+                  </div>
+                  <div class="cart-card-info">
+                    <div class="cart-card-title">Nike Dunk 低筒</div>
+                    <div class="cart-card-subtitle">Shoes</div>
+                    <div class="cart-card-spec">M</div>
+                    <div class="cart-card-sex">Women</div>
+                  </div>
+                  <div class="cart-card-price">$1,800</div>
+                </a>
+                <div class="pop-up-action">
+                  <a
+                    href="https://cty0305.github.io/SP_E-commerce/cart"
+                    class="btn-cf btn-cf-secondary w-100"
+                    >查看購物車(1)</a
+                  >
+                  <a
+                    href="https://cty0305.github.io/SP_E-commerce/checkout"
+                    class="btn-cf btn-cf-primary w-100"
+                  >
+                    結帳
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="overlay"></div>
           </div>
         </div>
       </div>

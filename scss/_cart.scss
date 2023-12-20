@@ -13,6 +13,7 @@
 .cart-card-container {
   position: absolute;
   width: 40%;
+  padding-bottom: 48px;
 }
 
 .cart-card {
@@ -20,7 +21,7 @@
   height: 200px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 0.5px solid gray;
+  border-bottom: 0.5px solid var(--cf-gray-500);
   padding: 24px 0;
   margin-left: 16px;
   align-items: flex-start;
@@ -44,6 +45,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  text-align: left;
 }
 
 .cart-card-title {
@@ -54,17 +56,30 @@
   margin-bottom: 4px;
 }
 
+.cart-card-sex {
+  font-size: 14px;
+  color: var(--cf-gray);
+}
+
 .cart-card-spec {
   color: gray;
-  margin-bottom: 12px;
+  margin-bottom: 4px;
 }
 
 .cart-card-qty {
-  flex-grow: 1;
-  width: 50px;
-  max-height: 30px;
   display: flex;
+  gap: 8px;
+}
+
+.cart-card-qty-dropdown {
+  display: inline-block;
+  flex-grow: 1;
+  max-width: 50px;
+  max-height: 30px;
+  display: inline-flex;
   align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .cart-card-price {
@@ -88,4 +103,91 @@
   border-radius: 40px;
   width: 100%;
   color: white;
+}
+
+// Pop-up
+
+.overlay {
+  display: none;
+}
+
+.overlay-active {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明背景色 */
+  z-index: 1000; /* 确保遮罩在最上层 */
+}
+
+.pop-up {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  border-radius: var(--bs-border-radius-xxl);
+  color: var(--cf-white);
+  width: 500px;
+  z-index: 1;
+  padding: 32px;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+  z-index: 1001; /* 确保遮罩在最上层 */
+}
+
+.pop-up-show {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition-duration: 0.5s;
+}
+
+.cart-pop-up {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: var(--bs-border-radius-xxl);
+  color: var(--cf-white);
+  width: 500px;
+  z-index: 1;
+  padding: 32px;
+  background-color: #fff;
+  z-index: 1001; /* 确保遮罩在最上层 */
+}
+
+.cart-pop-up-show {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition-duration: 0.5s;
+}
+
+.pop-up-text {
+  text-align: left;
+  margin-left: 16px;
+}
+
+.pop-content {
+  color: var(--cf-black);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.pop-up-action {
+  margin-top: 12px;
+  display: flex;
+  gap: 24px;
 }

@@ -1,8 +1,8 @@
 .calculator {
   display: flex;
   flex-direction: column;
-  width: 30%;
-  padding-right: 24px;
+  width: 25%;
+  margin-right: 84px;
 }
 .calculator-title {
   font-size: 20px;
@@ -35,4 +35,5 @@
   border-top: 1px solid var(--cf-gray-500);
   border-bottom: 1px solid var(--cf-gray-500);
   font-weight: bold;
+  margin-bottom: 24px;
 }

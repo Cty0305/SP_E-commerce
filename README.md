@@ -15,6 +15,10 @@
 - 11/26/2023: Complete CSS
   1. Update Homepage
 - 12/17/2023: Complete FE-JS
+  1. Make spec options required ✅
+  2. Create 2 header (login status)
+  3. Add favorite icon
+  4. Update checkout page
 
 ### 🗺️ Sitemap
 

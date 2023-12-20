@@ -106,48 +106,22 @@
 }
 
 .product-window {
-  max-height: calc(100% - 60px);
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
   gap: 24px;
 }
 
 .product-row {
   display: flex;
-  max-width: 1100px;
-  gap: 10px;
-}
-
-.news-aria {
-  width: 60%;
-  max-height: 330px;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.news {
-  overflow: hidden;
-  height: 100%;
-  border-radius: var(--bs-border-radius-xl);
-}
-
-.news-image {
-  height: 100%;
-  object-fit: cover;
-}
-
-.product-aria {
-  display: flex;
-  width: 50%;
-  padding: 0;
-  gap: 10px;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1%;
 }
 
 .product-clickable {
   border-radius: var(--cf-border-radius-sm);
-  width: calc(50% - 5px);
+  width: 25%;
 }
 
 .product-card {

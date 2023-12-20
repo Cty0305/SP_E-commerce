@@ -1,4 +1,4 @@
-// Page Layout - User Dropdown 👇
+// // Page Layout - User Dropdown 👇
 document.addEventListener("DOMContentLoaded", function () {
   const toggleButton = document.getElementById("toggleButton");
   const headerUser = document.querySelector(".header-user-dropdown");
@@ -14,13 +14,13 @@ $(document).on("click", function (event) {
   }
 });
 
-// Page Layout - Sidemenu👇
+// // Page Layout - Sidemenu👇
 $(".list-group-item").click(function () {
   $(".list-group-item").removeClass("list-group-item-active");
   $(this).toggleClass("list-group-item-active");
 });
 
-// Homepage Page - Sort Dropdown👇
+// // Homepage Page - Sort Dropdown👇
 $(".filter-sort").click(function () {
   $(".filter-sort-menu").toggleClass("filter-sort-menu-show");
 });
@@ -53,25 +53,114 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Product Page - Product Spec Options👇
-$(".product-spec-option").click(function () {
-  $(".product-spec-option").removeClass("product-spec-option-active");
-  $(this).addClass("product-spec-option-active");
-});
 
-// Product Page - Add To Cart Button👇
-$(".add-to-cart").click(function () {
-  if ($(this).text() === "加入購物車") {
-    $(this).animate({ opacity: 0 }, 500, function () {
-      $(this).text("✅ 已加入至購物車").animate({ opacity: 1 }, 500);
+$(document).ready(function () {
+  $(".product-spec-option").click(function () {
+    $(this)
+      .toggleClass("product-spec-option-active")
+      .siblings()
+      .removeClass("product-spec-option-active");
+  });
+
+  // 获取所有带有 name="size" 的标签
+  const specLabels = document.querySelectorAll('input[name="size"]');
+  const message = document.querySelector(".message");
+  const addToCartBtn = document.getElementById("addToCartButton");
+
+  // 添加点击事件监听器到每个标签
+  specLabels.forEach((label) => {
+    label.addEventListener("click", () => {
+      const input = label;
+      if (input) {
+        input.checked = true; // 点击标签时手动选中关联的输入元素
+      }
     });
-  } else {
-    $(this).animate({ opacity: 0 }, 500, function () {
-      $(this).text("加入購物車").animate({ opacity: 1 }, 500);
+  });
+
+  // 点击 "Add to Cart" 按钮时执行的操作
+  addToCartBtn.addEventListener("click", function (event) {
+    const isSpecSelected = validateSpec();
+
+    if (!isSpecSelected) {
+      message.style.display = "block";
+      event.preventDefault(); // 阻止默认行为
+    } else {
+      message.style.display = "none";
+      showCartPopup();
+    }
+    console.log(isSpecSelected);
+  });
+
+  function validateSpec() {
+    // 检查是否有任何一个输入元素被选中
+    const isAnySelected = Array.from(specLabels).some((label) => {
+      const input = label;
+      const isChecked = input && input.checked;
+      console.log(`Label: ${label.value}, Checked: ${isChecked}`);
+      return isChecked;
     });
+
+    console.log(`isSpecSelected: ${isAnySelected}`);
+    return isAnySelected;
   }
+
+  function showCartPopup() {
+    $(".cart-pop-up").addClass("cart-pop-up-show").fadeIn(500);
+    setTimeout(function () {
+      $(".overlay").addClass("overlay-active").fadeIn(500);
+    }, 100); // 延遲添加 overlay-active 類別
+
+    setTimeout(function () {
+      $(".cart-pop-up, .overlay").fadeOut(500);
+    }, 6000);
+  }
+
+  $(".close, .remove, .cancel").click(function () {
+    $(".cart-pop-up, .overlay")
+      .removeClass("cart-pop-up-show overlay-active")
+      .fadeOut(500);
+  });
+
+  $(document).on("click", function (event) {
+    if (
+      !$(event.target).closest(".cart-pop-up").length &&
+      !$(event.target).is(addToCartBtn)
+    ) {
+      $(".cart-pop-up, .overlay").removeClass(
+        "cart-pop-up-show overlay-active"
+      );
+    }
+  });
 });
 
-// Product Page - Related Product Carousel👇
+// 顯示購物車彈出視窗
+
+// 刪除購物車商品;
+$(document).ready(function () {
+  $(".cart-card-delete-item").click(function (event) {
+    event.stopPropagation(); // 防止事件冒泡到 document
+    $(".pop-up").addClass("pop-up-show");
+    setTimeout(function () {
+      $(".overlay").addClass("overlay-active");
+    }, 100); // 延遲添加 overlay-active 類別
+  });
+
+  $(document).on("click", function (event) {
+    if (
+      !$(event.target).closest(".pop-up").length &&
+      !$(event.target).hasClass("cart-card-delete-item")
+    ) {
+      $(".pop-up").removeClass("pop-up-show");
+      $(".overlay").removeClass("overlay-active");
+    }
+  });
+
+  $(".close, .remove, .cancel").click(function () {
+    $(".pop-up").removeClass("pop-up-show");
+    $(".overlay").removeClass("overlay-active");
+  });
+});
+
 $(".owl-carousel").owlCarousel({
   loop: true, // 循環播放
   margin: 12, // 外距 10px
