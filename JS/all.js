@@ -57,13 +57,17 @@ document.addEventListener("DOMContentLoaded", function () {
 $(document).ready(function () {
   $(".product-spec-option").click(function () {
     $(this)
-      .toggleClass("product-spec-option-active")
+      .addClass("product-spec-option-active")
       .siblings()
       .removeClass("product-spec-option-active");
   });
 
   // 获取所有带有 name="size" 的标签
   const specLabels = document.querySelectorAll('input[name="size"]');
+  const sizeTitle = document.querySelector(".product-spec-title");
+  const sizeContainer = document.querySelector(
+    ".product-spec-option-container"
+  );
   const message = document.querySelector(".message");
   const addToCartBtn = document.getElementById("addToCartButton");
 
@@ -82,9 +86,13 @@ $(document).ready(function () {
     const isSpecSelected = validateSpec();
 
     if (!isSpecSelected) {
+      sizeTitle.style.color = "var(--bs-red)";
+      sizeContainer.style.border = "1px solid var(--bs-red)";
       message.style.display = "block";
       event.preventDefault(); // 阻止默认行为
     } else {
+      sizeTitle.style.color = "black";
+      sizeContainer.style.border = "none";
       message.style.display = "none";
       showCartPopup();
     }
@@ -104,10 +112,12 @@ $(document).ready(function () {
     return isAnySelected;
   }
 
+  // 顯示購物車彈出視窗
+
   function showCartPopup() {
-    $(".cart-pop-up").addClass("cart-pop-up-show").fadeIn(500);
+    $(".cart-pop-up").addClass("cart-pop-up-show").fadeIn(1000);
     setTimeout(function () {
-      $(".overlay").addClass("overlay-active").fadeIn(500);
+      $(".overlay").addClass("overlay-active").fadeIn(1000);
     }, 100); // 延遲添加 overlay-active 類別
 
     setTimeout(function () {
@@ -132,8 +142,6 @@ $(document).ready(function () {
     }
   });
 });
-
-// 顯示購物車彈出視窗
 
 // 刪除購物車商品;
 $(document).ready(function () {
@@ -162,7 +170,7 @@ $(document).ready(function () {
 });
 
 $(".owl-carousel").owlCarousel({
-  loop: true, // 循環播放
+  loop: false, // 循環播放
   margin: 12, // 外距 10px
   nav: true, // 顯示點點
   dots: false,
@@ -174,7 +182,7 @@ $(".owl-carousel").owlCarousel({
       items: 3, // 螢幕大小為 600~1000 顯示 3 個項目
     },
     1000: {
-      items: 3.5, // 螢幕大小為 1000 以上 顯示 5 個項目
+      items: 4, // 螢幕大小為 1000 以上 顯示 5 個項目
     },
   },
 });

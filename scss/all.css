@@ -12594,6 +12594,7 @@ body {
 }
 
 .product-spec-option-container {
+  border-radius: var(--cf-border-radius-sm);
   display: flex;
   flex-wrap: wrap;
   -moz-column-gap: 1.3%;
@@ -12634,7 +12635,8 @@ input[type=radio] {
 
 .message {
   margin-bottom: 10px;
-  /* 其他样式... */
+  display: none;
+  color: var(--bs-red);
 }
 
 .related-product-header {

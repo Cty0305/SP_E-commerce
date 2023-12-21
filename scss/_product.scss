@@ -55,30 +55,8 @@
   flex-grow: 1;
 }
 
-// .product-spec-option-container {
-//   display: flex;
-//   flex-direction: column;
-//   gap: 8px;
-//   margin: 12px 0 12px;
-// }
-
-// .product-spec-row {
-//   display: flex;
-//   justify-content: space-between;
-// }
-
-// .product-spec-option {
-//   width: 24%;
-//   padding: 8px 4px;
-//   background-color: #fff;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   border-radius: var(--cf-border-radius-sm);
-//   height: 40px;
-// }
-
 .product-spec-option-container {
+  border-radius: var(--cf-border-radius-sm);
   display: flex;
   flex-wrap: wrap;
   column-gap: 1.3%;
@@ -118,5 +96,6 @@ input[type="radio"] {
 
 .message {
   margin-bottom: 10px;
-  /* 其他样式... */
+  display: none;
+  color: var(--bs-red);
 }
