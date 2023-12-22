@@ -12099,6 +12099,10 @@ ul {
   width: 100%;
 }
 
+.form-col {
+  width: 100%;
+}
+
 a {
   color: black;
   text-decoration: none;
@@ -13002,7 +13006,8 @@ input[type=radio] {
 .checkout-form-content {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  gap: 16px;
+  width: calc(100% - 16px);
   justify-content: space-between;
   margin-left: 16px;
 }
