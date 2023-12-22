@@ -1,5 +1,3 @@
-// Product Page - Product Spec Options👇
-
 export function productAddtocart() {
   $(document).ready(function () {
     const sizeTitle = document.querySelector(".product-spec-title");
@@ -7,6 +5,9 @@ export function productAddtocart() {
       ".product-spec-option-container"
     );
     const message = document.querySelector(".message");
+    const specLabels = document.querySelectorAll('input[name="size"]');
+    const addToCartBtn = document.getElementById("addToCartButton");
+    const buyNow = document.getElementById("buynow");
 
     $(".product-spec-option").click(function () {
       $(this)
@@ -17,55 +18,64 @@ export function productAddtocart() {
       sizeContainer.style.border = "none";
       message.style.display = "none";
     });
-  });
 
-  // 获取所有带有 name="size" 的标签
-  const specLabels = document.querySelectorAll('input[name="size"]');
-  const addToCartBtn = document.getElementById("addToCartButton");
-
-  // 添加点击事件监听器到每个标签
-  specLabels.forEach((label) => {
-    label.addEventListener("click", () => {
-      const input = label;
-      if (input) {
-        input.checked = true; // 点击标签时手动选中关联的输入元素
-      }
+    specLabels.forEach((label) => {
+      label.addEventListener("click", () => {
+        const input = label;
+        if (input) {
+          input.checked = true;
+        }
+      });
     });
-  });
 
-  // 点击 "Add to Cart" 按钮时执行的操作
-  document.addEventListener("DOMContentLoaded", function () {
-    const addToCartBtn = document.getElementById("addToCartButton");
     addToCartBtn.addEventListener("click", function (event) {
-      const isSpecSelected = validateSpec();
-      const sizeTitle = document.querySelector(".product-spec-title");
-      const sizeContainer = document.querySelector(
-        ".product-spec-option-container"
-      );
-      const message = document.querySelector(".message");
+      handleButtonClick(event);
+    });
 
+    buyNow.addEventListener("click", function (event) {
+      handleBuyNowClick(event);
+    });
+
+    function handleButtonClick(event) {
+      const isSpecSelected = validateSpec();
       if (!isSpecSelected) {
-        sizeTitle.style.color = "var(--bs-red)";
-        sizeContainer.style.border = "1px solid var(--bs-red)";
-        message.style.display = "block";
-        event.preventDefault(); // 阻止默认行为
+        updateStyleForNoSpecSelected();
+        event.preventDefault();
       } else {
         sizeTitle.style.color = "black";
         sizeContainer.style.border = "none";
         message.style.display = "none";
         showCartPopup();
       }
-    });
+    }
+
+    function handleBuyNowClick(event) {
+      const isSpecSelected = validateSpec();
+      if (!isSpecSelected) {
+        updateStyleForNoSpecSelected();
+        event.preventDefault();
+      } else {
+        sizeTitle.style.color = "black";
+        sizeContainer.style.border = "none";
+        message.style.display = "none";
+        window.location.href =
+          "https://cty0305.github.io/SP_E-commerce/checkout";
+      }
+    }
 
     function validateSpec() {
-      // 检查是否有任何一个输入元素被选中
       const isAnySelected = Array.from(specLabels).some((label) => {
         const input = label;
         const isChecked = input && input.checked;
         return isChecked;
       });
-
       return isAnySelected;
+    }
+
+    function updateStyleForNoSpecSelected() {
+      sizeTitle.style.color = "var(--bs-red)";
+      sizeContainer.style.border = "1px solid var(--bs-red)";
+      message.style.display = "block";
     }
 
     // 顯示購物車彈出視窗
