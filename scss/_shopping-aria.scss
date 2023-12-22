@@ -86,16 +86,17 @@
 }
 
 .filter-toggle-women {
-  background-color: var(--cf-gray-200);
   border-radius: 16px 0 0 16px;
+  background-color: var(--cf-white);
 }
 
 .filter-toggle-men {
   border-radius: 0 16px 16px 0;
+  background-color: var(--cf-white);
 }
 
-.inactive {
-  background-color: var(--cf-white);
+.toggle-active {
+  background-color: var(--cf-gray-200);
 }
 
 .filter-icon {
@@ -110,6 +111,7 @@
   flex-wrap: wrap;
   width: 100%;
   gap: 24px;
+  padding-bottom: 12px;
 }
 
 .product-row {

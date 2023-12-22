@@ -26,15 +26,21 @@ export function sextoggle() {
 
     // 確認元素存在後再綁定事件
     if (filterToggleWomen && filterToggleMen) {
-      filterToggleWomen.addEventListener("click", toggleInactiveState);
-      filterToggleMen.addEventListener("click", toggleInactiveState);
-    } else {
+      filterToggleWomen.addEventListener("click", toggleWomenActive);
+      filterToggleMen.addEventListener("click", toggleMenActive);
     }
 
-    function toggleInactiveState() {
-      if (filterToggleWomen && filterToggleMen) {
-        filterToggleWomen.classList.toggle("inactive");
-        filterToggleMen.classList.toggle("inactive");
+    function toggleWomenActive() {
+      if (filterToggleWomen) {
+        filterToggleWomen.classList.add("toggle-active");
+        filterToggleMen.classList.remove("toggle-active");
+      }
+    }
+
+    function toggleMenActive() {
+      if (filterToggleMen) {
+        filterToggleMen.classList.add("toggle-active");
+        filterToggleWomen.classList.remove("toggle-active");
       }
     }
   });
