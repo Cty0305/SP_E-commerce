@@ -11977,6 +11977,7 @@ textarea.form-control-lg {
   }
 }
 :root {
+  --font-english: "Inter", sans-serif;
   --cf-white: #fff;
   --cf-black: #111111;
   --cf-gray: #707072;
@@ -11990,6 +11991,11 @@ textarea.form-control-lg {
 /* 将用户代理样式重置为默认 */
 ul {
   list-style-type: none;
+}
+
+/* 英文文字使用 Poppins 字体 */
+body {
+  font-family: var(--font-english);
 }
 
 .btn-cf {
