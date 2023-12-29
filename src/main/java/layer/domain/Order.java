@@ -43,11 +43,19 @@ public class Order {
 
 
     private float totalPrice;
-    private int order_quantity;
 
     private String order_ID;
 
     private Timestamp createdTime;
-    private Timestamp updatedTime;
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
+
+    private String account;
 
 }

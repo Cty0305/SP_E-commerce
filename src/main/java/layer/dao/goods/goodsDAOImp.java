@@ -11,7 +11,7 @@ public class goodsDAOImp implements GoodsDAO {
     JDBCTemplate jdbcTemplate = new JDBCTemplate();
     @Override
     public void create(Goods goods) {
-        String sql = "INSERT INTO goods (goods_ID,name,description, price,  category, created_at, quantity) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO goods (goods_ID,name,description, price,  category, created_at, quantity) VALUES (?,?,?,?,?,?)";
         jdbcTemplate.query(conn -> {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, goods.getGoods_ID());
@@ -20,7 +20,6 @@ public class goodsDAOImp implements GoodsDAO {
             preparedStatement.setFloat(4,goods.getPrice());
             preparedStatement.setString(5,goods.getCategory());
             preparedStatement.setTimestamp(6,goods.getCreatedTime());
-            preparedStatement.setInt(7,goods.getQuantity());
 
             return preparedStatement;
         });
@@ -39,7 +38,7 @@ public class goodsDAOImp implements GoodsDAO {
 
     @Override
     public void modify(Goods goods) {
-        String sql = "update Goods set  category=?, description=?, price=?, created_at=?, name=?, quantity=? where id=?";
+        String sql = "update Goods set  category=?, description=?, price=?, created_at=?, name=?, where id=?";
         jdbcTemplate.query(conn -> {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, goods.getCategory());
@@ -48,7 +47,6 @@ public class goodsDAOImp implements GoodsDAO {
             preparedStatement.setTimestamp(4, goods.getCreatedTime());
             preparedStatement.setString(5, goods.getName());
             preparedStatement.setString(6,goods.getGoods_ID());
-            preparedStatement.setInt(7,goods.getQuantity());
 
             return preparedStatement;
         });
@@ -70,7 +68,6 @@ public class goodsDAOImp implements GoodsDAO {
             goods.setDescription(rs.getString("description"));
             goods.setPrice(rs.getFloat("price"));
             goods.setCreatedTime(rs.getTimestamp("created_at"));
-            goods.setQuantity(rs.getInt("quantity"));
 
             list.add(goods);
         });
@@ -97,7 +94,6 @@ public class goodsDAOImp implements GoodsDAO {
             goods.setDescription(rs.getString("description"));
             goods.setCreatedTime(rs.getTimestamp("created_at"));
             goods.setPrice(rs.getFloat("price"));
-            goods.setQuantity(rs.getInt("quantity"));
 
             list.add(goods);
 
@@ -126,7 +122,6 @@ public class goodsDAOImp implements GoodsDAO {
             goods.setName(rs.getString("name"));
             goods.setPrice(rs.getFloat("price"));
             goods.setCreatedTime(rs.getTimestamp("created_at"));
-            goods.setQuantity(rs.getInt("quantity"));
             goodsList.add(goods);
         });
 
@@ -137,4 +132,6 @@ public class goodsDAOImp implements GoodsDAO {
 
 
     }
+
+
 }

@@ -8,4 +8,6 @@ public interface goodsService {
  List<Goods> findAll();
  List<Goods> queryByStartEnd(int start, int end);
  void createGoods(Goods goods);
+
+ Goods findByPk(String id);
 }

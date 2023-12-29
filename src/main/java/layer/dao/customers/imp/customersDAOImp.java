@@ -48,7 +48,7 @@ public class customersDAOImp implements customersDAO {
     public Customer findByPK(String pk){
         List<Customer> list = new ArrayList<>();
         jdbcTemplate.query(conn -> {
-            String sql = "Select * from customers where email  = ?";
+            String sql = "Select * from customers where account  = ?";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1,pk);
             return preparedStatement;
@@ -138,7 +138,6 @@ public class customersDAOImp implements customersDAO {
             customer.setGender(rs.getString("gender"));
             customer.setAccount(rs.getString("account"));
             customer.setSalt(rs.getString("salt"));
-            customer.setEmailStatus(rs.getInt("email_Status"));
             if(rs.getString("birthday")==null){
                 customer.setBirthday(null);
             }else{

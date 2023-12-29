@@ -27,7 +27,9 @@
       }
     }
   </script>
-
+  <c:forEach var="error" items="${err}">
+    <li>${error}</li>
+  </c:forEach>
 
 
     <nav class="navbar justify-content-center align-items-center">

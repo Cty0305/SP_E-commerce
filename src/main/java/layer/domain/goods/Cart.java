@@ -7,6 +7,15 @@ public class Cart {
         return cart_ID;
     }
 
+    public String getGoods_item_ID() {
+        return goods_item_ID;
+    }
+
+    public void setGoods_item_ID(String goods_item_ID) {
+        this.goods_item_ID = goods_item_ID;
+    }
+
+    String goods_item_ID;
     public void setCart_ID(String cart_ID) {
         this.cart_ID = cart_ID;
     }
@@ -52,11 +61,34 @@ public class Cart {
 
     private Goods goods;
 
+    public layer.domain.goods.goodsItem getGoodsItem() {
+        return goodsItem;
+    }
+
+    public void setGoodsItem(layer.domain.goods.goodsItem goodsItem) {
+        this.goodsItem = goodsItem;
+    }
+
+    private goodsItem goodsItem;
+
 
 
 
     private int quantity;
 
-
+    public String transSizeToText(int size){
+        String m = "M";
+        String l = "L";
+        String s = "S";
+        if(size==1){
+            return s;
+        }else if(size==2){
+            return m;
+        }else if(size==3){
+            return l;
+        }else{
+            return "";
+        }
+    }
 
 }

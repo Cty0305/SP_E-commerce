@@ -90,7 +90,7 @@
               Don't have an account?
               <a
                 class="a-inline"
-                href="https://cty0305.github.io/SP_E-commerce/signup.html"
+                href="signUpEmailVerification_mart.jsp"
                 >Sign up</a
               >
             </p>

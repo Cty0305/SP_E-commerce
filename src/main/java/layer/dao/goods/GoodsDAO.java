@@ -11,4 +11,6 @@ public interface GoodsDAO {
     Goods findByPk(String pk);
     List<Goods> findAll();
     List<Goods> findStartEnd(int start, int end);
+
+
 }

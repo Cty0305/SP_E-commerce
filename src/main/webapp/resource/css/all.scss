@@ -1,10 +1,17 @@
 @import "bootstrap/bootstrap.scss";
 @import "variables";
+@import "component";
 @import "homepage";
+@import "layout";
+@import "header";
+@import "sidemenu";
+@import "shopping-aria";
 @import "profile";
 @import "product";
+@import "related-product";
 @import "cart";
 @import "authentication";
 @import "signup";
 @import "create_account";
 @import "checkout";
+@import "calculator";

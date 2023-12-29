@@ -1,60 +1,81 @@
-main {
-  height: 80vh;
-  overflow-x: auto;
+.cart {
+  width: 50%;
+  padding-left: 24px;
 }
 
-.cart-main {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 64px 120px 0;
-  display: flex;
-  justify-content: space-between;
-  overflow: hidden;
+.cart-title {
+  font-size: 20px;
+  background-color: var(--cf-white);
+  padding: 8px 16px;
+  font-weight: bolder;
 }
 
-.cart-item {
-  width: 60%;
+.cart-card-container {
+  position: absolute;
+  width: 40%;
 }
 
 .cart-card {
-  width: 100%;
+  width: 95%;
+  height: 200px;
   display: flex;
   justify-content: space-between;
   border-bottom: 0.5px solid gray;
   padding: 24px 0;
+  margin-left: 16px;
   align-items: flex-start;
+  position: relative;
 }
 
-.cart-pd-cover-image {
-  width: 150px;
-  height: 150px;
+.cart-card-image-container {
   margin-right: 16px;
+  height: 150px;
+  width: 150px;
+}
+
+.cart-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .cart-card-info {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  height: 150px;
+  height: 100%;
+}
+
+.cart-card-title {
+  margin-bottom: 4px;
+}
+
+.cart-card-subtitle {
+  margin-bottom: 4px;
 }
 
 .cart-card-spec {
   color: gray;
+  margin-bottom: 12px;
 }
 
 .cart-card-qty {
   flex-grow: 1;
+  width: 50px;
+  max-height: 30px;
   display: flex;
   align-items: center;
 }
 
-.cart-payment {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  position: fixed;
-  right: 10%;
-  max-width: 400px;
+.cart-card-price {
+  text-align: right;
+}
+
+.cart-card-delete-item {
+  position: absolute;
+  cursor: pointer;
+  right: 0;
+  bottom: 24px;
 }
 
 .cart-favorite {
@@ -67,32 +88,4 @@ main {
   border-radius: 40px;
   width: 100%;
   color: white;
-}
-
-.checkout-content {
-  display: flex;
-  flex-direction: column;
-  padding: 24px 0;
-  gap: 12px;
-}
-
-.checkout-subtotal {
-  display: flex;
-  justify-content: space-between;
-  color: var(--cf-gray-500);
-}
-
-.checkout-freight {
-  display: flex;
-  justify-content: space-between;
-  color: var(--cf-gray-500);
-}
-
-.checkout-total {
-  padding: 12px 0;
-  display: flex;
-  justify-content: space-between;
-  border-top: 1px solid var(--cf-gray-500);
-  border-bottom: 1px solid var(--cf-gray-500);
-  font-weight: bold;
 }

@@ -16,11 +16,8 @@ import java.util.*;
 import Helpers.encryptionUtils;
 import layer.domain.goods.Cart;
 import layer.domain.goods.Goods;
-import layer.survice.ServiceException;
-import layer.survice.cartService;
-import layer.survice.customersService;
+import layer.survice.*;
 import layer.survice.customersServiceImp.customersServiceImp;
-import layer.survice.goodsServiceImp;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -73,79 +70,58 @@ public class Controller extends HttpServlet {
                 }
 
                 //-------------商品列表---------------
-                currentPage = 1;
-                if(goodsList.size() % pageSize == 0){
-                    totalPageNumber = goodsList.size() / pageSize;
-                }else{
-                    totalPageNumber = goodsList.size() / pageSize +1;
-                }
+//                currentPage = 1;
+//                if(goodsList.size() % pageSize == 0){
+//                    totalPageNumber = goodsList.size() / pageSize;
+//                }else{
+//                    totalPageNumber = goodsList.size() / pageSize +1;
+//                }
+//
+//                req.setAttribute("totalPageNumber",totalPageNumber);
+//                req.setAttribute("currentPage",currentPage);
+//
+//                int start = (currentPage-1) * pageSize;
+//                int end = currentPage * pageSize;
+//                if(currentPage==totalPageNumber){
+//                    end = goodsList.size();
+//                }
 
-                req.setAttribute("totalPageNumber",totalPageNumber);
-                req.setAttribute("currentPage",currentPage);
-
-                int start = (currentPage-1) * pageSize;
-                int end = currentPage * pageSize;
-                if(currentPage==totalPageNumber){
-                    end = goodsList.size();
-                }
-
-                req.setAttribute("goodsList", goodsServiceImp.queryByStartEnd(start,end));
-                req.getRequestDispatcher("goods_list.jsp").forward(req,resp);
+//                req.setAttribute("goodsList", goodsServiceImp.queryByStartEnd(start,end));
+                Collections.sort(goodsList,Goods.compareByName);
+                req.setAttribute("goodsList",goodsList);
+                req.getRequestDispatcher("homepage.jsp").forward(req,resp);
             }
         }
-        //------------商品列表分页--------------
-        else if ("paging".equals(action)) {
+        //首頁商品分類
+        else if(action.equals("sortList")){
             String account = (String) req.getSession().getAttribute("loggedInCustomerAccount");
-
             if(account==null){
                 resp.sendRedirect("login.jsp");
 
-            }else{
+            }else {
                 List<Goods> goodsList = new ArrayList<>();
                 if(cache.containsKey("goodsList")){
                     goodsList = cache.get("goodsList");
-                }else {
+                }else{
                     goodsList = goodsServiceImp.findAll();
                     cache.put("goodsList",goodsList);
                 }
 
-
-                if(goodsList.size() % pageSize == 0){
-                    totalPageNumber = goodsList.size() / pageSize;
-                }else{
-                    totalPageNumber = goodsList.size() / pageSize +1;
+                String sort = req.getParameter("sortBy");
+                if(sort.equals("NewestToOldest")){
+                   Collections.sort(goodsList,Goods.reversedCompareCreatedTime);
+                } else if (sort.equals("OldestToNewest")) {
+                    Collections.sort(goodsList,Goods.compareByCreatedTime);
+                } else if(sort.equals("HighestToLowest")){
+                    Collections.sort(goodsList,Goods.reversedCompareByPrice);
+                } else if(sort.equals("LowestToHighest")){
+                    Collections.sort(goodsList,Goods.compareByPrice);
                 }
-                String page = req.getParameter("page");
-                if(page.equals("prev")){
-                    currentPage--;
-                    if(currentPage<1){
-                        currentPage=1;
-                    }
-
-                } else if (page.equals("next")) {
-                    currentPage++;
-                    if(currentPage>totalPageNumber){
-                        currentPage=totalPageNumber;
-                    }
-                } else {
-                    currentPage = Integer.valueOf(page);//要處理大於或小於totalPageNum
-                }
-
-                int start = (currentPage-1) * pageSize;
-                int end = currentPage * pageSize;
-                if(currentPage == totalPageNumber){
-                    end = goodsList.size();
-                }
-
-                req.setAttribute("totalPageNumber",totalPageNumber);
-                req.setAttribute("currentPage",currentPage);
-                req.setAttribute("goodsList",goodsList.subList(start,end));
-                req.getRequestDispatcher("goods_list.jsp").forward(req,resp);
+                req.setAttribute("goodsList",goodsList);
+                req.getRequestDispatcher("homepage.jsp").forward(req,resp);
             }
-
-
-
         }
+
         //商品後台
         else if(action.equals("goodsList_backstage")){
             List<Goods> goodsList = new ArrayList<>();
@@ -231,30 +207,7 @@ public class Controller extends HttpServlet {
             }else{
                 cartService cartService = new cartService();
                 List<Cart> cartList = cartService.findByAccount(account);
-
-
-
-
-                if(cartList.size() % pageSize == 0){
-                    totalPageNumber = cartList.size() / pageSize;
-
-                }else{
-                    totalPageNumber = cartList.size() / pageSize +1;
-
-                }
-
-
-
-                currentPage = 1;
-                int start = (currentPage-1) * pageSize;
-                int end = currentPage * pageSize;
-                if(currentPage == totalPageNumber){
-                    end = cartList.size();
-                }
-
-                req.setAttribute("totalPageNumber",totalPageNumber);
-                req.setAttribute("currentPage",currentPage);
-                req.setAttribute("cartList",cartList.subList(start,end));
+                req.setAttribute("cartList",cartList);
                 req.getRequestDispatcher("cart.jsp").forward(req,resp);
             }
 
@@ -306,7 +259,7 @@ public class Controller extends HttpServlet {
 
                 req.setAttribute("totalPageNumber",totalPageNumber);
                 req.setAttribute("currentPage",currentPage);
-                req.setAttribute("cartList",cartList.subList(start,end));
+                req.setAttribute("cartList",cartList);
                 req.getRequestDispatcher("cart.jsp").forward(req,resp);
             }
 
@@ -317,49 +270,14 @@ public class Controller extends HttpServlet {
         else if ("deleteCartItem".equals(action)) {
             cartService cartService = new cartService();
             cartService.deleteCartItem(req.getParameter("cart_ID"));
-            req.getRequestDispatcher("controller?action=cart").forward(req,resp);
+            resp.sendRedirect("controller?action=cart");
 
         }
-
-        //-----檢查登入信件
-        else if("verification".equals(action)){
-            String token = req.getParameter("token");
-            if(req.getSession().getAttribute("map")==null){
-                System.out.println("Session失效");
-                req.getRequestDispatcher("emailVerificationFailed.jsp").forward(req,resp);
-            } else{
-                Map<String,emailVerificationMap> map = (Map<String, emailVerificationMap>) req.getSession().getAttribute("map");
-                if(!map.containsKey(token)){
-                    System.out.println("token不存在");
-                    req.getRequestDispatcher("emailVerificationFailed.jsp").forward(req,resp);
-                }else if(System.currentTimeMillis() - map.get(token).getTimestamp()> 10 * 60 * 1000){
-                    System.out.println("連結逾期");
-                    req.getRequestDispatcher("emailVerificationFailed.jsp").forward(req,resp);
-
-                }else{
-                    customersServiceImp.verificationSuccess(map.get(token).getAccount());
-                    System.out.println("認證成功");
-                    resp.sendRedirect("login.jsp");
-
-                }
-            }
-
-        }
-        //-------重新發送信件-----
-        else if("resendEmail".equals(action)){
-            String account = req.getParameter("account");
-            EmailVerification emailVerification = new EmailVerification();
-            Customer customer = customersServiceImp.findByPK(account);
-            String token = emailVerification.createEmail(customer);
-            emailVerificationMap emailVerificationMap = new emailVerificationMap();
-            emailVerificationMap.setTimestamp(System.currentTimeMillis());
-            emailVerificationMap.setAccount(customer.getAccount());
-
-
-            Map<String,emailVerificationMap> map = new HashMap<>();
-            map.put(token,emailVerificationMap);
-            req.getSession().setAttribute("map",map);
-            resp.sendRedirect("login.jsp");
+        else if("product".equals(action)){
+            req.setAttribute("goods_ID",req.getParameter("goods_ID"));
+            List<Goods> list = goodsServiceImp.findAll();
+            req.setAttribute("goodsList",list);
+            req.getRequestDispatcher("product.jsp").forward(req,resp);
         }
     }
 
@@ -368,86 +286,14 @@ public class Controller extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
-        //------註冊----------------------
-        if(action.equalsIgnoreCase("register")){
-            List<String> err = new ArrayList<>();
-            String firstName = req.getParameter("firstName");
-            String lastName = req.getParameter("lastName");
-            String account = req.getParameter("account");
-            String password = req.getParameter("password");
-            String password2 = req.getParameter("password2");
-
-            if(firstName == null || firstName.trim().equals("")){
-                err.add("please enter the first name");
-            }
-            if(lastName == null || lastName.trim().equals("")){
-                err.add("please enter the last name");
-            }
-            if(account == null || account.trim().equals("")){
-                err.add("please enter username");
-            }
-            if(password == null || password.trim().equals("")){
-                err.add("please enter password");
-            }
-            if(!password.equals(password2)){
-                err.add("passwords do not match ");
-            }
-
-            if(err.size()>0){
-                req.setAttribute("err",err);
-                req.getRequestDispatcher("customer_reg.jsp").forward(req,resp);
-            }else{
-                Customer customer = new Customer();
-                customer.setFirstName(firstName);
-                customer.setAccount(account);
-                customer.setSalt(Arrays.toString(generateSalt()));
-                String passwordWithSalt = password+ customer.getSalt();
-                try{
-                    customer.setPassword(encryptString(passwordWithSalt));
-                } catch (encryptException e) {
-                    System.out.println("加密出錯");
-                    e.printStackTrace();
-                }
-
-                try {
-                    customersServiceImp.register(customer);
-//                    EmailVerification emailVerification = new EmailVerification();
-//                    String token = emailVerification.createEmail(customer);
-//
-//                    emailVerificationMap emailVerificationMap = new emailVerificationMap();
-//                    emailVerificationMap.setTimestamp(System.currentTimeMillis());
-//                    emailVerificationMap.setAccount(customer.getAccount());
-//
-//
-//                    Map<String,emailVerificationMap> map = new HashMap<>();
-//                    map.put(token,emailVerificationMap);
-//                    req.getSession().setAttribute("map",map);
-
-
-                    resp.sendRedirect("login.jsp");
-                }catch (ServiceException e){
-                    System.out.println("帳號存在");
-                    err.add("the account has already exist");
-                    req.setAttribute("err",err);
-                    req.getRequestDispatcher("customer_reg.jsp").forward(req,resp);
-                }
-
-
-            }
-
-
-
-
-        }
         //-------------註冊----------------
-        else if (action.equals("createAccount")) {
-
+        if (action.equals("createAccount")) {
             //檢查token
             Map<String,String> tokenMap = (Map<String, String>) req.getSession().getAttribute("tokenMap");
-            String email = (String) req.getAttribute("email");
+            String email = (String) req.getSession().getAttribute("email");
+            req.getSession().removeAttribute("email");
             String token = tokenMap.get(email);
             String inputToken = req.getParameter("token");
-
             //判斷是否正確
             if(token.equals(inputToken)){
                 List<String> err = new ArrayList<>();
@@ -474,10 +320,11 @@ public class Controller extends HttpServlet {
                 }
                 if(err.size()>0){
                     req.setAttribute("err",err);
-                    req.getRequestDispatcher("customer_reg.jsp").forward(req,resp);
+                    req.getRequestDispatcher("create_account.jsp").forward(req,resp);
                 }else{
                     Customer customer = new Customer();
                     customer.setFirstName(firstName);
+                    customer.setLastName(lastName);
                     customer.setAccount(account);
                     customer.setEmail(email);
                     customer.setSalt(Arrays.toString(generateSalt()));
@@ -491,26 +338,24 @@ public class Controller extends HttpServlet {
                     try {
                         customersServiceImp.register(customer);
                         System.out.println("註冊成功");
-                        resp.sendRedirect("login.jsp");
+                        resp.sendRedirect("login_mart.jsp");
                     }catch (ServiceException e){
                         System.out.println("帳號存在");
                         err.add("the account has already exist");
                         req.setAttribute("err",err);
-                        req.getRequestDispatcher("customer_reg.jsp").forward(req,resp);
+                        req.getRequestDispatcher("create_account.jsp").forward(req,resp);
                     }
                 }
             }else{
                 System.out.println("token錯誤");
+                System.out.println(token);
                 tokenMap.put(email,token);
-                req.setAttribute("email",email);
-                req.getRequestDispatcher("create_account.html").forward(req,resp);
+                req.getSession().setAttribute("email",email);
+                req.getRequestDispatcher("create_account.jsp").forward(req,resp);
             }
-
-
         }
         //------登入----
         else if ("login".equals(action)) {
-
             Customer loginCustomer = new Customer();
             List<String> err = new ArrayList<>();
             loginCustomer.setPassword(req.getParameter("password"));
@@ -519,32 +364,40 @@ public class Controller extends HttpServlet {
                 if(customersServiceImp.Login(loginCustomer)){
                     HttpSession session = req.getSession();
                     session.setAttribute("loggedInCustomerAccount",loginCustomer.getAccount());
-                    req.getRequestDispatcher("main.jsp").forward(req,resp);
+                    resp.sendRedirect("controller?action=list");
                 }else {
                     err.add("密碼不正確");
                     System.out.println("密碼不正確");
                     req.setAttribute("error",err);
-                    req.getRequestDispatcher("login.jsp").forward(req,resp);
+                    req.getRequestDispatcher("login_mart.jsp").forward(req,resp);
                 }
             }catch (ServiceException e){
                 err.add("無對應帳號");
                 System.out.println("無對應帳號");
                 req.setAttribute("error",err);
-                req.getRequestDispatcher("login.jsp").forward(req,resp);
+                req.getRequestDispatcher("login_mart.jsp").forward(req,resp);
             }
-
-
         }
         //-------------註冊驗證信相---------
         else if(action.equals("signUpEmailVerification")){
+
             String email = req.getParameter("email");
-            EmailVerification emailVerification = new EmailVerification();
-            String token = emailVerification.createEmail(email);
-            Map<String,String> tokenMap = new HashMap<>();
-            tokenMap.put(email,token);
-            req.setAttribute("email",email);
-            req.getSession().setAttribute("tokenMap",tokenMap);
-            req.getRequestDispatcher("create_account.html").forward(req,resp);
+
+            if(email.matches( "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")){
+                EmailVerification emailVerification = new EmailVerification();
+                String token = emailVerification.createEmail(email);
+                Map<String,String> tokenMap = new HashMap<>();
+                tokenMap.put(email,token);
+                req.getSession().setAttribute("email",email);
+                req.getSession().setAttribute("tokenMap",tokenMap);
+                req.getRequestDispatcher("create_account.jsp").forward(req,resp);
+            }else {
+                List<String> err = new ArrayList<>();
+                err.add("email格式錯誤");
+                req.setAttribute("err",err);
+                req.getRequestDispatcher("signUpEmailVerification_mart.jsp").forward(req,resp);
+            }
+
 
         }
         //-----------------建立商品-----------------------
@@ -592,7 +445,7 @@ public class Controller extends HttpServlet {
                 goods.setCategory(category);
                 goods.setCreatedTime(new Timestamp(System.currentTimeMillis()));
                 goods.setName(name);
-                goods.setQuantity(quantity);
+
 
                 goodsServiceImp.createGoods(goods);
 
@@ -636,11 +489,14 @@ public class Controller extends HttpServlet {
         else if(action.equals("add")){
             Cart cart = new Cart();
             cart.setAccount((String) req.getSession().getAttribute("loggedInCustomerAccount"));
-            cart.setGoods_ID(req.getParameter("goods_ID"));
-
+            String goodsId = req.getParameter("goods_ID");
+            cart.setGoods_ID(goodsId);
+            goodsItemService goodsItemService = new goodsItemService();
+            String goodsItemId = goodsItemService.findGoodsItemIdBySize(goodsId, Integer.parseInt(req.getParameter("size")));
+            cart.setGoods_item_ID(goodsItemId);
             cartService cartService = new cartService();
             cartService.addToCart(cart);
-
+            System.out.println("有加入購物車");
             resp.sendRedirect("controller?action=list");
 
 

@@ -47,15 +47,10 @@ public class customersServiceImp implements customersService {
     @Override
     public boolean Login(Customer loginCustomer) throws ServiceException {
         Customer dbCustomer = customerDAO.findByPK(loginCustomer.getAccount());
+
         if(dbCustomer==null){
             throw new ServiceException("無對應帳號");
         }
-
-
-
-
-
-
 
         //密碼hash
         try {

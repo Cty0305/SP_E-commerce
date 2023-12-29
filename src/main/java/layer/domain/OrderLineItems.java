@@ -21,17 +21,20 @@ public class OrderLineItems {
         this.sub_total = sub_total;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     private int quantity;
     private float sub_total;
-    private int id;
+
+    public String getOrderLineItem_ID() {
+        return orderLineItem_ID;
+    }
+
+    public void setOrderLineItem_ID(String orderLineItem_ID) {
+        this.orderLineItem_ID = orderLineItem_ID;
+    }
+
+    private String orderLineItem_ID;
 
     public Goods getGoods() {
         return goods;

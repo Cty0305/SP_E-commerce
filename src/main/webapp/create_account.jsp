@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="zh-tw">
   <head>
     <meta charset="UTF-8" />
@@ -39,7 +40,9 @@
 
 
   </script>
-
+  <c:forEach var="error" items="${err}">
+    <li>${error}</li>
+  </c:forEach>
 
 
 

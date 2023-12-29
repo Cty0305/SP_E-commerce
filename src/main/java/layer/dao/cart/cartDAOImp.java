@@ -13,13 +13,14 @@ public class cartDAOImp implements cartDAO{
 
     @Override
     public void create(Cart cart) {
-        String sql = "insert into cart (cart_ID,goods_ID,quantity,account) values (?,?,?,?)";
+        String sql = "insert into cart (cart_ID,goods_ID,quantity,account,goods_item_ID) values (?,?,?,?,?)";
         jdbcTemplate.query(conn -> {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1,cart.getCart_ID());
             preparedStatement.setString(2,cart.getGoods_ID());
             preparedStatement.setInt(3,cart.getQuantity());
             preparedStatement.setString(4,cart.getAccount());
+            preparedStatement.setString(5,cart.getGoods_item_ID());
 
             return preparedStatement;
         });
@@ -27,12 +28,13 @@ public class cartDAOImp implements cartDAO{
 
     @Override
     public void modify(Cart cart) {
-        String sql = "Update cart set goods_ID=?, quantity=? where cart_ID = ?";
+        String sql = "Update cart set goods_ID=?, quantity=?,goods_item_ID=? where cart_ID = ?";
         jdbcTemplate.query(conn -> {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1,cart.getGoods_ID());
             preparedStatement.setInt(2,cart.getQuantity());
-            preparedStatement.setString(3, cart.getCart_ID());
+            preparedStatement.setString(3, cart.getGoods_item_ID());
+            preparedStatement.setString(4,cart.getCart_ID());
             return preparedStatement;
         });
     }
@@ -61,6 +63,7 @@ public class cartDAOImp implements cartDAO{
             cart.setAccount(rs.getString("account"));
             cart.setQuantity(rs.getInt("quantity"));
             cart.setGoods_ID(rs.getString("goods_ID"));
+            cart.setGoods_item_ID(rs.getString("goods_item_ID"));
 
             cartList.add(cart);
         });

@@ -10,7 +10,6 @@ public class goodsServiceImp implements goodsService{
     GoodsDAO goodsDAO = new goodsDAOImp();
     @Override
     public List<Goods> findAll() {
-        System.out.println("執行一次DBIO");
         return goodsDAO.findAll();
     }
 
@@ -23,5 +22,13 @@ public class goodsServiceImp implements goodsService{
     @Override
     public void createGoods(Goods goods){
         goodsDAO.create(goods);
+    }
+
+    @Override
+    public Goods findByPk(String id) {
+        Goods goods= new Goods();
+        goods = goodsDAO.findByPk(id);
+
+        return goods;
     }
 }

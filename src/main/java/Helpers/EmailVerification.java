@@ -45,15 +45,10 @@ public class EmailVerification {
             message.setSubject("帳號驗證");
             // 建立認證token
             String verificationToken = UUID.randomUUID().toString();
-            // 建立時間戳
 
-
-            // 生成帳號驗證連結
-            String verificationLink = "localhost:8080/controller?action=verification&token=" + verificationToken;
             // 郵件內容，可以使用 HTML 格式
-            String emailContent = "<p>請點擊以下連結進行帳號驗證：</p><p><a '" + verificationLink + "'>" + verificationLink + "</a></p>";
+            String emailContent = "<p>" + verificationToken + "</p>";
             message.setContent(emailContent, "text/html; charset=utf-8");
-
             // 送出郵件
             Transport.send(message);
 
@@ -80,13 +75,9 @@ public class EmailVerification {
             message.setSubject("帳號驗證");
             // 建立認證token
             String verificationToken = UUID.randomUUID().toString();
-            // 建立時間戳
 
-
-            // 生成帳號驗證連結
-            String verificationLink = "localhost:8080/controller?action=verification&token=" + verificationToken;
             // 郵件內容，可以使用 HTML 格式
-            String emailContent = "<p>請點擊以下連結進行帳號驗證：</p><p><a '" + verificationLink + "'>" + verificationLink + "</a></p>";
+            String emailContent = "<p>" + verificationToken + "</p>";
             message.setContent(emailContent, "text/html; charset=utf-8");
 
             // 送出郵件

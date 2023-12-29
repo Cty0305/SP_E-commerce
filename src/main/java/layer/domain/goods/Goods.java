@@ -1,8 +1,19 @@
 package layer.domain.goods;
 
 import java.sql.Timestamp;
+import java.util.Comparator;
 
 public class Goods {
+    public static Comparator<Goods> compareByName = Comparator.comparing(Goods::getName);
+    public static Comparator<Goods> compareByPrice = Comparator.comparing(Goods::getPrice);
+    public static Comparator<Goods> compareByCategory = Comparator.comparing(Goods::getCategory);
+    public static Comparator<Goods> compareByCreatedTime = Comparator.comparing(Goods::getCreatedTime);
+    public static Comparator<Goods> reversedCompareByName = compareByName.reversed();
+    public static Comparator<Goods> reversedCompareByPrice = compareByPrice.reversed();
+    public static Comparator<Goods> reversedCompareByCategory = compareByCategory.reversed();
+    public static Comparator<Goods> reversedCompareCreatedTime = compareByCreatedTime.reversed();
+
+
 
     public String getName() {
         return name;
@@ -14,13 +25,7 @@ public class Goods {
 
     private String name ;
 
-    public int getQuantity() {
-        return quantity;
-    }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
     public Timestamp getUpdatedTime() {
         return updatedTime;
@@ -30,7 +35,7 @@ public class Goods {
         this.updatedTime = updatedTime;
     }
 
-    private int quantity;
+
     private float price;
     private String goods_ID;
 
@@ -81,4 +86,6 @@ public class Goods {
     }
 
     private String description;
+
+
 }
