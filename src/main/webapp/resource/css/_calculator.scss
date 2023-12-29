@@ -1,0 +1,38 @@
+.calculator {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding-right: 24px;
+}
+.calculator-title {
+  font-size: 20px;
+  padding: 8px 0;
+  font-weight: bolder;
+}
+
+.calculator-content {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+  gap: 12px;
+  color: var(--cf-gray);
+}
+
+.calculator-subtotal {
+  display: flex;
+  justify-content: space-between;
+}
+
+.calculator-freight {
+  display: flex;
+  justify-content: space-between;
+}
+
+.calculator-result {
+  padding: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--cf-gray-500);
+  border-bottom: 1px solid var(--cf-gray-500);
+  font-weight: bold;
+}
