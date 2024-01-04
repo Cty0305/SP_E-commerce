@@ -84,7 +84,7 @@
           <h3 class="checkout-form-title">輸入你的姓名和地址</h3>
           <form class="checkout-form-content">
             <div class="firstname form-col half">
-              <label for="firstName">First Name</label>
+              <label class="form-label" for="firstName">First Name</label>
               <input
                 id="firstName"
                 class="form-control"
@@ -94,7 +94,7 @@
               />
             </div>
             <div class="lastname form-col half">
-              <label for="lastName">Last Name</label>
+              <label class="form-label" for="lastName">Last Name</label>
               <input
                 id="lastName"
                 class="form-control"
@@ -104,7 +104,7 @@
               />
             </div>
             <div class="email form-col">
-              <label for="email">Email</label>
+              <label class="form-label" for="email">Email</label>
               <input
                 id="email"
                 class="form-control"
@@ -114,7 +114,7 @@
               />
             </div>
             <div class="phoneNumber form-col">
-              <label for="phoneNumber">Phone Number</label>
+              <label class="form-label" for="phoneNumber">Phone Number</label>
               <input
                 class="form-control"
                 id="phoneNumber"
@@ -125,7 +125,7 @@
               />
             </div>
             <div class="address form-col">
-              <label for="address">Address</label>
+              <label class="form-label" for="address">Address</label>
               <input
                 class="form-control"
                 id="address"
@@ -135,7 +135,7 @@
               />
             </div>
             <div class="nameOnCard form-col">
-              <label for="nameOnCard">Name on Card</label>
+              <label class="form-label" for="nameOnCard">Name on Card</label>
               <input
                 class="form-control"
                 id="nameOnCard"
@@ -145,7 +145,7 @@
               />
             </div>
             <div class="cardNumber form-col">
-              <label for="cardNumber">Card Number</label>
+              <label class="form-label" for="cardNumber">Card Number</label>
               <input
                 type="text"
                 id="cardNumber"
@@ -156,7 +156,7 @@
               />
             </div>
             <div class="expiration form-col half">
-              <label for="expiration">Card Expiration</label>
+              <label class="form-label" for="expiration">Card Expiration</label>
               <input
                 type="tel"
                 id="expiration"
@@ -167,7 +167,7 @@
               />
             </div>
             <div class="cvv form-col half">
-              <label for="cvv">CVV</label>
+              <label class="form-label" for="cvv">CVV</label>
               <input
                 type="text"
                 id="cvv"
@@ -184,12 +184,13 @@
             />
           </form>
         </div>
+
         <div class="calculator">
           <h3 class="calculator-title">訂單摘要</h3>
           <div class="calculator-content">
             <div class="calculator-subtotal">
               <div class="calculator-subtotal-title">小計</div>
-              <div class="calculator-subtotal-price">$1,800</div>
+              <div class="calculator-subtotal-price">$9,000</div>
             </div>
             <div class="calculator-freight">
               <div class="calculator-freight-title">出貨/寄送</div>
@@ -198,7 +199,106 @@
           </div>
           <div class="calculator-result">
             <div class="calculator-total">總計</div>
-            <div class="calculator-total-num">$2,100</div>
+            <div class="calculator-total-num">$9,300</div>
+          </div>
+          <div class="cart-item">
+            <div class="cart-card-list">
+              <a class="cart-card">
+                <div class="cart-card-image-container">
+                  <img
+                    src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/78093c5f-19cf-4462-834c-a3e46de38386/dunk-%E4%BD%8E%E7%AD%92%E6%AC%BE-Bgkn3N.png"
+                    alt=""
+                    class="cart-card-image"
+                  />
+                </div>
+                <div class="cart-card-info">
+                  <div class="cart-card-title">Nike Dunk 低筒</div>
+                  <div class="cart-card-subtitle">Shoes</div>
+                  <div class="cart-card-sex">Women</div>
+                  <div class="cart-card-spec">M</div>
+                  <div class="cart-card-qty">
+                    <span class="cart-card-qty-title">數量</span>
+                  </div>
+                </div>
+                <div class="cart-card-price">$1,800</div>
+              </a>
+              <a class="cart-card">
+                <div class="cart-card-image-container">
+                  <img
+                    src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/78093c5f-19cf-4462-834c-a3e46de38386/dunk-%E4%BD%8E%E7%AD%92%E6%AC%BE-Bgkn3N.png"
+                    alt=""
+                    class="cart-card-image"
+                  />
+                </div>
+                <div class="cart-card-info">
+                  <div class="cart-card-title">Nike Dunk 低筒</div>
+                  <div class="cart-card-subtitle">Shoes</div>
+                  <div class="cart-card-sex">Women</div>
+                  <div class="cart-card-spec">M</div>
+                  <div class="cart-card-qty">
+                    <span class="cart-card-qty-title">數量</span>
+                  </div>
+                </div>
+                <div class="cart-card-price">$1,800</div>
+              </a>
+              <a class="cart-card">
+                <div class="cart-card-image-container">
+                  <img
+                    src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/78093c5f-19cf-4462-834c-a3e46de38386/dunk-%E4%BD%8E%E7%AD%92%E6%AC%BE-Bgkn3N.png"
+                    alt=""
+                    class="cart-card-image"
+                  />
+                </div>
+                <div class="cart-card-info">
+                  <div class="cart-card-title">Nike Dunk 低筒</div>
+                  <div class="cart-card-subtitle">Shoes</div>
+                  <div class="cart-card-sex">Women</div>
+                  <div class="cart-card-spec">M</div>
+                  <div class="cart-card-qty">
+                    <span class="cart-card-qty-title">數量</span>
+                  </div>
+                </div>
+                <div class="cart-card-price">$1,800</div>
+              </a>
+              <a class="cart-card">
+                <div class="cart-card-image-container">
+                  <img
+                    src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/78093c5f-19cf-4462-834c-a3e46de38386/dunk-%E4%BD%8E%E7%AD%92%E6%AC%BE-Bgkn3N.png"
+                    alt=""
+                    class="cart-card-image"
+                  />
+                </div>
+                <div class="cart-card-info">
+                  <div class="cart-card-title">Nike Dunk 低筒</div>
+                  <div class="cart-card-subtitle">Shoes</div>
+                  <div class="cart-card-sex">Women</div>
+                  <div class="cart-card-spec">M</div>
+                  <div class="cart-card-qty">
+                    <span class="cart-card-qty-title">數量</span>
+                  </div>
+                </div>
+                <div class="cart-card-price">$1,800</div>
+              </a>
+              <a class="cart-card">
+                <div class="cart-card-image-container">
+                  <img
+                    src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/78093c5f-19cf-4462-834c-a3e46de38386/dunk-%E4%BD%8E%E7%AD%92%E6%AC%BE-Bgkn3N.png"
+                    alt=""
+                    class="cart-card-image"
+                  />
+                </div>
+                <div class="cart-card-info">
+                  <div class="cart-card-title">Nike Dunk 低筒</div>
+                  <div class="cart-card-subtitle">Shoes</div>
+                  <div class="cart-card-sex">Women</div>
+                  <div class="cart-card-spec">M</div>
+                  <div class="cart-card-qty">
+                    <span class="cart-card-qty-title">數量</span>
+                  </div>
+                </div>
+                <div class="cart-card-price">$1,800</div>
+              </a>
+            </div>
           </div>
         </div>
       </div>

@@ -21,7 +21,8 @@
   4. Update Homepage Toggle ✅
   5. Payment Form ✅
   6. Google Font import ✅
-  7. Create 2 header (login status)
+  7. Checkout Page
+  8. Create 2 header (login status)
 
 ### 🗺️ Sitemap
 

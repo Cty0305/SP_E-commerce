@@ -17,13 +17,11 @@
 }
 
 .cart-card {
-  width: 95%;
   height: 200px;
   display: flex;
   justify-content: space-between;
   border-bottom: 0.5px solid var(--cf-gray-500);
   padding: 24px 0;
-  margin-left: 16px;
   align-items: flex-start;
   position: relative;
 }

@@ -140,6 +140,15 @@
   --bs-btn-disabled-border-color: var(--cf-gray);
 }
 
+.text-link {
+  display: inline;
+  text-decoration: underline;
+  color: var(--cf-black);
+  &:hover {
+    color: var(--cf-gray);
+  }
+}
+
 .input {
   width: 100%;
 }

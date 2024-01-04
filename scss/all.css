@@ -11993,6 +11993,14 @@ ul {
   list-style-type: none;
 }
 
+input::-moz-placeholder {
+  color: var(--cf-gray) !important;
+}
+
+input::placeholder {
+  color: var(--cf-gray) !important;
+}
+
 /* 英文文字使用 Poppins 字体 */
 body {
   font-family: var(--font-english);
@@ -12101,6 +12109,15 @@ body {
   --bs-btn-disabled-border-color: var(--cf-gray);
 }
 
+.text-link {
+  display: inline;
+  text-decoration: underline;
+  color: var(--cf-black);
+}
+.text-link:hover {
+  color: var(--cf-gray);
+}
+
 .input {
   width: 100%;
 }
@@ -12114,11 +12131,6 @@ a {
   text-decoration: none;
   display: flex;
   align-items: center;
-}
-
-.a-inline {
-  display: inline;
-  text-decoration: underline;
 }
 
 ::-webkit-scrollbar {
@@ -12539,8 +12551,8 @@ body {
 }
 
 .form-control {
-  height: 56px;
-  border-radius: 16px;
+  height: 48px;
+  border-radius: var(--cf-border-radius-m);
 }
 
 .button-save {
@@ -12786,13 +12798,11 @@ input[type=radio] {
 }
 
 .cart-card {
-  width: 95%;
   height: 200px;
   display: flex;
   justify-content: space-between;
   border-bottom: 0.5px solid var(--cf-gray-500);
   padding: 24px 0;
-  margin-left: 16px;
   align-items: flex-start;
   position: relative;
 }
@@ -13012,7 +13022,7 @@ input[type=radio] {
 .checkout-form-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 24px;
   width: calc(100% - 16px);
   justify-content: space-between;
   margin-left: 16px;
@@ -13022,11 +13032,17 @@ input[type=radio] {
   margin-top: 16px;
 }
 
+.cart-item {
+  display: flex;
+  flex-direction: column;
+}
+
 .calculator {
   display: flex;
   flex-direction: column;
   width: 25%;
   margin-right: 84px;
+  position: relative;
 }
 
 .calculator-title {

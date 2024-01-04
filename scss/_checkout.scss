@@ -13,7 +13,7 @@
 .checkout-form-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 24px;
   width: calc(100% - 16px);
   justify-content: space-between;
   margin-left: 16px;
@@ -21,4 +21,9 @@
 
 .submit-checkout {
   margin-top: 16px;
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: column;
 }
