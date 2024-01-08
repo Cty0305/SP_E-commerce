@@ -83,108 +83,113 @@
         <div class="checkout-form">
           <h3 class="checkout-form-title">輸入你的姓名和地址</h3>
           <form class="checkout-form-content">
-            <div class="firstname form-col half">
-              <label class="form-label" for="firstName">First Name</label>
-              <input
-                id="firstName"
-                class="form-control"
-                type="text"
-                name="firstName"
-                required
-              />
+            <div class="form-input">
+              <div class="firstname form-col half">
+                <label class="form-label" for="firstName">First Name</label>
+                <input
+                  id="firstName"
+                  class="form-control"
+                  type="text"
+                  name="firstName"
+                  required
+                />
+              </div>
+              <div class="lastname form-col half">
+                <label class="form-label" for="lastName">Last Name</label>
+                <input
+                  id="lastName"
+                  class="form-control"
+                  type="text"
+                  name="lastName"
+                  required
+                />
+              </div>
+              <div class="email form-col">
+                <label class="form-label" for="email">Email</label>
+                <input
+                  id="email"
+                  class="form-control"
+                  type="email"
+                  name="email"
+                  required
+                />
+              </div>
+              <div class="phoneNumber form-col">
+                <label class="form-label" for="phoneNumber">Phone Number</label>
+                <input
+                  class="form-control"
+                  id="phoneNumber"
+                  maxlength="10"
+                  type="tel"
+                  name="phone"
+                  required
+                />
+              </div>
+              <div class="address form-col">
+                <label class="form-label" for="address">Address</label>
+                <input
+                  class="form-control"
+                  id="address"
+                  type="text"
+                  name="address"
+                  required
+                />
+              </div>
+              <div class="nameOnCard form-col">
+                <label class="form-label" for="nameOnCard">Name on Card</label>
+                <input
+                  class="form-control"
+                  id="nameOnCard"
+                  type="text"
+                  name="nameOnCard"
+                  required
+                />
+              </div>
+              <div class="cardNumber form-col">
+                <label class="form-label" for="cardNumber">Card Number</label>
+                <input
+                  type="text"
+                  id="cardNumber"
+                  maxlength="19"
+                  placeholder="1234 1234 1234 1234"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="expiration form-col half">
+                <label class="form-label" for="expiration"
+                  >Card Expiration</label
+                >
+                <input
+                  type="tel"
+                  id="expiration"
+                  maxlength="7"
+                  placeholder="MM / YY"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="cvv form-col half">
+                <label class="form-label" for="cvv">CVV</label>
+                <input
+                  type="text"
+                  id="cvv"
+                  maxlength="3"
+                  placeholder="CVV"
+                  class="form-control"
+                  required
+                />
+              </div>
             </div>
-            <div class="lastname form-col half">
-              <label class="form-label" for="lastName">Last Name</label>
-              <input
-                id="lastName"
-                class="form-control"
-                type="text"
-                name="lastName"
-                required
-              />
-            </div>
-            <div class="email form-col">
-              <label class="form-label" for="email">Email</label>
-              <input
-                id="email"
-                class="form-control"
-                type="email"
-                name="email"
-                required
-              />
-            </div>
-            <div class="phoneNumber form-col">
-              <label class="form-label" for="phoneNumber">Phone Number</label>
-              <input
-                class="form-control"
-                id="phoneNumber"
-                maxlength="10"
-                type="tel"
-                name="phone"
-                required
-              />
-            </div>
-            <div class="address form-col">
-              <label class="form-label" for="address">Address</label>
-              <input
-                class="form-control"
-                id="address"
-                type="text"
-                name="address"
-                required
-              />
-            </div>
-            <div class="nameOnCard form-col">
-              <label class="form-label" for="nameOnCard">Name on Card</label>
-              <input
-                class="form-control"
-                id="nameOnCard"
-                type="text"
-                name="nameOnCard"
-                required
-              />
-            </div>
-            <div class="cardNumber form-col">
-              <label class="form-label" for="cardNumber">Card Number</label>
-              <input
-                type="text"
-                id="cardNumber"
-                maxlength="19"
-                placeholder="1234 1234 1234 1234"
-                class="form-control"
-                required
-              />
-            </div>
-            <div class="expiration form-col half">
-              <label class="form-label" for="expiration">Card Expiration</label>
-              <input
-                type="tel"
-                id="expiration"
-                maxlength="7"
-                placeholder="MM / YY"
-                class="form-control"
-                required
-              />
-            </div>
-            <div class="cvv form-col half">
-              <label class="form-label" for="cvv">CVV</label>
-              <input
-                type="text"
-                id="cvv"
-                maxlength="3"
-                placeholder="CVV"
-                class="form-control"
-                required
-              />
-            </div>
-            <input
+            <button
               type="submit"
               class="submit-checkout btn-cf btn-cf-primary w-100"
-              value="會員結帳"
-            />
+              value="Checkout"
+            >
+              Checkout
+            </button>
           </form>
         </div>
-
         <div class="calculator">
           <h3 class="calculator-title">訂單摘要</h3>
           <div class="calculator-content">

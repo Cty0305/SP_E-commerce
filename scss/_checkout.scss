@@ -1,26 +1,13 @@
 .checkout-form {
-  width: 50%;
+  width: 40%;
   padding-left: 24px;
 }
 
 .checkout-form-title {
   font-size: 20px;
   background-color: var(--cf-white);
-  padding: 8px 16px;
+  padding: 8px 16px 8px 0;
   font-weight: bolder;
-}
-
-.checkout-form-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  width: calc(100% - 16px);
-  justify-content: space-between;
-  margin-left: 16px;
-}
-
-.submit-checkout {
-  margin-top: 16px;
 }
 
 .cart-item {

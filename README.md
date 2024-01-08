@@ -23,6 +23,7 @@
   6. Google Font import ✅
   7. Checkout Page
   8. Create 2 header (login status)
+  9. Authentication / 403
 
 ### 🗺️ Sitemap
 

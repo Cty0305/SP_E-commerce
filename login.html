@@ -34,40 +34,46 @@
     </nav>
     <main class="main-setting">
       <div class="authentication-form">
-        <div class="login-title fs-3">Login to DonDonmart</div>
-        <div class="login-content">
-          <div class="login-form d-flex flex-column">
-            <div class="login-form-content">
-              <div class="input full">
-                <label for="basic-url" class="form-label">Email</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  aria-label="Amount (to the nearest dollar)"
-                />
-              </div>
-              <div class="input full">
-                <label for="basic-url" class="form-label">Password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  aria-label="Amount (to the nearest dollar)"
-                />
-              </div>
+        <div class="authentication-form-title fs-3">Login to DonDonmart</div>
+        <form id="loginForm" class="login-formm">
+          <div class="form-input">
+            <div class="email form-col">
+              <label class="form-label" for="email">Email</label>
+              <input
+                id="email"
+                class="form-control"
+                type="email"
+                name="email"
+                required
+              />
             </div>
-            <a class="btn-cf btn-cf-primary btn btn-primary full" type="submit">
-              Log in
-            </a>
-            <p class="alternative-option">
-              Don't have an account?
-              <a
-                class="text-link"
-                href="https://cty0305.github.io/SP_E-commerce/signup.html"
-                >Sign up</a
-              >
-            </p>
+            <div class="password form-col">
+              <label class="form-label" for="password">Password</label>
+              <input
+                class="form-control"
+                id="password"
+                type="password"
+                name="password"
+                required
+              />
+            </div>
           </div>
-        </div>
+          <button
+            type="submit"
+            class="submit-login btn-cf btn-cf-primary w-100"
+            value="Log in"
+          >
+            Log in
+          </button>
+          <p class="alternative-option w-100">
+            Don't have an account?
+            <a
+              class="text-link"
+              href="https://cty0305.github.io/SP_E-commerce/signup.html"
+              >Sign up</a
+            >
+          </p>
+        </form>
       </div>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>

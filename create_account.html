@@ -34,42 +34,69 @@
     </nav>
     <main class="main-setting">
       <div class="authentication-form">
-        <div class="login-title fs-3">Become a member of DonDonmart</div>
-        <div class="login-content">
-          <div class="login-form d-flex flex-column">
-            <div class="login-form-content">
-              <div class="input full">
-                <label for="basic-url" class="form-label"
-                  >Verification code</label
-                >
-                <input class="form-control" />
-              </div>
-              <div class="input half">
-                <label for="basic-url" class="form-label">First Name</label>
-                <input class="form-control" />
-              </div>
-              <div class="input half">
-                <label for="basic-url" class="form-label">Last Name</label>
-                <input class="form-control" />
-              </div>
-              <div class="input full">
-                <label for="basic-url" class="form-label">Password</label>
-                <input class="form-control" type="password" />
-              </div>
-            </div>
-            <a class="btn-cf btn-cf-primary full" type="submit">
-              Create Account
-            </a>
-            <p class="alternative-option">
-              Already have an account?
-              <a
-                class="text-link"
-                href="https://cty0305.github.io/SP_E-commerce/login.html"
-                >Log in</a
+        <div class="authentication-form-title fs-3">Sign up to DonDonmart</div>
+        <form id="signupForm" class="signup-form">
+          <div class="form-input">
+            <div class="verification-code form-col">
+              <label class="form-label" for="verificationCode"
+                >Verification code</label
               >
-            </p>
+              <input
+                id="verificationCode"
+                class="form-control"
+                type="text"
+                name="verification-code"
+                maxlength="6"
+                required
+              />
+            </div>
+            <div class="first-name form-col half">
+              <label class="form-label" for="firstName">First name</label>
+              <input
+                id="firstName"
+                class="form-control"
+                type="text"
+                name="first-name"
+                required
+              />
+            </div>
+            <div class="last-name form-col half">
+              <label class="form-label" for="lastName">First name</label>
+              <input
+                id="lastName"
+                class="form-control"
+                type="text"
+                name="last-name"
+                required
+              />
+            </div>
+            <div class="password form-col">
+              <label class="form-label" for="password">Password</label>
+              <input
+                class="form-control"
+                id="password"
+                type="password"
+                name="password"
+                required
+              />
+            </div>
           </div>
-        </div>
+          <button
+            type="submit"
+            class="submit-create-account btn-cf btn-cf-primary w-100"
+            value="create-account"
+          >
+            Create Account
+          </button>
+          <p class="alternative-option w-100">
+            Already have an account?
+            <a
+              class="text-link"
+              href="https://cty0305.github.io/SP_E-commerce/login.html"
+              >Log in</a
+            >
+          </p>
+        </form>
       </div>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>

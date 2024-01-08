@@ -12164,6 +12164,19 @@ body {
   justify-content: center;
 }
 
+.half {
+  width: 46%;
+}
+
+.form-input {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+
 .header {
   max-width: 1440px;
   width: 100%;
@@ -12970,66 +12983,32 @@ input[type=radio] {
   gap: 24px;
 }
 
-.full {
-  width: 100%;
-}
-
-.half {
-  width: 47.5%;
-}
-
 .authentication-form {
   width: 500px;
   margin: 0 auto;
 }
 
-.login-title {
-  width: 100%;
-  align-items: center;
-}
-
-.login-form {
-  padding: 48px 0;
-}
-
-.login-form-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
+.authentication-form-title {
   margin-bottom: 48px;
-  width: 100%;
-  justify-content: space-between;
 }
 
 .alternative-option {
+  display: flex;
+  justify-content: center;
   margin-top: 24px;
-  display: inline;
-  text-align: center;
+  gap: 8px;
 }
 
 .checkout-form {
-  width: 50%;
+  width: 40%;
   padding-left: 24px;
 }
 
 .checkout-form-title {
   font-size: 20px;
   background-color: var(--cf-white);
-  padding: 8px 16px;
+  padding: 8px 16px 8px 0;
   font-weight: bolder;
-}
-
-.checkout-form-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  width: calc(100% - 16px);
-  justify-content: space-between;
-  margin-left: 16px;
-}
-
-.submit-checkout {
-  margin-top: 16px;
 }
 
 .cart-item {
@@ -13040,7 +13019,7 @@ input[type=radio] {
 .calculator {
   display: flex;
   flex-direction: column;
-  width: 25%;
+  width: 30%;
   margin-right: 84px;
   position: relative;
 }

@@ -6,6 +6,7 @@ import { deleteCartitem } from "./cart.js";
 import { checkoutForm } from "./checkoutform.js";
 import { owlSlider } from "./slider.js";
 
+// loginStatus();
 headerUserDropdown();
 sidemenuClick();
 filterSort();

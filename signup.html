@@ -34,36 +34,36 @@
     </nav>
     <main class="main-setting">
       <div class="authentication-form">
-        <div class="login-title fs-3">Sign up to DonDonmart</div>
-        <div class="login-content">
-          <div class="login-form d-flex flex-column">
-            <div class="login-form-content">
-              <div class="input full">
-                <label for="basic-url" class="form-label">Email</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  aria-label="Amount (to the nearest dollar)"
-                />
-              </div>
+        <div class="authentication-form-title fs-3">Sign up to DonDonmart</div>
+        <form id="signupForm" class="signup-form">
+          <div class="form-input">
+            <div class="email form-col">
+              <label class="form-label" for="email">Email</label>
+              <input
+                id="email"
+                class="form-control"
+                type="email"
+                name="email"
+                required
+              />
             </div>
-            <a
-              href="https://cty0305.github.io/SP_E-commerce/create_account.html"
-              class="btn-cf btn-cf-primary full"
-              type="submit"
-            >
-              Next
-            </a>
-            <p class="alternative-option">
-              Already have an account?
-              <a
-                class="text-link"
-                href="https://cty0305.github.io/SP_E-commerce/login.html"
-                >Log in</a
-              >
-            </p>
           </div>
-        </div>
+          <button
+            type="submit"
+            class="submit-next btn-cf btn-cf-primary w-100"
+            value="next"
+          >
+            Next
+          </button>
+          <p class="alternative-option w-100">
+            Already have an account?
+            <a
+              class="text-link"
+              href="https://cty0305.github.io/SP_E-commerce/login.html"
+              >Log in</a
+            >
+          </p>
+        </form>
       </div>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
