@@ -2,6 +2,19 @@
   width: 46%;
 }
 
+.input {
+  width: 100%;
+}
+
+.form-col {
+  width: 100%;
+}
+
+.form-control {
+  height: 48px;
+  border-radius: var(--cf-border-radius-m);
+}
+
 .form-input {
   display: flex;
   flex-wrap: wrap;

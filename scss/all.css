@@ -5209,105 +5209,169 @@ textarea.form-control-lg {
 .list-group-item-primary {
   --bs-list-group-color: var(--bs-primary-text-emphasis);
   --bs-list-group-bg: var(--bs-primary-bg-subtle);
-  --bs-list-group-border-color: var(--bs-primary-border-subtle);
+  --bs-list-group-border-color: var(
+    --bs-primary-border-subtle
+  );
   --bs-list-group-action-hover-color: var(--bs-emphasis-color);
-  --bs-list-group-action-hover-bg: var(--bs-primary-border-subtle);
+  --bs-list-group-action-hover-bg: var(
+    --bs-primary-border-subtle
+  );
   --bs-list-group-action-active-color: var(--bs-emphasis-color);
-  --bs-list-group-action-active-bg: var(--bs-primary-border-subtle);
+  --bs-list-group-action-active-bg: var(
+    --bs-primary-border-subtle
+  );
   --bs-list-group-active-color: var(--bs-primary-bg-subtle);
   --bs-list-group-active-bg: var(--bs-primary-text-emphasis);
-  --bs-list-group-active-border-color: var(--bs-primary-text-emphasis);
+  --bs-list-group-active-border-color: var(
+    --bs-primary-text-emphasis
+  );
 }
 
 .list-group-item-secondary {
   --bs-list-group-color: var(--bs-secondary-text-emphasis);
   --bs-list-group-bg: var(--bs-secondary-bg-subtle);
-  --bs-list-group-border-color: var(--bs-secondary-border-subtle);
+  --bs-list-group-border-color: var(
+    --bs-secondary-border-subtle
+  );
   --bs-list-group-action-hover-color: var(--bs-emphasis-color);
-  --bs-list-group-action-hover-bg: var(--bs-secondary-border-subtle);
+  --bs-list-group-action-hover-bg: var(
+    --bs-secondary-border-subtle
+  );
   --bs-list-group-action-active-color: var(--bs-emphasis-color);
-  --bs-list-group-action-active-bg: var(--bs-secondary-border-subtle);
+  --bs-list-group-action-active-bg: var(
+    --bs-secondary-border-subtle
+  );
   --bs-list-group-active-color: var(--bs-secondary-bg-subtle);
   --bs-list-group-active-bg: var(--bs-secondary-text-emphasis);
-  --bs-list-group-active-border-color: var(--bs-secondary-text-emphasis);
+  --bs-list-group-active-border-color: var(
+    --bs-secondary-text-emphasis
+  );
 }
 
 .list-group-item-success {
   --bs-list-group-color: var(--bs-success-text-emphasis);
   --bs-list-group-bg: var(--bs-success-bg-subtle);
-  --bs-list-group-border-color: var(--bs-success-border-subtle);
+  --bs-list-group-border-color: var(
+    --bs-success-border-subtle
+  );
   --bs-list-group-action-hover-color: var(--bs-emphasis-color);
-  --bs-list-group-action-hover-bg: var(--bs-success-border-subtle);
+  --bs-list-group-action-hover-bg: var(
+    --bs-success-border-subtle
+  );
   --bs-list-group-action-active-color: var(--bs-emphasis-color);
-  --bs-list-group-action-active-bg: var(--bs-success-border-subtle);
+  --bs-list-group-action-active-bg: var(
+    --bs-success-border-subtle
+  );
   --bs-list-group-active-color: var(--bs-success-bg-subtle);
   --bs-list-group-active-bg: var(--bs-success-text-emphasis);
-  --bs-list-group-active-border-color: var(--bs-success-text-emphasis);
+  --bs-list-group-active-border-color: var(
+    --bs-success-text-emphasis
+  );
 }
 
 .list-group-item-info {
   --bs-list-group-color: var(--bs-info-text-emphasis);
   --bs-list-group-bg: var(--bs-info-bg-subtle);
-  --bs-list-group-border-color: var(--bs-info-border-subtle);
+  --bs-list-group-border-color: var(
+    --bs-info-border-subtle
+  );
   --bs-list-group-action-hover-color: var(--bs-emphasis-color);
-  --bs-list-group-action-hover-bg: var(--bs-info-border-subtle);
+  --bs-list-group-action-hover-bg: var(
+    --bs-info-border-subtle
+  );
   --bs-list-group-action-active-color: var(--bs-emphasis-color);
-  --bs-list-group-action-active-bg: var(--bs-info-border-subtle);
+  --bs-list-group-action-active-bg: var(
+    --bs-info-border-subtle
+  );
   --bs-list-group-active-color: var(--bs-info-bg-subtle);
   --bs-list-group-active-bg: var(--bs-info-text-emphasis);
-  --bs-list-group-active-border-color: var(--bs-info-text-emphasis);
+  --bs-list-group-active-border-color: var(
+    --bs-info-text-emphasis
+  );
 }
 
 .list-group-item-warning {
   --bs-list-group-color: var(--bs-warning-text-emphasis);
   --bs-list-group-bg: var(--bs-warning-bg-subtle);
-  --bs-list-group-border-color: var(--bs-warning-border-subtle);
+  --bs-list-group-border-color: var(
+    --bs-warning-border-subtle
+  );
   --bs-list-group-action-hover-color: var(--bs-emphasis-color);
-  --bs-list-group-action-hover-bg: var(--bs-warning-border-subtle);
+  --bs-list-group-action-hover-bg: var(
+    --bs-warning-border-subtle
+  );
   --bs-list-group-action-active-color: var(--bs-emphasis-color);
-  --bs-list-group-action-active-bg: var(--bs-warning-border-subtle);
+  --bs-list-group-action-active-bg: var(
+    --bs-warning-border-subtle
+  );
   --bs-list-group-active-color: var(--bs-warning-bg-subtle);
   --bs-list-group-active-bg: var(--bs-warning-text-emphasis);
-  --bs-list-group-active-border-color: var(--bs-warning-text-emphasis);
+  --bs-list-group-active-border-color: var(
+    --bs-warning-text-emphasis
+  );
 }
 
 .list-group-item-danger {
   --bs-list-group-color: var(--bs-danger-text-emphasis);
   --bs-list-group-bg: var(--bs-danger-bg-subtle);
-  --bs-list-group-border-color: var(--bs-danger-border-subtle);
+  --bs-list-group-border-color: var(
+    --bs-danger-border-subtle
+  );
   --bs-list-group-action-hover-color: var(--bs-emphasis-color);
-  --bs-list-group-action-hover-bg: var(--bs-danger-border-subtle);
+  --bs-list-group-action-hover-bg: var(
+    --bs-danger-border-subtle
+  );
   --bs-list-group-action-active-color: var(--bs-emphasis-color);
-  --bs-list-group-action-active-bg: var(--bs-danger-border-subtle);
+  --bs-list-group-action-active-bg: var(
+    --bs-danger-border-subtle
+  );
   --bs-list-group-active-color: var(--bs-danger-bg-subtle);
   --bs-list-group-active-bg: var(--bs-danger-text-emphasis);
-  --bs-list-group-active-border-color: var(--bs-danger-text-emphasis);
+  --bs-list-group-active-border-color: var(
+    --bs-danger-text-emphasis
+  );
 }
 
 .list-group-item-light {
   --bs-list-group-color: var(--bs-light-text-emphasis);
   --bs-list-group-bg: var(--bs-light-bg-subtle);
-  --bs-list-group-border-color: var(--bs-light-border-subtle);
+  --bs-list-group-border-color: var(
+    --bs-light-border-subtle
+  );
   --bs-list-group-action-hover-color: var(--bs-emphasis-color);
-  --bs-list-group-action-hover-bg: var(--bs-light-border-subtle);
+  --bs-list-group-action-hover-bg: var(
+    --bs-light-border-subtle
+  );
   --bs-list-group-action-active-color: var(--bs-emphasis-color);
-  --bs-list-group-action-active-bg: var(--bs-light-border-subtle);
+  --bs-list-group-action-active-bg: var(
+    --bs-light-border-subtle
+  );
   --bs-list-group-active-color: var(--bs-light-bg-subtle);
   --bs-list-group-active-bg: var(--bs-light-text-emphasis);
-  --bs-list-group-active-border-color: var(--bs-light-text-emphasis);
+  --bs-list-group-active-border-color: var(
+    --bs-light-text-emphasis
+  );
 }
 
 .list-group-item-dark {
   --bs-list-group-color: var(--bs-dark-text-emphasis);
   --bs-list-group-bg: var(--bs-dark-bg-subtle);
-  --bs-list-group-border-color: var(--bs-dark-border-subtle);
+  --bs-list-group-border-color: var(
+    --bs-dark-border-subtle
+  );
   --bs-list-group-action-hover-color: var(--bs-emphasis-color);
-  --bs-list-group-action-hover-bg: var(--bs-dark-border-subtle);
+  --bs-list-group-action-hover-bg: var(
+    --bs-dark-border-subtle
+  );
   --bs-list-group-action-active-color: var(--bs-emphasis-color);
-  --bs-list-group-action-active-bg: var(--bs-dark-border-subtle);
+  --bs-list-group-action-active-bg: var(
+    --bs-dark-border-subtle
+  );
   --bs-list-group-active-color: var(--bs-dark-bg-subtle);
   --bs-list-group-active-bg: var(--bs-dark-text-emphasis);
-  --bs-list-group-active-border-color: var(--bs-dark-text-emphasis);
+  --bs-list-group-active-border-color: var(
+    --bs-dark-text-emphasis
+  );
 }
 
 .btn-close {
@@ -12118,12 +12182,49 @@ body {
   color: var(--cf-gray);
 }
 
-.input {
-  width: 100%;
+.category-icon {
+  width: 36px;
+  height: 36px;
 }
 
-.form-col {
+.tab-group {
+  display: flex;
+  align-items: center;
+  border: none;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+
+.tab-group-item {
+  display: flex;
+  align-items: center;
+  border: 0px;
+  margin-bottom: 8px;
+  height: 64px;
+  width: 120px;
+  justify-content: center;
+}
+.tab-group-item:hover {
+  border-bottom: 3px solid orange;
+}
+
+.tab-group-item-active {
+  display: flex;
+  align-items: center;
+  border: 0px;
+  margin-bottom: 8px;
+  height: 64px;
+  width: 120px;
+  justify-content: center;
+  border-bottom: 3px solid orange;
+}
+
+.tab-group-item-link {
+  height: 100%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 a {
@@ -12166,6 +12267,19 @@ body {
 
 .half {
   width: 46%;
+}
+
+.input {
+  width: 100%;
+}
+
+.form-col {
+  width: 100%;
+}
+
+.form-control {
+  height: 48px;
+  border-radius: var(--cf-border-radius-m);
 }
 
 .form-input {
@@ -12534,42 +12648,26 @@ body {
 
 .main-setting {
   height: 100vh;
-  max-width: 1440px;
+  max-width: 440px;
   margin: 0 auto;
-  padding: 64px 240px;
 }
 
-.user {
-  gap: 24px;
-  padding-left: 24px;
-  margin-bottom: 64px;
-}
-
-.avatar-setting {
-  width: 100px;
-  height: 100px;
-  border-radius: 100%;
-}
-
-.user-name {
+.setting-title {
   font-size: 24px;
+  margin: 24px 0;
 }
 
-.form {
+.setting-menu {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 32px;
-  margin-bottom: 32px;
+  flex-wrap: nowrap;
 }
 
-.form-control {
-  height: 48px;
-  border-radius: var(--cf-border-radius-m);
-}
-
-.button-save {
-  align-self: end;
+.setting-tab {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  gap: 16px;
 }
 
 .backlink {

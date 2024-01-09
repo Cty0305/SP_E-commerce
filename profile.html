@@ -79,55 +79,71 @@
       </div>
     </nav>
     <main class="main-setting">
-      <div class="user d-flex align-items-center">
-        <div class="user-name">Alan Chou</div>
-        <div class="user-name">/ Edit Profile</div>
-      </div>
-      <div class="point d-flex">
-        <div class="sidemenu col-3 border-end">
-          <ul class="list-group">
-            <li class="list-group-item border-0 mb-2 d-flex align-items-center">
+      <div class="setting-title">Edit Profile</div>
+      <div class="setting-content">
+        <div class="setting-menu">
+          <ul class="tab-group setting-tab">
+            <li class="tab-group-item-active">
               <a
-                href="https://cty0305.github.io/SP_E-commerce/setting.html"
-                class="fw-semibold"
+                class="tab-group-item-link"
+                href="https://cty0305.github.io/SP_E-commerce/profile.html"
               >
                 <img
-                  width="36"
-                  height="36"
-                  src="https://img.icons8.com/tiny-color/48/gender-neutral-user.png"
-                  alt="gender-neutral-user"
-                  class="me-2"
+                  width="90"
+                  height="90"
+                  src="https://img.icons8.com/ios-glyphs/90/person-male.png"
+                  alt="person-male"
+                  class="category-icon"
                 />Profile
               </a>
             </li>
-            <li class="list-group-item border-0 mb-2 d-flex align-items-center">
+            <li class="tab-group-item">
               <a
-                href="https://cty0305.github.io/SP_E-commerce/setting_password.html"
+                class="tab-group-item-link"
+                href="https://cty0305.github.io/SP_E-commerce/password.html"
               >
                 <img
-                  width="36"
-                  height="36"
-                  src="https://img.icons8.com/tiny-color/48/lock.png"
-                  alt="lock"
-                  class="me-2"
+                  width="90"
+                  height="90"
+                  src="https://img.icons8.com/material/90/lock--v1.png"
+                  alt="lock--v1"
+                  class="category-icon"
                 />Password
               </a>
             </li>
           </ul>
         </div>
-        <div class="setting-cotent d-flex flex-column col-9 p-4">
-          <div class="form">
-            <div class="input">
-              <label for="basic-url" class="form-label">User Name</label>
-              <input type="text" class="form-control" />
+        <form id="profileUpdateForm" class="setting-form">
+          <div class="form-input">
+            <div class="first-name form-col">
+              <label class="form-label" for="userName">User name</label>
+              <input
+                id="userName"
+                class="form-control"
+                type="text"
+                name="user-name"
+                required
+              />
             </div>
-            <div class="input">
-              <label for="basic-url" class="form-label">Email</label>
-              <input type="email" class="form-control" />
+            <div class="email form-col">
+              <label class="form-label" for="email">Email</label>
+              <input
+                id="email"
+                class="form-control"
+                type="email"
+                name="email"
+                required
+              />
             </div>
           </div>
-          <div class="button-save btn border">Save Changes</div>
-        </div>
+          <button
+            type="submit"
+            class="submit-save-changes btn-cf btn-cf-primary w-100"
+            value="save-changes"
+          >
+            Save Changes
+          </button>
+        </form>
       </div>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>

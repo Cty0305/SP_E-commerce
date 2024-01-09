@@ -149,10 +149,47 @@
   }
 }
 
-.input {
-  width: 100%;
+.category-icon {
+  width: 36px;
+  height: 36px;
 }
 
-.form-col {
+.tab-group {
+  display: flex;
+  align-items: center;
+  border: none;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+
+.tab-group-item {
+  display: flex;
+  align-items: center;
+  border: 0px;
+  margin-bottom: 8px;
+  height: 64px;
+  width: 120px;
+  justify-content: center;
+  &:hover {
+    border-bottom: 3px solid orange;
+  }
+}
+
+.tab-group-item-active {
+  display: flex;
+  align-items: center;
+  border: 0px;
+  margin-bottom: 8px;
+  height: 64px;
+  width: 120px;
+  justify-content: center;
+  border-bottom: 3px solid orange;
+}
+
+.tab-group-item-link {
+  height: 100%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
