@@ -1,16 +1,19 @@
 body {
-  padding: 0 1%;
   height: 100vh;
   overflow: auto;
 }
 
 .navbar {
+  max-width: 1200px;
   justify-content: center;
+  margin: 0 auto;
   padding: 0;
-  height: 10%;
+  height: 15%;
 }
 
 .main {
+  max-width: 1200px;
+  margin: 0 auto;
   height: 90%;
   display: flex;
   justify-content: center;

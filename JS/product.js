@@ -81,29 +81,29 @@ export function productAddtocart() {
     // 顯示購物車彈出視窗
 
     function showCartPopup() {
-      $(".cart-pop-up").addClass("cart-pop-up-show").fadeIn(1000);
+      $(".header-cart-pop-up").addClass("header-cart-pop-up-show").fadeIn(1000);
       setTimeout(function () {
         $(".overlay").addClass("overlay-active").fadeIn(1000);
       }, 100); // 延遲添加 overlay-active 類別
 
       setTimeout(function () {
-        $(".cart-pop-up, .overlay").fadeOut(500);
+        $(".header-cart-pop-up, .overlay").fadeOut(500);
       }, 6000);
     }
 
     $(".close, .remove, .cancel").click(function () {
-      $(".cart-pop-up, .overlay")
-        .removeClass("cart-pop-up-show overlay-active")
+      $(".header-cart-pop-up, .overlay")
+        .removeClass("header-cart-pop-up-show overlay-active")
         .fadeOut(500);
     });
 
     $(document).on("click", function (event) {
       if (
-        !$(event.target).closest(".cart-pop-up").length &&
+        !$(event.target).closest(".header-cart-pop-up").length &&
         !$(event.target).is(addToCartBtn)
       ) {
-        $(".cart-pop-up, .overlay").removeClass(
-          "cart-pop-up-show overlay-active"
+        $(".header-cart-pop-up, .overlay").removeClass(
+          "header-cart-pop-up-show overlay-active"
         );
       }
     });
